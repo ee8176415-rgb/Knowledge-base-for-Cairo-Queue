@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WHX Nairobi 2026 — Knowledge Base</title>
+<style>
+  :root{
+    --brand:#6d28d9; --brand-2:#a78bfa; --accent:#f59e0b; --brand-deep:#2a0f3d;
+    --bg:#f6f3fb; --bg-2:#ece7f6; --card:#ffffff; --card-2:#f7f4fc;
+    --text:#1c1226; --muted:#655a72; --line:#e2dbee;
+    --ok:#12a06a; --ok-bg:#e7f6ef; --warn:#c2410c; --warn-bg:#fff3e6;
+    --shadow:0 6px 18px -12px rgba(42,15,61,.30);
+    --shadow-lg:0 18px 40px -20px rgba(42,15,61,.42);
+    --radius:16px;
+  }
+  :root[data-theme="dark"]{
+    --brand:#a78bfa; --brand-2:#c4b5fd; --accent:#fbbf24; --brand-deep:#1a0a28;
+    --bg:#130c1c; --bg-2:#1a1026; --card:#1f1430; --card-2:#180f24;
+    --text:#efe8f8; --muted:#a294b5; --line:#332347;
+    --ok:#34d399; --ok-bg:#10281f; --warn:#fbbf24; --warn-bg:#2c2210;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
+    --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden; color:#f4ecff;
+    background:
+      linear-gradient(100deg, #180825 0%, rgba(24,8,37,.95) 30%, rgba(60,22,102,.58) 66%, rgba(109,40,217,.22) 100%),
+      url('assets/nairobi-banner.png') center right / cover no-repeat,
+      linear-gradient(135deg, #2a0f3d 0%, #4c1d95 55%, #6d28d9 100%);
+    padding:34px clamp(18px,5vw,64px) 30px;
+  }
+  @media(max-width:720px){
+    .hero{ background:
+      linear-gradient(180deg, rgba(24,8,37,.82) 0%, rgba(24,8,37,.94) 100%),
+      url('assets/nairobi-banner.png') center / cover no-repeat, #1e0b30; }
+  }
+
+  /* Informa Markets logo watermark (from the official letterhead) */
+  .hero::after{
+    content:"";position:absolute;pointer-events:none;
+    right:clamp(18px,5vw,64px);bottom:20px;
+    width:clamp(120px,14vw,200px);aspect-ratio:1554/309;
+    background:url('assets/informa-markets-logo-white.png') right bottom / contain no-repeat;
+    opacity:.24;
+  }
+  @media(max-width:720px){ .hero::after{display:none} }
+
+  .hero .brandline{display:flex; align-items:center; gap:12px; margin-bottom:22px; flex-wrap:wrap}
+  .diamond{width:30px;height:30px;flex:none;transform:rotate(45deg);border-radius:7px;
+    background:linear-gradient(135deg,#fbbf24,#7c3aed);box-shadow:0 6px 16px rgba(124,58,237,.55)}
+  .brandline b{font-size:20px;letter-spacing:.3px}
+  .brandline .by{color:#c9b6e6;font-size:13px;opacity:.9}
+  .eventswitch{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap}
+  .eventswitch .es-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#c9b6e6;margin-right:2px}
+  .eventswitch a{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;color:#ece0fb;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+  .eventswitch a:hover{background:rgba(255,255,255,.18);text-decoration:none}
+  .eventswitch a.active{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#3b1d00;border-color:transparent}
+  .hero h1{margin:0 0 6px;font-size:clamp(30px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-.5px}
+  .hero .tag{color:#d9c9f0;font-size:clamp(15px,2vw,18px);max-width:640px}
+  .facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .fact{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.16);padding:10px 15px;border-radius:12px}
+  .fact .ic{font-size:18px}
+  .fact .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#c2a9e4;display:block}
+  .fact .v{font-weight:700;font-size:14px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;
+    font-weight:700;font-size:14px;cursor:pointer;border:1px solid transparent;transition:.15s}
+  .btn.primary{background:linear-gradient(135deg,#fcd34d,#f59e0b);color:#3b1d00;box-shadow:0 8px 20px -6px rgba(245,158,11,.5)}
+  .btn.primary:hover{transform:translateY(-2px);text-decoration:none}
+  .btn.ghost{background:rgba(255,255,255,.09);color:#f4ecff;border-color:rgba(255,255,255,.22)}
+  .btn.ghost:hover{background:rgba(255,255,255,.18);text-decoration:none}
+
+  /* ---------- Sticky search / nav ---------- */
+  .toolbar{position:sticky;top:0;z-index:50;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:12px clamp(14px,4vw,40px);
+    box-shadow:0 6px 20px -18px rgba(0,0,0,.5)}
+  .toolbar-row{display:flex;gap:12px;align-items:center;max-width:1180px;margin:0 auto}
+  .search{position:relative;flex:1}
+  .search input{width:100%;padding:13px 44px 13px 44px;border-radius:12px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:15px;outline:none;transition:.15s;box-shadow:var(--shadow)}
+  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(109,40,217,.15)}
+  .search .mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.5;font-size:17px}
+  .search .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;
+    border:none;background:var(--bg-2);color:var(--muted);width:26px;height:26px;border-radius:50%;
+    font-size:15px;display:none;align-items:center;justify-content:center}
+  .search .clr.on{display:flex}
+  .theme-btn{flex:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:19px;cursor:pointer;box-shadow:var(--shadow)}
+  .navpills{display:flex;gap:8px;overflow-x:auto;max-width:1180px;margin:10px auto 0;padding-bottom:2px;scrollbar-width:none}
+  .navpills::-webkit-scrollbar{display:none}
+  .navpills a{white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;
+    color:var(--muted);background:var(--card);border:1px solid var(--line)}
+  .navpills a:hover{color:var(--brand);text-decoration:none}
+  .navpills a.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  :root[data-theme="dark"] .navpills a.active{color:#1b0a2c}
+
+  /* ---------- Layout ---------- */
+  main{max-width:1180px;margin:0 auto;padding:26px clamp(14px,4vw,40px) 80px}
+  .kb-section{margin-top:40px;scroll-margin-top:150px}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .sec-head .emoji{font-size:24px}
+  .sec-head h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.3px}
+  .sec-head .cnt{margin-left:auto;font-size:12px;color:var(--muted);background:var(--card);
+    border:1px solid var(--line);padding:3px 10px;border-radius:999px}
+  .sec-desc{color:var(--muted);font-size:14px;margin:-8px 0 18px}
+
+  .grid{display:grid;gap:14px}
+  .grid.cols-2{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;box-shadow:var(--shadow);transition:.15s}
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}
+  .card h3{margin:0 0 6px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .card p{margin:0;color:var(--muted);font-size:13.5px}
+  .card .lead{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    border-radius:10px;background:color-mix(in srgb,var(--brand) 14%,transparent);font-size:19px;margin-bottom:10px}
+
+  .linkcard{display:flex;flex-direction:column;gap:6px}
+  .linkcard .go{margin-top:10px;font-weight:700;font-size:13px;color:var(--brand);display:inline-flex;gap:6px;align-items:center}
+  .linkcard:hover .go{gap:9px}
+
+  .routecard{padding:16px 18px}
+  .routecard .top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .routecard .top .emoji{font-size:20px}
+  .routecard .top b{font-size:14.5px}
+  .routecard .top .badge{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;
+    background:var(--ok-bg);color:var(--ok)}
+  .contact{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 0;border-top:1px dashed var(--line)}
+  .contact:first-of-type{border-top:none}
+  .contact .who{font-size:13px;color:var(--muted);min-width:90px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--card-2);border:1px solid var(--line);
+    border-radius:9px;padding:5px 9px;font-size:12.5px;font-weight:600;max-width:100%}
+  .chip a{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .copy{border:none;background:transparent;cursor:pointer;color:var(--muted);font-size:13px;padding:1px 3px;border-radius:5px;flex:none}
+  .copy:hover{color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,transparent)}
+  .copy.done{color:var(--ok)}
+
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:420px;background:var(--card);font-size:13.5px}
+  thead th{background:linear-gradient(135deg,var(--brand-deep),#5b21b6);color:#f4ecff;text-align:left;
+    padding:12px 14px;font-size:12px;letter-spacing:.5px;text-transform:uppercase;font-weight:700}
+  :root[data-theme="dark"] thead th{background:linear-gradient(135deg,#1a0a28,#4c1d95)}
+  tbody td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:var(--card-2)}
+  td .day{font-weight:700}
+  .notice{margin-top:12px;background:var(--warn-bg);border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));
+    border-radius:12px;padding:13px 15px}
+  .notice b{color:var(--warn);display:flex;align-items:center;gap:7px;font-size:13px;margin-bottom:6px}
+  .notice ul{margin:0;padding-left:18px;font-size:13px;color:var(--text)}
+  .notice li{margin:4px 0}
+
+  .steps{counter-reset:s;display:grid;gap:10px;margin:0}
+  .step{display:flex;gap:12px;align-items:flex-start;background:var(--card-2);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px}
+  .step::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;
+    background:var(--brand);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+  :root[data-theme="dark"] .step::before{color:#1b0a2c}
+  .step div{font-size:13.5px}
+
+  .note-inline{background:var(--card-2);border-left:3px solid var(--brand);border-radius:8px;
+    padding:10px 12px;font-size:13px;color:var(--muted);margin-top:10px}
+  .applinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .minibtn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;
+    font-size:13px;font-weight:700;background:var(--card-2);border:1px solid var(--line);color:var(--text)}
+  .minibtn:hover{border-color:var(--brand);color:var(--brand);text-decoration:none;transform:translateY(-1px)}
+
+  .hidden{display:none !important}
+  .noresults{text-align:center;padding:60px 20px;color:var(--muted)}
+  .noresults .big{font-size:40px;margin-bottom:10px}
+
+  footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:12.5px}
+
+  @media(max-width:560px){
+    .facts .fact{flex:1 1 100%}
+    .contact .who{min-width:auto;flex-basis:100%}
+    .eventswitch{margin-left:0;width:100%}
+  }
+
+  /* ---------- CS Case guidance ---------- */
+  .cs-card{max-width:660px}
+  .cs-lead-txt{margin:0 0 12px;font-size:14.5px}
+  .cs-linkbtn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;font-weight:700;
+    font-size:14px;background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff;
+    box-shadow:0 8px 20px -8px color-mix(in srgb,var(--brand) 70%,transparent)}
+  :root[data-theme="dark"] .cs-linkbtn{color:#1b0a2c}
+  .cs-linkbtn:hover{transform:translateY(-2px);text-decoration:none}
+  .case-cat{margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card-2)}
+  .case-cat-head{display:flex;align-items:center;gap:8px;padding:11px 14px;font-weight:800;font-size:14px;
+    background:color-mix(in srgb,var(--brand) 10%,transparent)}
+  .case-cat-row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--line)}
+  .cc-k{min-width:98px;color:var(--muted);font-size:13px}
+  .cc-v{font-weight:700;font-size:14px}
+
+  .tbd{color:#c2410c;font-weight:800}
+  :root[data-theme="dark"] .tbd{color:#fbbf24}
+  .cs-badge{font-size:11px;font-weight:700;color:var(--muted)}
+  .cs-steps{background:var(--card-2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;
+    font-size:13px;font-weight:700;margin:8px 0}
+  .cs-tmpl{margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card-2)}
+  .cs-tmpl summary{cursor:pointer;padding:9px 12px;font-size:13px;font-weight:700;list-style:none}
+  .cs-tmpl summary::-webkit-details-marker{display:none}
+  .cs-tmpl summary:hover{color:var(--brand)}
+  .cs-tmpl[open] summary{border-bottom:1px solid var(--line)}
+  .cs-tmpl-wrap{position:relative;padding:12px}
+  .cs-tmpl pre{white-space:pre-wrap;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:12.5px;line-height:1.55;margin:0;color:var(--text)}
+  .copy-tmpl{position:absolute;top:8px;right:8px;border:1px solid var(--line);background:var(--card);
+    color:var(--muted);font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;cursor:pointer}
+  .copy-tmpl:hover{color:var(--brand);border-color:var(--brand)}
+  .cs-catlabel{font-size:13px;color:var(--muted);margin:14px 0 4px;font-weight:600}
+  .catimg{max-width:100%;border:1px solid var(--line);border-radius:10px;display:block;box-shadow:var(--shadow)}
+  .catimg-link:hover .catimg{border-color:var(--brand)}
+  /* ---------- Modern case browser ---------- */
+  .case-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:-6px 0 20px}
+  .case-tab{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .case-tab b{font-weight:800;color:var(--text);background:var(--bg-2);padding:1px 8px;border-radius:999px;font-size:12px}
+  .case-tab:hover{border-color:var(--brand);color:var(--brand)}
+  .case-tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  .case-tab.active b{background:rgba(255,255,255,.25);color:#fff}
+  :root[data-theme="dark"] .case-tab.active,:root[data-theme="dark"] .case-tab.active b{color:#1b0a2c}
+  .case-group{margin-bottom:24px}
+  .case-group-h{font-size:12.5px;font-weight:800;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;
+    margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .cases-wrap[data-cg="visitors"] .case-group[data-group="exhibitors"]{display:none}
+  .cases-wrap[data-cg="exhibitors"] .case-group[data-group="visitors"]{display:none}
+  details.case{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;box-shadow:var(--shadow);transition:.15s}
+  details.case[open]{border-color:color-mix(in srgb,var(--brand) 45%,var(--line));box-shadow:var(--shadow-lg)}
+  details.case:hover{border-color:color-mix(in srgb,var(--brand) 32%,var(--line))}
+  .case-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;font-weight:700;font-size:14.5px}
+  .case-sum::-webkit-details-marker{display:none}
+  .case-ic{font-size:19px;flex:none;width:26px;text-align:center}
+  .case-ttl{flex:1}
+  .case-chev{transition:transform .2s;color:var(--muted);font-size:20px;line-height:1}
+  details.case[open] .case-chev{transform:rotate(180deg);color:var(--brand)}
+  .case-body{padding:2px 16px 16px;border-top:1px solid var(--line)}
+  .case-body .cs-lead-txt:first-child{margin-top:12px}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="brandline">
+    <span class="diamond"></span>
+    <b>WHX&nbsp;Nairobi&nbsp;2026</b>
+    <span class="by">· Customer Service Knowledge Base · by Informa Markets</span>
+    <nav class="eventswitch">
+      <span class="es-label">Event</span>
+      <a href="index.html">Pharmaconex 2026</a>
+      <a href="sahara.html">Sahara Expo 2026</a>
+      <a href="autotech.html">Autotech 2026</a>
+      <a href="whx.html">WHX Johannesburg 2026</a>
+      <a href="nairobi.html" class="active">WHX Nairobi 2026</a>
+      <a href="nigeria.html">Nigeria Energy 2026</a>
+    </nav>
+  </div>
+  <h1>Everything the CS team needs — in one place.</h1>
+  <p class="tag">Quick answers, links, contacts and deadlines for WHX Nairobi &amp; WHX Labs Nairobi 2026 — the World Health Expo in East Africa. Search it, copy it, done.</p>
+
+  <div class="facts">
+    <div class="fact"><span class="ic">📅</span><span><span class="k">Dates</span><span class="v">16 – 18 September 2026</span></span></div>
+    <div class="fact"><span class="ic">🕒</span><span><span class="k">Opening hours</span><span class="v">09:00–17:00 (16 Sep) · 10:00–17:00 (17 Sep) · 10:00–16:00 (18 Sep)</span></span></div>
+    <div class="fact"><span class="ic">📍</span><span><span class="k">Venue</span><span class="v">Kenyatta International Convention Centre (KICC), Nairobi, Kenya</span></span></div>
+  </div>
+
+  <div class="hero-actions">
+    <a class="btn primary" href="templates.html">🗂️ Response Templates</a>
+    <a class="btn ghost" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/" target="_blank" rel="noopener">🌐 Event Website</a>
+    <a class="btn ghost" href="https://www.expocad.com/host/fx/informa/WN26/exfx.html#floorplan" target="_blank" rel="noopener">🗺️ Floorplan</a>
+    <a class="btn ghost" href="https://www.google.com/maps/place/Kenyatta+International+Convention+Centre/@-1.288693,36.823103,707m" target="_blank" rel="noopener">🧭 Location</a>
+  </div>
+</header>
+
+<!-- ================= TOOLBAR ================= -->
+<div class="toolbar">
+  <div class="toolbar-row">
+    <div class="search">
+      <span class="mag">🔍</span>
+      <input id="q" type="text" placeholder="Search links, contacts, deadlines, forms…" autocomplete="off">
+      <button class="clr" id="clr" aria-label="clear">✕</button>
+    </div>
+    <button class="theme-btn" id="theme" title="Toggle theme">🌙</button>
+  </div>
+  <nav class="navpills" id="navpills">
+    <a href="templates.html" style="background:var(--brand);border-color:var(--brand);color:#fff">🗂️ Templates</a>
+    <a href="#links" class="active">Quick Links</a>
+    <a href="#cases">CS Case Handling</a>
+    <a href="#contacts">Contacts &amp; Routing</a>
+    <a href="#visitors">Visitors</a>
+    <a href="#programme">Programme &amp; Features</a>
+    <a href="#exhibitors">Exhibitors</a>
+    <a href="#deadlines">Deadlines &amp; Regulations</a>
+    <a href="#timetables">Timetables</a>
+    <a href="#travel">Travel &amp; Stay</a>
+  </nav>
+</div>
+
+<main>
+  <div id="noresults" class="noresults hidden">
+    <div class="big">🔍</div>
+    <div>No results for “<span id="qecho"></span>”. Try another keyword.</div>
+  </div>
+
+  <!-- ============ QUICK LINKS ============ -->
+  <section class="kb-section" id="links">
+    <div class="sec-head"><span class="emoji">🔗</span><h2>Quick Links &amp; Resources</h2><span class="cnt"></span></div>
+    <p class="sec-desc">The most-used external pages. All open in a new tab.</p>
+    <div class="grid cols-3">
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/" target="_blank" rel="noopener">
+        <span class="lead">🌐</span><h3>Event Website</h3><p>Official WHX Nairobi 2026 homepage.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.expocad.com/host/fx/informa/WN26/exfx.html#floorplan" target="_blank" rel="noopener">
+        <span class="lead">🗺️</span><h3>Interactive Floorplan</h3><p>Live hall &amp; stand floorplan (ExpoCAD).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/0yr0ev28grygq?actioncode=WEB20&amp;formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">
+        <span class="lead">📝</span><h3>Visitor Registration</h3><p>Main visitor registration form (VisitCloud).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/apply-for-a-stand/" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Apply for a Stand</h3><p>Stand / space booking enquiry form.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/stands/" target="_blank" rel="noopener">
+        <span class="lead">🧱</span><h3>Stand Options</h3><p>The different stand types &amp; packages available.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/exhibitor-brochure/" target="_blank" rel="noopener">
+        <span class="lead">📄</span><h3>Exhibitor Brochure</h3><p>Stand packages, buyer profile &amp; sponsorship.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/sponsorship-enquiry/" target="_blank" rel="noopener">
+        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Sponsorship &amp; branding opportunities form.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/attend/exhibitor-list/" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Full list of confirmed exhibitors.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/attend/why-attend/" target="_blank" rel="noopener">
+        <span class="lead">💡</span><h3>Why Attend</h3><p>Value proposition &amp; who the show is for.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/overview/press-media/" target="_blank" rel="noopener">
+        <span class="lead">📰</span><h3>Press &amp; Media</h3><p>Press passes, interviews &amp; media partnerships.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://etakenya.go.ke/" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Kenya eTA</h3><p>Official electronic Travel Authorisation portal.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Kenyatta+International+Convention+Centre/@-1.288693,36.823103,707m" target="_blank" rel="noopener">
+        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>Kenyatta International Convention Centre, Nairobi.</p><span class="go">Open ↗</span></a>
+    </div>
+  </section>
+
+  <!-- ============ CS CASE HANDLING ============ -->
+  <section class="kb-section" id="cases">
+    <div class="sec-head"><span class="emoji">🗂️</span><h2>CS Case Handling</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Agenda of cases — click a case to see how to handle it, its Salesforce categories, and the email template. Search from the top bar, or filter by audience.</p>
+    <div class="case-tabs" id="caseTabs">
+      <button class="case-tab active" data-g="all">All <b>53</b></button>
+      <button class="case-tab" data-g="visitors">👤 Visitors <b>22</b></button>
+      <button class="case-tab" data-g="exhibitors">🏢 Exhibitors <b>31</b></button>
+    </div>
+    <div class="cases-wrap" id="casesWrap" data-cg="all">
+
+      <div class="case-group" data-group="visitors">
+        <div class="case-group-h">👤 Visitors</div>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎟️</span><span class="case-ttl">Visitor Participation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the visitor gets their badge from:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/0yr0ev28grygq?actioncode=WEB20&amp;formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">Visitor Registration Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/registration.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/registration.png" alt="registration categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visitor Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can register as a visitor for WHX Nairobi 2026 through our official registration form below:
+https://register.visitcloud.com/survey/0yr0ev28grygq?actioncode=WEB20&amp;formType=VISITOR_REGISTRATION
+
+Once you have successfully completed your registration, you will receive a confirmation email containing your visitor badge.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✅</span><span class="case-ttl">Visitor Registration Confirmation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Confirm the visitor is registered and resend the confirmation email with the badge.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/confirmation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/confirmation.png" alt="confirmation categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Attendee / Visitor Registration Confirmation</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that, after checking our records, we can confirm that you have been successfully registered as a visitor for WHX Nairobi 2026.
+
+We have resent your registration confirmation email, which contains your visitor badge. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
+
+For your convenience, we have also attached your visitor badge to this email.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa Invitation (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The visitor issues their visa invitation letter through the <b>automated link</b> provided in their registration confirmation email:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/238xyplyd5rqi/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">Visitor Visa Invitation Link ↗</a><div class="note-inline">The form asks for the registration key from the confirmation email. The invitation letter is <b>not</b> a visa — the traveller still applies for the Kenya eTA separately.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa Invitation Letter for Visitors</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can issue your visa invitation letter as a visitor using the automated link below:
+https://register.visitcloud.com/survey/238xyplyd5rqi/start?visitor-contact=#contact_code#
+
+The form will require your registration key, provided in your registration confirmation email. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
+
+For your convenience, your registration key is:
+[Insert Registration Key]
+
+Please note that the invitation letter supports your application only — entry to Kenya also requires an approved electronic Travel Authorisation (eTA), which you can apply for at https://etakenya.go.ke/</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🇰🇪</span><span class="case-ttl">Kenya eTA — Entry Requirement</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Kenya uses an <b>electronic Travel Authorisation (eTA)</b> instead of a traditional visa for most travellers. Every attendee applies for it themselves online, before travelling.</p><a class="cs-linkbtn" href="https://etakenya.go.ke/" target="_blank" rel="noopener">Apply for the Kenya eTA ↗</a><div class="note-inline">CS never applies on the customer's behalf and never collects passport scans by chat. We only supply the invitation letter (and, for exhibitors, the supporting documents pack).</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Kenya entry requirements</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your enquiry regarding travel to Kenya for WHX Nairobi 2026.
+
+Travellers to Kenya are required to obtain an electronic Travel Authorisation (eTA) before departure. You can apply online through the official Government of Kenya portal:
+https://etakenya.go.ke/
+
+We recommend applying well in advance of your travel date. Should you require an official invitation letter to support your application, please let us know and we will be happy to assist.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Exhibiting — Stand Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the exhibitor submits their details on:</p><a class="cs-linkbtn" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/apply-for-a-stand/" target="_blank" rel="noopener">Apply for a Stand ↗</a><p class="cs-lead-txt" style="margin-top:14px">Then forward the enquiry to the sales team: <b>daniel.green.ae@ind-group.com</b>.<br>You can also share the stand options page: <a href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/stands/" target="_blank" rel="noopener">Stand Options ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-booking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-booking.png" alt="stand-booking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Stand booking enquiry (to customer)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your enquiry and for your interest in participating in WHX Nairobi 2026.
+
+Kindly note that your request has been forwarded to the relevant team. They will get back to you at the earliest opportunity with further details regarding available stand spaces, pricing, and participation options.
+
+In the meantime, you may review the available stand options here:
+https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/stands/</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Forward to the sales team (internal)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Hi Daniel,
+
+Appreciate your assistance with the customer enquiry below. The customer is interested in participating as an exhibitor at WHX Nairobi 2026 and would like to receive more information regarding the available stand options, pricing, and participation details.
+
+Please find the customer&#x27;s contact details below:
+Name: [Customer Name]
+Company: [Company Name]
+Email Address: [Email Address]
+Phone Number: [Phone Number]
+
+Thank you in advance for your support.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">⭐</span><span class="case-ttl">Sponsorship</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Form: <a href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/sponsorship-enquiry/" target="_blank" rel="noopener">Sponsorship Enquiry ↗</a>. Brochure: <a href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/exhibitor-brochure/" target="_blank" rel="noopener">Download ↗</a>. The customer completes the form and the relevant team follows up.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sponsorship.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sponsorship.png" alt="sponsorship categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Sponsorship request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in sponsoring WHX Nairobi 2026. Please find the link below to access our Sponsorship Enquiry form. Kindly complete the form, and a member of our relevant team will be in touch with you. We look forward to your participation in the event!
+
+https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/sponsorship-enquiry/</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📋</span><span class="case-ttl">Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share this link: <a href="https://www.worldhealthexpo.com/events/healthcare/nairobi/attend/exhibitor-list/" target="_blank" rel="noopener">Exhibitor List ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-list.png" alt="exhibitor-list categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✏️</span><span class="case-ttl">Correcting Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Put the case on hold and forward the amendment to the relevant team / request group. There is <b>no event app</b> for this edition, so amendments go through the Customer Centre and the internal team only.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/updating-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/updating-list.png" alt="updating-list categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📰</span><span class="case-ttl">Press &amp; Media</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Press passes, interview requests, use of our content and media partnerships all go to one inbox for Nairobi: <b>whxnairobi@informa.com</b>.<br>Reference page: <a href="https://www.worldhealthexpo.com/events/healthcare/nairobi/overview/press-media/" target="_blank" rel="noopener">Press &amp; Media ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/media-partner.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/media-partner.png" alt="media-partner categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Press / media enquiry</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in WHX Nairobi 2026.
+
+To register for a press pass, request interviews, use our content or discuss media partnerships, please get in touch with our team directly at whxnairobi@informa.com, and they will be delighted to assist you.
+
+You may also find further details here:
+https://www.worldhealthexpo.com/events/healthcare/nairobi/overview/press-media/</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎤</span><span class="case-ttl">Speaker Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt"><b>There is no conference / content programme at WHX Nairobi 2026</b> and the content team is not involved in the Nairobi edition this year. Politely inform the customer, and invite them to keep in touch for the next Nairobi edition or to consider another WHX event.</p><div class="note-inline">Do not forward speaker requests to the Johannesburg or Dubai content teams for this edition — there is no Nairobi speaking opportunity to route them to.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/speaking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/speaking.png" alt="speaking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Speaking request (no content this edition)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in speaking at WHX Nairobi 2026.
+
+Kindly note that there will not be a conference or content programme at the Nairobi edition this year. We would be delighted to keep your details on file and to keep in touch regarding next year&#x27;s Nairobi edition, or to share details of speaking opportunities at our other WHX events.
+
+Thank you for your understanding, and we hope to welcome you to the show.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💬</span><span class="case-ttl">Conference Content</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">There is <b>no conference content</b> for WHX Nairobi 2026 — the show runs as an exhibition only. Advise the customer accordingly and point them to the exhibition floorplan and exhibitor list instead.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/conference-content.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/conference-content.png" alt="conference-content categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🗓️</span><span class="case-ttl">Agenda Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">No session agenda is published for Nairobi 2026 (no conference programme). Share the <b>show opening timings</b> and the <a href="https://www.expocad.com/host/fx/informa/WN26/exfx.html#floorplan" target="_blank" rel="noopener">floorplan ↗</a> instead.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/agenda.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/agenda.png" alt="agenda categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Connections Programme</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The WHX Connections Programme is a curated, limited-capacity networking experience — registering for the show does <b>not</b> automatically confirm participation. Details for the Nairobi edition are <span class="tbd">⟪TBD⟫</span> and will be shared once released.</p><div class="note-inline">Until the Nairobi details are published, do not promise a place or share the Johannesburg Connections link — take the customer's details and advise that the team will be in touch.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="connections programme categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Meeting / Agreement Room Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Refer them to the sales team — <b>daniel.green.ae@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/meeting-room.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/meeting-room.png" alt="meeting-room categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🧾</span><span class="case-ttl">Invoice Request (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Visitor attendance is free. If an invoice or receipt is required, put the case on hold and forward it directly to the sales team — <b>daniel.green.ae@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/invoice.png" alt="invoice categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🔁</span><span class="case-ttl">Change of Operations Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Requires confirmation from the current Operations Contact, then the new contact details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/update-main.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/update-main.png" alt="update-main categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Change of Operations Contact</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that, in order to change the Operations Contact in our system, we first require confirmation from the current Operations Contact.
+
+Once we receive this confirmation, we will forward your request to the relevant team for processing.
+
+Could you please provide the details of the new Operations Contact (Full Name, Email Address, Job Title, Phone Number) so that we can proceed?</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">👥</span><span class="case-ttl">Additional Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">One operation contact by default. To add one: collect (email, name, phone), put the case on hold, then forward internally to the sales-ops team / request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/additional-contact.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/additional-contact.png" alt="additional-contact categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛠️</span><span class="case-ttl">Registration Tech Issue</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Forward badge/registration technical issues to the Reg team (<span class="tbd">⟪TBD⟫</span>) with the registered email + registration key; put on hold until resolved.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/reg-tech-issue.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/reg-tech-issue.png" alt="reg-tech-issue categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💼</span><span class="case-ttl">Job Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Direct them to the Informa careers site and recommend the recruiting platform. <span class="tbd">⟪TBD⟫</span> careers link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Partnership</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Request: nature of service, official documents (company registration, tax PIN, business address), contact info, online presence. Then forward internally to the sales team.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💡</span><span class="case-ttl">Why Attend / Who Should Attend</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">WHX Nairobi is for healthcare buyers, dealers &amp; distributors, manufacturers &amp; suppliers, healthcare providers and laboratory professionals across East Africa. Share the <a href="https://www.worldhealthexpo.com/events/healthcare/nairobi/attend/why-attend/" target="_blank" rel="noopener">Why Attend ↗</a> page along with the registration link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="general-1 categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏨</span><span class="case-ttl">Discounted Hotels</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share the official hotel accommodation page with discounted rates near the venue:</p><a class="cs-linkbtn" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/overview/travel-venue/hotels/" target="_blank" rel="noopener">Hotel Accommodation ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="hotels categories" loading="lazy"></a></div></details>
+      </div>
+
+      <div class="case-group" data-group="exhibitors">
+        <div class="case-group-h">🏢 Exhibitors</div>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🪪</span><span class="case-ttl">Exhibitor Badge Registration</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor registration is done through the <b>Customer Centre Portal</b> by the Operations Contact. Once they have successfully accessed the portal, advise them to follow these steps to register their team members:</p><div class="cs-steps">Home → Exhibitor Badge → Register Single Member → Register Multiple Members</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-badge.png" alt="exhibitor-badge categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Exhibitor Badge Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that exhibitor badge registration can be completed through the Customer Centre Portal. As the Operations Contact has access to the Customer Centre, we kindly ask you to contact him/her so they can register you.
+
+The Operations Contact can register exhibitors by following the steps below:
+Home → Exhibitor Badge → Register Single Member → Register Multiple Members
+
+Once your registration has been completed, each registered exhibitor will receive a Pending Email, then a Confirmation Email containing the exhibitor badge.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa for Exhibitor (+ Supporting Documents)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors use the same automated visa invitation link as visitors — but for exhibitors it must be shared <b>together with the supporting documents pack</b>:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/238xyplyd5rqi" target="_blank" rel="noopener">Exhibitor Visa Invitation Link ↗</a><p class="cs-lead-txt" style="margin-top:14px">The supporting documents pack (held internally by the team, sent by email as attachments):</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li>Official <b>invitation letter</b> — issued by Pro Expo Ltd on behalf of Informa Markets, signed by Sheetal More, Director</li><li><b>Participation letter</b> — issued by Informa Markets (Savitha Abreo, Operations Manager)</li><li><b>Customs letter</b> — only if the exhibitor is bringing goods / samples</li><li>Local agent <b>company registration certificate</b> (Pro Expo Ltd)</li><li>Local agent <b>tax (KRA) PIN certificate</b></li><li>Director's <b>tax PIN certificate</b> and <b>passport copy</b></li></ul></div><div class="note-inline">⚠️ The supporting documents contain third-party personal data. Send them as email attachments to the exhibitor who requested them only — never publish them, post them in a shared channel, or store them outside the approved location.</div><p class="cs-lead-txt" style="margin-top:12px">Before issuing the invitation letter, collect: full name (as in passport), passport number, date of arrival, date of departure, company name and stand number.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Request the participant's details</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your request for a visa invitation letter for WHX Nairobi 2026.
+
+In order to issue the letter, kindly provide the following details for each participant, exactly as they appear in the passport:
+
+Full Name:
+Passport Number:
+Date of Arrival:
+Date of Departure:
+Company Name:
+Stand Number:
+
+Once we receive these details, we will issue your official invitation letter together with the supporting documents required for your application.</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Send invitation letter + supporting documents</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly find attached your official invitation letter for WHX Nairobi 2026, together with the supporting documents required for your application.
+
+Please submit the invitation letter along with the attached supporting documents as part of your application. Kindly ensure all details on the letter (name, passport number, travel dates and stand number) match your travel document exactly, and let us know if anything needs to be amended.
+
+Please also note that entry to Kenya requires an approved electronic Travel Authorisation (eTA), which you can apply for at https://etakenya.go.ke/
+
+Should you require any further assistance, please do not hesitate to contact us.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📜</span><span class="case-ttl">Participation Letter &amp; Customs Letter</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Two separate letters exist for WHX Nairobi 2026, both issued by Informa Markets (Savitha Abreo, Operations Manager). They are <b>event documents — not part of the visa invitation letter</b>:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li><b>Participation letter</b> — confirms the company is exhibiting, with its stand number. Preparation commences <b>Monday, 14 September 2026</b> and ends the evening of <b>Friday, 18 September 2026</b>.</li><li><b>Customs letter</b> — addressed to the Director of Customs, Nairobi, for exhibitors bringing goods / samples / leaflets for display and marketing only, to be returned to the country of origin. It quotes the wider window: <b>Sunday, 13 September</b> to the evening of <b>Saturday, 20 September 2026</b>. The participating company remains responsible for all applicable charges.</li></ul></div><div class="note-inline">Always fill in the company name and stand number before sending, and use the customs letter only when the exhibitor is actually shipping goods.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="letters categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Participation / customs letter</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly find attached the [participation letter / customs letter] for your participation at WHX Nairobi 2026, taking place from 16 to 18 September 2026 at the Kenyatta International Convention Centre, Nairobi, Kenya.
+
+Please review the details and confirm that the company name and stand number are correct. Should any amendment be required, kindly let us know and we will reissue the letter.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖥️</span><span class="case-ttl">Exhibitor Portal (Customer Centre)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact receives a welcome email with login credentials and access to the Customer Centre Portal (manuals, forms, deadlines, badge registration, client invitations, product details).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/un-pw.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/un-pw.png" alt="un-pw categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Welcome email</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that a welcome email has been sent to you, as you are the Operations Contact. The email contains a link to access the Customer Centre Portal, along with your login credentials.
+
+Please check your inbox for this email. If you cannot locate it, we kindly recommend checking your Junk or Spam folder as well.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">💌</span><span class="case-ttl">Client Invitations</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors can invite their most valued clients and business contacts to attend as visitors. Through the Customer Centre Portal:</p><div class="cs-steps">Home → Client Invitations → WHX Nairobi Invite Your Client</div><p class="cs-lead-txt">How it works: copy the invitation link provided, share it with the client, and the client claims their free badge by registering through the link. Once registered, the client receives a confirmation email with their event details.</p><div class="note-inline">These invitations are designed for clients and business contacts — they must <b>not</b> be used to register stand staff. Stand staff go through Exhibitor Badge Registration.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="client invitations categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Client invitations</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+As an exhibitor at WHX Nairobi 2026, you have the opportunity to invite your most valued clients to attend the show as visitors.
+
+You can access your client invitations through the Customer Centre Portal by following the steps below:
+Home → Client Invitations → WHX Nairobi Invite Your Client
+
+Inviting your clients is simple:
+1. Copy the invitation link provided.
+2. Share the link with your client.
+3. Your client can claim their free badge directly by registering through the link.
+
+Once registered, your client will receive a confirmation email containing their event details.
+
+Please note that these invitations are designed specifically for your clients and business contacts and should not be used to register stand staff.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📦</span><span class="case-ttl">Exhibitor Product Details / Company Profile</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors can showcase their products and solutions across WHX Nairobi platforms (website and social media) to reach healthcare buyers and decision-makers across East Africa. Through the Customer Centre Portal:</p><div class="cs-steps">Home → Exhibitor Product Details → Submit your product details now</div><div class="note-inline">There is no event app for this edition — company profile, logo and product updates are submitted through the Customer Centre by the Operations Contact and forwarded to the relevant team.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="product details categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Exhibitor product details</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Boost your brand visibility before the show. You can showcase your products and solutions across WHX Nairobi platforms, including our website and social media, reaching a targeted audience of healthcare buyers and decision-makers across East Africa.
+
+You can submit your product highlights through the Customer Centre Portal by following the steps below:
+Home → Exhibitor Product Details → Submit your product details now
+
+Sharing your product highlights ahead of the show helps build awareness, attract the right audience and drive interest in your brand before the event begins.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📱</span><span class="case-ttl">Event App</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt"><b>There will not be an event app for WHX Nairobi 2026.</b> Any profile or product updates are handled via the Customer Centre / Operations Contact instead of an app. Do not promise app functionality to exhibitors.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Nomination</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact submits contractor details through the Customer Centre Portal:</p><div class="cs-steps">Home → Stand Contractor Details → Add Contractor</div><div class="notice"><b>⏰ Deadline</b><ul><li>Nominated stand contractor details are required by <b>Monday, 13 August 2026</b>.</li></ul></div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-nomination.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-nomination.png" alt="contractor-nomination categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Contractor Details Submission</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can submit your contractor details through the Customer Centre Portal.
+
+As you are the Operations Contact, a welcome email has been sent to you containing your login credentials and access to the Customer Centre Portal.
+
+Once you have logged in, please follow the steps below:
+Home → Stand Contractor Details → Add Contractor
+
+Please note that nominated stand contractor details are required by Monday, 13 August 2026.
+
+After you submit the contractor details, they will be forwarded to the Technical Team for review. Once approved, the contractor will receive access to the Contractor Portal.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🧰</span><span class="case-ttl">Exhibitor Appointed Contractors (EAC)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">An <b>Exhibitor Appointed Contractor (EAC)</b> is any company other than the designated Official Contractor (<b>Pro Expo</b>) listed in the Customer Centre. This includes:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li>Independent display / installation &amp; dismantling companies</li><li>Any furnishing supplier that is not one of the Official Vendors listed in the Online Customer Centre</li><li>Anyone who is not an employee of the exhibitor's company but will work on their booth, equipment or products</li><li>Delivery personnel, technicians, photographers, florists and anyone hired by the exhibitor who needs access to the exhibit hall</li></ul></div><div class="note-inline">Permission to use an EAC <b>cannot</b> be given for utilities, booth cleaning or material handling — these are exclusive to the Kenyatta International Convention Centre and/or the official general contractor, Pro Expo.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-nomination.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-nomination.png" alt="EAC categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📐</span><span class="case-ttl">Stand Design (Space-Only) &amp; Height Limits</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only exhibitors submit their proposed stand design for approval via the tech team (<span class="tbd">⟪TBD⟫</span>) or the contractor portal.</p><div class="notice"><b>⏰ Deadline &amp; height limits</b><ul><li>Proposed stand design must be submitted by <b>Monday, 3 August 2026</b>.</li><li>Maximum height for any single-storey stand build (hall floor to the highest element):</li><li>— Perimeter stands (<b>Halls 1 and 2</b>): <b>2.5 m</b></li><li>— All other areas: <b>3 m</b></li></ul></div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-design.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-design.png" alt="stand-design categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🪑</span><span class="case-ttl">Shell Scheme, Furniture &amp; Carpet</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The shell scheme package is provided by the official contractor, <b>Pro Expo</b>. Carpet is included in the package and its colour depends on where the stand is located:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li><b>Hall 1 (Courtyard)</b> — Grey</li><li><b>Hall 2 (Tsavo)</b> — Venue carpet (a mix of grey and pink)</li></ul></div><div class="note-inline">Confirm the exhibitor's stand location before quoting a carpet colour, and check the shell-scheme furniture list before promising any included items.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="shell scheme categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🚢</span><span class="case-ttl">Freight, Shipping &amp; Local Deliveries</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The official freight forwarder for international freight and local deliveries is <b>DSV Fairs &amp; Events LLC</b>:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li>Email: <b>Georges.nassif@dsv.com</b> and <b>harpreet.singh4@dsv.com</b></li><li>Phone: <b>+971 4 813 1111</b></li><li>Address: RO23A, Concourse 1, Dubai World Trade Centre</li></ul></div><div class="notice"><b>⏰ Shipping deadlines</b><ul><li>International <b>air freight</b> must arrive at <b>Jomo Kenyatta International Airport</b> no later than <b>Monday, 3 August 2026</b>.</li><li>International <b>LCL / FCL sea freight</b> must arrive at <b>ICD Nairobi Port</b> no later than <b>Monday, 3 August 2026</b>.</li><li>Freight forwarding &amp; shipping deadline (space-only): <b>Monday, 3 August 2026</b>.</li></ul></div><p class="cs-lead-txt" style="margin-top:12px">If the exhibitor is bringing goods or samples, also issue the <b>customs letter</b> (see the Participation &amp; Customs Letter case).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/onsite-logistics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/onsite-logistics.png" alt="freight categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Freight &amp; shipping enquiry</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your enquiry regarding freight and shipping for WHX Nairobi 2026.
+
+Our official freight forwarder for international freight and local deliveries is DSV Fairs &amp; Events LLC. Please contact them directly to arrange your shipment:
+
+Email: Georges.nassif@dsv.com and harpreet.singh4@dsv.com
+Phone: +971 4 813 1111
+
+Kindly note the following deadlines:
+- International air freight shipments must arrive at Jomo Kenyatta International Airport no later than Monday, 3 August 2026.
+- International LCL or FCL sea freight shipments must arrive at ICD Nairobi Port no later than Monday, 3 August 2026.
+
+Should you be bringing goods or samples for display, please let us know and we will issue the customs letter to support your shipment.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Rigging Query</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Rigging = hanging a banner/board above the stand. Regulations are in the manuals (send the PDF), and the maximum build height applies (2.5 m on the perimeter of Halls 1 &amp; 2, 3 m elsewhere). Tech team for technical questions: <span class="tbd">⟪TBD⟫</span>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/rigging.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/rigging.png" alt="rigging categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📺</span><span class="case-ttl">Audio-Visual Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official AV supplier contact from the A-Z Manual. For shell scheme stands, AV extras are ordered through <b>Pro Expo</b> (whx@pro-expo.co.ke).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/audio-visual.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/audio-visual.png" alt="audio-visual categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔌</span><span class="case-ttl">Electricity Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only exhibitors order electricity from the official supplier in the manual. Shell scheme stands include electricity in the Pro Expo package but can order more.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/electricity.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/electricity.png" alt="electricity categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖼️</span><span class="case-ttl">Graphic Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Locate the graphics supplier in the Contact / A-Z Manual (space-only) or the Shell Scheme Manual (shell scheme — Pro Expo).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/graphics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/graphics.png" alt="graphics categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍽️</span><span class="case-ttl">Catering Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official catering supplier from the event Customer Centre manuals. Catering is exclusive to the Kenyatta International Convention Centre / Pro Expo. <span class="tbd">⟪TBD⟫</span> supplier details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/catering-order.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/catering-order.png" alt="catering-order categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍴</span><span class="case-ttl">External Catering</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Booth cleaning, material handling and catering are exclusive to the venue / Pro Expo, so external caterers generally cannot be appointed as an EAC. Give the supplier to coordinate with, mention the tech team (<span class="tbd">⟪TBD⟫</span>), and submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/external-catering.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/external-catering.png" alt="external-catering categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏷️</span><span class="case-ttl">Display / Company Name</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Put the case on hold and forward the amendment to the relevant team (senior approval for any sales-ops email). No event app for this edition.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/display-name.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/display-name.png" alt="display-name categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🕒</span><span class="case-ttl">Timetable (Contractor-Exhibitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor show times differ from visitor times. Exhibition preparation commences <b>Monday, 14 September 2026</b> and stand dismantling ends the evening of <b>Friday, 18 September 2026</b>. For customs and freight purposes the wider window is <b>Sunday, 13 September</b> to <b>Saturday, 20 September 2026</b>. Detailed build-up / break-down timings are in the manuals.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/timetable.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/timetable.png" alt="timetable categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">➕</span><span class="case-ttl">Extra / Additional Badges</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Extend badge allotments after approval from the account manager, then add them from the Customer Centre.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/extra-badges.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/extra-badges.png" alt="extra-badges categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Badge</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Once the contractor is assigned (official way or via the tech team <span class="tbd">⟪TBD⟫</span>), they receive a wrist band on the first build-up day.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-badge.png" alt="contractor-badge categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">❌</span><span class="case-ttl">Exhibitor Cancellation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Instruct the exhibitor to contact their account manager (found via the Salesforce customer centre by account name); provide the AM email.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-cancellation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-cancellation.png" alt="exhibitor-cancellation categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">💳</span><span class="case-ttl">Exhibitor Invoice</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">For WHX Nairobi 2026, invoice requests go <b>directly to the sales team</b> — <b>daniel.green.ae@ind-group.com</b>. For booth pricing questions, redirect the exhibitor to their account manager.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-invoice.png" alt="exhibitor-invoice categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🎪</span><span class="case-ttl">On-Stand Activity</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors hosting an activity / bringing non-exhibit items submit the on-stand activity form. <span class="tbd">⟪TBD⟫</span> form link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🚚</span><span class="case-ttl">Onsite Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor onsite orders (e.g. forklift, material handling) — find the info in the A-Z manual. Material handling is exclusive to the venue / Pro Expo.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/onsite-logistics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/onsite-logistics.png" alt="onsite-logistics categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📷</span><span class="case-ttl">Photographer</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">General photographers → media section (whxnairobi@informa.com). Exhibitor photographer → manual / on-stand activity form, or an exhibitor badge related to the company. A hired photographer needing hall access counts as an <b>EAC</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📇</span><span class="case-ttl">Lead Capture / Retrieval</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Lead retrieval details for WHX Nairobi 2026 are <span class="tbd">⟪TBD⟫</span> — the access link will be shared once it goes live. Do not confirm availability or pricing before that.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔗</span><span class="case-ttl">Stand Sharing</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Guide the exhibitor to their account manager, who provides the stand-sharing form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sharing-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sharing-stand.png" alt="sharing-stand categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏢</span><span class="case-ttl">Stand Build Partners</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Two recommended stand build preferred partners for WHX Nairobi 2026:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li><b>Pro Expo — Professional Exhibition Services</b> (official contractor)<br>P.O. Box 39315, Nairobi, Kenya · Tel: +254 722 826 830 · <b>whx@pro-expo.co.ke</b></li><li><b>Global Exhibitions Inc.</b><br>2nd Floor, Cardinal Otunga Annex, Nairobi, Kenya · Tel: +254 722 17 17 65 · <b>Edwin.masivo33@gmail.com</b></li></ul></div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-nomination.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-nomination.png" alt="stand build categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📚</span><span class="case-ttl">Exhibitor Manuals</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Nairobi exhibitor manuals, timetable and content information are shared through the Customer Centre Portal by the CS team — they are not public links. <span class="tbd">⟪TBD⟫</span> manual files.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/timetable.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/timetable.png" alt="manuals categories" loading="lazy"></a></div></details>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTS ============ -->
+  <section class="kb-section" id="contacts">
+    <div class="sec-head"><span class="emoji">📨</span><h2>Contacts &amp; Routing</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Who to forward each type of request to. Click the copy icon to grab an email.</p>
+    <div class="grid cols-2">
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">💼</span><b>Sales Team — Stand Booking &amp; Invoices</b><span class="badge">Sales</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Stand / space booking enquiries, meeting-room bookings and invoice requests all go to the sales team for Nairobi.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:daniel.green.ae@ind-group.com">daniel.green.ae@ind-group.com</a></span>
+          <button class="copy" data-copy="daniel.green.ae@ind-group.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📰</span><b>Press, Media &amp; Partnerships</b><span class="badge">Marketing</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Press passes, interviews, use of content and media partnerships — one inbox for Nairobi.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:whxnairobi@informa.com">whxnairobi@informa.com</a></span>
+          <button class="copy" data-copy="whxnairobi@informa.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🏗️</span><b>Pro Expo — Official Contractor</b><span class="badge">Operations</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Shell scheme, furniture, carpet, utilities, booth cleaning and material handling. P.O. Box 39315, Nairobi, Kenya.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:whx@pro-expo.co.ke">whx@pro-expo.co.ke</a></span>
+          <button class="copy" data-copy="whx@pro-expo.co.ke">⧉</button></div>
+        <div class="contact"><span class="who">Phone</span>
+          <span class="chip"><a href="tel:+254722826830">+254 722 826 830</a></span>
+          <button class="copy" data-copy="+254722826830">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🧱</span><b>Global Exhibitions Inc.</b><span class="badge">Stand build</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Second recommended stand build preferred partner. 2nd Floor, Cardinal Otunga Annex, Nairobi.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:Edwin.masivo33@gmail.com">Edwin.masivo33@gmail.com</a></span>
+          <button class="copy" data-copy="Edwin.masivo33@gmail.com">⧉</button></div>
+        <div class="contact"><span class="who">Phone</span>
+          <span class="chip"><a href="tel:+254722171765">+254 722 17 17 65</a></span>
+          <button class="copy" data-copy="+254722171765">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🚢</span><b>DSV Fairs &amp; Events — Freight</b><span class="badge">Logistics</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">International freight &amp; local deliveries. RO23A, Concourse 1, Dubai World Trade Centre.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:Georges.nassif@dsv.com">Georges.nassif@dsv.com</a></span>
+          <button class="copy" data-copy="Georges.nassif@dsv.com">⧉</button></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:harpreet.singh4@dsv.com">harpreet.singh4@dsv.com</a></span>
+          <button class="copy" data-copy="harpreet.singh4@dsv.com">⧉</button></div>
+        <div class="contact"><span class="who">Phone</span>
+          <span class="chip"><a href="tel:+97148131111">+971 4 813 1111</a></span>
+          <button class="copy" data-copy="+971 4 813 1111">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🎤</span><b>Conference &amp; Speaker Requests</b></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">There is <b>no content or conference programme</b> at the Nairobi edition this year and the content team is not involved. Advise the customer and keep their details for the next edition.</p>
+        <div class="contact"><span class="who">Route</span>
+          <span class="chip">No routing — respond directly</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ VISITORS ============ -->
+  <section class="kb-section" id="visitors">
+    <div class="sec-head"><span class="emoji">🧑‍🤝‍🧑</span><h2>Visitors</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Registration, invitation letters, entry requirements and who the show is for.</p>
+    <div class="grid cols-2">
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/0yr0ev28grygq?actioncode=WEB20&amp;formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">
+        <span class="lead">📝</span><h3>Visitor Registration Form</h3><p>Main visitor registration (VisitCloud).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/238xyplyd5rqi/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">
+        <span class="lead">✉️</span><h3>Visitor Invitation Letter</h3><p>Automated visa invitation letter for a registered visitor.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://etakenya.go.ke/" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Kenya eTA</h3><p>Official electronic Travel Authorisation — every traveller applies themselves.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/attend/why-attend/" target="_blank" rel="noopener">
+        <span class="lead">💡</span><h3>Why Attend</h3><p>The value proposition for visitors.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">🩺</span><h3>Who Should Attend</h3>
+        <p style="margin-bottom:10px">WHX Nairobi is for healthcare decision-makers across East Africa:</p>
+        <div class="notice" style="margin-top:0;background:var(--card-2);border-color:var(--line)">
+          <ul style="color:var(--text)">
+            <li>Healthcare buyers &amp; procurement professionals</li>
+            <li>Dealers &amp; distributors</li>
+            <li>Manufacturers &amp; suppliers</li>
+            <li>Healthcare providers</li>
+            <li>Laboratory professionals (WHX Labs Nairobi)</li>
+            <li>Other industry decision-makers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">📍</span><h3>Venue</h3>
+        <p><b>Kenyatta International Convention Centre (KICC)</b>, Harambee Avenue, Nairobi, Kenya. Halls in use: <b>Hall 1 (Courtyard)</b> and <b>Hall 2 (Tsavo)</b>.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PROGRAMME & FEATURES ============ -->
+  <section class="kb-section" id="programme">
+    <div class="sec-head"><span class="emoji">🎓</span><h2>Programme &amp; Features</h2><span class="cnt"></span></div>
+    <p class="sec-desc">What is — and is not — running at the Nairobi edition this year.</p>
+    <div class="grid cols-3">
+
+      <div class="card searchable">
+        <span class="lead">🚫</span><h3>No Conference Programme</h3>
+        <p>There is <b>no content or conference programme</b> at WHX Nairobi 2026, and the content team is not involved in this edition. Speaker and agenda requests are answered directly — nothing to route.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🤝</span><h3>WHX Connections Programme</h3>
+        <p>A curated, limited-capacity networking experience. Details for Nairobi are <span class="tbd">⟪TBD⟫</span> and will be shared once released — do not promise a place.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">📱</span><h3>No Event App</h3>
+        <p>There will be <b>no event app</b> for this edition. Profile, logo and product updates go through the Customer Centre Portal instead.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">💌</span><h3>Client Invitations</h3>
+        <p>Exhibitors invite their valued clients as visitors via the Customer Centre: <b>Home → Client Invitations → WHX Nairobi Invite Your Client</b>. Not for stand staff.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">📦</span><h3>Exhibitor Product Details</h3>
+        <p>Exhibitors showcase products on the website &amp; social media before the show: <b>Home → Exhibitor Product Details → Submit your product details now</b>.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🔬</span><h3>WHX Labs Nairobi</h3>
+        <p>The laboratory-focused section of the show, running alongside WHX Nairobi 2026 at the same venue and dates.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EXHIBITORS ============ -->
+  <section class="kb-section" id="exhibitors">
+    <div class="sec-head"><span class="emoji">🏢</span><h2>Exhibitors</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Stand booking, brochures, sponsorship and manuals.</p>
+    <div class="grid cols-2">
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/apply-for-a-stand/" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Apply for a Stand</h3><p>Stand / space enquiry for new exhibitors → forwarded to Daniel Green.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/stands/" target="_blank" rel="noopener">
+        <span class="lead">🧱</span><h3>Stand Options</h3><p>The different stand types and packages available.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/attend/exhibitor-list/" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Confirmed exhibitors list.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/exhibitor-brochure/" target="_blank" rel="noopener">
+        <span class="lead">📄</span><h3>Exhibitor Brochure</h3><p>Exhibiting opportunities &amp; stand packages, buyer profile, key healthcare sectors, sponsorship &amp; branding, dates and contacts.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/exhibit/sponsorship-enquiry/" target="_blank" rel="noopener">
+        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Sponsorship packages &amp; enquiry form.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">🪑</span><h3>Shell Scheme &amp; Carpet</h3>
+        <p>Shell scheme is provided by <b>Pro Expo</b>, carpet included. <b>Hall 1 (Courtyard)</b> — grey. <b>Hall 2 (Tsavo)</b> — venue carpet (mix of grey and pink).</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">📚</span><h3>Exhibitor Manuals</h3>
+        <p>The <b>exhibitor manuals</b>, <b>timetable</b> and content information are shared through the Customer Centre Portal by the CS team (not public links). <span class="tbd">⟪TBD⟫</span></p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🖥️</span><h3>Customer Centre Shortcuts</h3>
+        <p><b>Badges:</b> Home → Exhibitor Badge → Register Single / Multiple Members<br>
+        <b>Contractors:</b> Home → Stand Contractor Details → Add Contractor<br>
+        <b>Clients:</b> Home → Client Invitations → WHX Nairobi Invite Your Client<br>
+        <b>Products:</b> Home → Exhibitor Product Details → Submit your product details now</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DEADLINES & REGULATIONS ============ -->
+  <section class="kb-section" id="deadlines">
+    <div class="sec-head"><span class="emoji">⏰</span><h2>Deadlines &amp; Regulations</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Space-only regulations, shipping cut-offs and build height limits.</p>
+
+    <div class="searchable">
+      <h3 style="margin:0 0 10px">📅 Key Deadlines</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Item</th><th>Deadline</th></tr></thead>
+        <tbody>
+          <tr><td class="day">International air freight — arrive Jomo Kenyatta International Airport</td><td>Mon, 3 August 2026</td></tr>
+          <tr><td class="day">International LCL / FCL sea freight — arrive ICD Nairobi Port</td><td>Mon, 3 August 2026</td></tr>
+          <tr><td class="day">Freight forwarding &amp; shipping (space-only)</td><td>Mon, 3 August 2026</td></tr>
+          <tr><td class="day">Submission of the proposed stand design (space-only)</td><td>Mon, 3 August 2026</td></tr>
+          <tr><td class="day">Nominated stand contractor details</td><td>Mon, 13 August 2026</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="searchable" style="margin-top:26px">
+      <h3 style="margin:0 0 10px">📏 Stand Build Height Limits</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Stand location</th><th>Maximum height (single storey)</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Perimeter — Halls 1 and 2</td><td>2.5 m</td></tr>
+          <tr><td class="day">All other areas</td><td>3 m</td></tr>
+        </tbody>
+      </table></div>
+      <div class="notice"><b>ℹ️ Note</b>
+        <ul>
+          <li>Height is measured from the hall floor to the highest element of the stand.</li>
+          <li>Utilities, booth cleaning and material handling are <b>exclusive</b> to the KICC and/or the official general contractor, <b>Pro Expo</b> — an EAC cannot be appointed for these.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIMETABLES ============ -->
+  <section class="kb-section" id="timetables">
+    <div class="sec-head"><span class="emoji">🕒</span><h2>Timetables</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Show opening hours. Build-up, registration &amp; dismantle timings are in the internal manual.</p>
+
+    <div class="searchable">
+      <h3 style="margin:0 0 10px">🚪 Show Opening Timings</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Show Day</th><th>Show Hours</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Wed, 16 Sep 2026</td><td>09:00 – 17:00</td></tr>
+          <tr><td class="day">Thu, 17 Sep 2026</td><td>10:00 – 17:00</td></tr>
+          <tr><td class="day">Fri, 18 Sep 2026</td><td>10:00 – 16:00</td></tr>
+        </tbody>
+      </table></div>
+      <div class="notice"><b>ℹ️ Note</b>
+        <ul>
+          <li><b>Exhibition preparation</b> commences <b>Monday, 14 September 2026</b>; stand dismantling ends the evening of <b>Friday, 18 September 2026</b> (invitation &amp; participation letters).</li>
+          <li>For <b>customs and freight</b> purposes the wider window quoted in the customs letter is <b>Sunday, 13 September</b> to the evening of <b>Saturday, 20 September 2026</b>.</li>
+          <li>Detailed build-up, registration desk and dismantling timings are in the internal exhibitor manual, shared by the CS team (not a public link).</li>
+          <li>Badges must be worn at all times on the exhibition floor; present a <b>valid ID</b> at the venue when needed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRAVEL ============ -->
+  <section class="kb-section" id="travel">
+    <div class="sec-head"><span class="emoji">✈️</span><h2>Travel &amp; Stay</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Accommodation, entry requirements and getting around Nairobi.</p>
+    <div class="grid cols-3">
+      <a class="card linkcard searchable" href="https://www.worldhealthexpo.com/events/healthcare/nairobi/overview/travel-venue/hotels/" target="_blank" rel="noopener">
+        <span class="lead">🏨</span><h3>Discounted Hotels</h3><p>Recommended hotels with event rates near the venue.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://etakenya.go.ke/" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Kenya eTA</h3><p>Your visit to Kenya begins here — apply for the electronic Travel Authorisation online.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Kenyatta+International+Convention+Centre/@-1.288693,36.823103,707m" target="_blank" rel="noopener">
+        <span class="lead">🧭</span><h3>Getting to the Venue</h3><p>Kenyatta International Convention Centre on Google Maps.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://nairobi.go.ke/explore-nairobi" target="_blank" rel="noopener">
+        <span class="lead">🚕</span><h3>Taxis &amp; Rideshares</h3><p>Taxis are available but not metered — fares are negotiated. Ridesharing apps such as Uber are a better option in Nairobi.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.africanews.com/2021/06/17/nairobi-s-matatus-pimped-up-rides-like-no-other/" target="_blank" rel="noopener">
+        <span class="lead">🚐</span><h3>Matatu Buses</h3><p>Colourful minibuses shuttling around Nairobi — cheap and fun. Carry cash and hold on tight.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">✈️</span><h3>Airport</h3>
+        <p><b>Jomo Kenyatta International Airport (NBO)</b> is Nairobi's main international gateway and the arrival point for international air freight.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  WHX Nairobi 2026 · Customer Service Knowledge Base · Informa Markets &nbsp;·&nbsp; <span style="opacity:.7">Information Classification: General</span>
+</footer>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var clr = document.getElementById('clr');
+  var noresults = document.getElementById('noresults');
+  var qecho = document.getElementById('qecho');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.kb-section'));
+
+  function totalCounts(){
+    sections.forEach(function(sec){
+      var badge = sec.querySelector('.cnt');
+      if(!badge) return;
+      badge.dataset.total = sec.querySelectorAll('.searchable').length;
+    });
+  }
+  totalCounts();
+
+  function runSearch(){
+    var term = q.value.trim().toLowerCase();
+    clr.classList.toggle('on', term.length>0);
+    var anyGlobal = false;
+    sections.forEach(function(sec){
+      var cards = Array.prototype.slice.call(sec.querySelectorAll('.searchable'));
+      var visible = 0;
+      cards.forEach(function(c){
+        var hit = !term || c.textContent.toLowerCase().indexOf(term) !== -1;
+        c.classList.toggle('hidden', !hit);
+        if(hit) visible++;
+      });
+      sec.classList.toggle('hidden', term && visible===0);
+      if(visible>0) anyGlobal = true;
+      var badge = sec.querySelector('.cnt');
+      if(badge){ badge.textContent = term ? (visible + ' / ' + badge.dataset.total) : (badge.dataset.total + ' items'); }
+    });
+    noresults.classList.toggle('hidden', anyGlobal);
+    qecho.textContent = term;
+  }
+  q.addEventListener('input', runSearch);
+  clr.addEventListener('click', function(){ q.value=''; runSearch(); q.focus(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }
+    if(e.key==='Escape' && document.activeElement===q){ q.value=''; runSearch(); }
+  });
+  runSearch();
+
+  var themeBtn = document.getElementById('theme');
+  var saved = null;
+  try { saved = localStorage.getItem('phc-theme'); } catch(e){}
+  if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+  function syncIcon(){ themeBtn.textContent = document.documentElement.getAttribute('data-theme')==='dark' ? '☀️' : '🌙'; }
+  syncIcon();
+  themeBtn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('phc-theme', next); } catch(e){}
+    syncIcon();
+  });
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.copy');
+    if(!btn) return;
+    var val = btn.getAttribute('data-copy');
+    var done = function(){ var t=btn.textContent; btn.textContent='✓'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent=t; btn.classList.remove('done'); }, 1200); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(val).then(done, function(){ fallback(val); done(); });
+    } else { fallback(val); done(); }
+  });
+  function fallback(text){
+    var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+  }
+
+  var pills = Array.prototype.slice.call(document.querySelectorAll('#navpills a'));
+  var map = {};
+  pills.forEach(function(p){ map[p.getAttribute('href').slice(1)] = p; });
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          pills.forEach(function(p){ p.classList.remove('active'); });
+          var a = map[en.target.id]; if(a) a.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+})();
+</script>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.copy-tmpl'); if(!b) return;
+  var pre=b.parentNode.querySelector('pre'); if(!pre) return;
+  var t=pre.innerText||pre.textContent;
+  function ok(){var o=b.textContent;b.textContent='✓ Copied';setTimeout(function(){b.textContent=o;},1200);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,ok);}else{ok();}
+});
+</script>
+<script>
+(function(){
+  var tabs=document.getElementById('caseTabs'), wrap=document.getElementById('casesWrap');
+  if(tabs&&wrap){
+    tabs.addEventListener('click',function(e){
+      var b=e.target.closest('.case-tab'); if(!b) return;
+      tabs.querySelectorAll('.case-tab').forEach(function(t){t.classList.remove('active');});
+      b.classList.add('active'); wrap.setAttribute('data-cg', b.getAttribute('data-g'));
+    });
+  }
+})();
+</script>
+</body>
+</html>

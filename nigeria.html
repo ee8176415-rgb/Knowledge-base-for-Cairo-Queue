@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nigeria Energy 2026 — Knowledge Base</title>
+<style>
+  :root{
+    --brand:#2b4bb8; --brand-2:#6d8ce8; --accent:#f0a500; --brand-deep:#0d1740;
+    --bg:#f1f3fa; --bg-2:#e5e9f6; --card:#ffffff; --card-2:#f6f8fd;
+    --text:#141a33; --muted:#5c6484; --line:#dde2f1;
+    --ok:#12a06a; --ok-bg:#e7f6ef; --warn:#c2410c; --warn-bg:#fff3e6;
+    --shadow:0 6px 18px -12px rgba(13,23,64,.30);
+    --shadow-lg:0 18px 40px -20px rgba(13,23,64,.42);
+    --radius:16px;
+  }
+  :root[data-theme="dark"]{
+    --brand:#8ba6f5; --brand-2:#b3c4fa; --accent:#ffd257; --brand-deep:#080e26;
+    --bg:#0b1024; --bg-2:#111834; --card:#161d3c; --card-2:#111730;
+    --text:#e9edfb; --muted:#98a2c6; --line:#26305a;
+    --ok:#34d399; --ok-bg:#10281f; --warn:#fbbf24; --warn-bg:#2c2210;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
+    --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden; color:#eef2ff;
+    background:
+      linear-gradient(100deg, #080e26 0%, rgba(8,14,38,.95) 30%, rgba(26,44,116,.56) 66%, rgba(43,75,184,.20) 100%),
+      url('assets/nigeria-banner.png') center right / cover no-repeat,
+      linear-gradient(135deg, #0d1740 0%, #1e3a8a 55%, #2b4bb8 100%);
+    padding:34px clamp(18px,5vw,64px) 30px;
+  }
+  @media(max-width:720px){
+    .hero{ background:
+      linear-gradient(180deg, rgba(8,14,38,.82) 0%, rgba(8,14,38,.94) 100%),
+      url('assets/nigeria-banner.png') center / cover no-repeat, #0d1740; }
+  }
+
+  /* Event logo watermark (from the official letterhead) — Nigeria Energy */
+  .hero::after{
+    content:"";position:absolute;pointer-events:none;
+    right:clamp(18px,5vw,64px);bottom:18px;
+    width:clamp(150px,18vw,270px);aspect-ratio:2627/953;
+    background:url('assets/nigeria-energy-logo-hero.png') right bottom / contain no-repeat;
+    opacity:.34;
+  }
+  @media(max-width:720px){ .hero::after{display:none} }
+
+  .hero .brandline{display:flex; align-items:center; gap:12px; margin-bottom:22px; flex-wrap:wrap}
+  .diamond{width:30px;height:30px;flex:none;transform:rotate(45deg);border-radius:7px;
+    background:linear-gradient(135deg,#ffd257,#2b4bb8);box-shadow:0 6px 16px rgba(43,75,184,.55)}
+  .brandline b{font-size:20px;letter-spacing:.3px}
+  .brandline .by{color:#b9c5ea;font-size:13px;opacity:.9}
+  .eventswitch{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap}
+  .eventswitch .es-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#b9c5ea;margin-right:2px}
+  .eventswitch a{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;color:#e3eaff;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+  .eventswitch a:hover{background:rgba(255,255,255,.18);text-decoration:none}
+  .eventswitch a.active{background:linear-gradient(135deg,#ffd257,#f0a500);color:#3b2500;border-color:transparent}
+  .hero h1{margin:0 0 6px;font-size:clamp(30px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-.5px}
+  .hero .tag{color:#ccd6f5;font-size:clamp(15px,2vw,18px);max-width:640px}
+  .facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .fact{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.16);padding:10px 15px;border-radius:12px}
+  .fact .ic{font-size:18px}
+  .fact .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#a9b8e6;display:block}
+  .fact .v{font-weight:700;font-size:14px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;
+    font-weight:700;font-size:14px;cursor:pointer;border:1px solid transparent;transition:.15s}
+  .btn.primary{background:linear-gradient(135deg,#ffd257,#f0a500);color:#3b2500;box-shadow:0 8px 20px -6px rgba(240,165,0,.5)}
+  .btn.primary:hover{transform:translateY(-2px);text-decoration:none}
+  .btn.ghost{background:rgba(255,255,255,.09);color:#eef2ff;border-color:rgba(255,255,255,.22)}
+  .btn.ghost:hover{background:rgba(255,255,255,.18);text-decoration:none}
+
+  /* ---------- Sticky search / nav ---------- */
+  .toolbar{position:sticky;top:0;z-index:50;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:12px clamp(14px,4vw,40px);
+    box-shadow:0 6px 20px -18px rgba(0,0,0,.5)}
+  .toolbar-row{display:flex;gap:12px;align-items:center;max-width:1180px;margin:0 auto}
+  .search{position:relative;flex:1}
+  .search input{width:100%;padding:13px 44px 13px 44px;border-radius:12px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:15px;outline:none;transition:.15s;box-shadow:var(--shadow)}
+  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(43,75,184,.15)}
+  .search .mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.5;font-size:17px}
+  .search .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;
+    border:none;background:var(--bg-2);color:var(--muted);width:26px;height:26px;border-radius:50%;
+    font-size:15px;display:none;align-items:center;justify-content:center}
+  .search .clr.on{display:flex}
+  .theme-btn{flex:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:19px;cursor:pointer;box-shadow:var(--shadow)}
+  .navpills{display:flex;gap:8px;overflow-x:auto;max-width:1180px;margin:10px auto 0;padding-bottom:2px;scrollbar-width:none}
+  .navpills::-webkit-scrollbar{display:none}
+  .navpills a{white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;
+    color:var(--muted);background:var(--card);border:1px solid var(--line)}
+  .navpills a:hover{color:var(--brand);text-decoration:none}
+  .navpills a.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  :root[data-theme="dark"] .navpills a.active{color:#0b1024}
+
+  /* ---------- Layout ---------- */
+  main{max-width:1180px;margin:0 auto;padding:26px clamp(14px,4vw,40px) 80px}
+  .kb-section{margin-top:40px;scroll-margin-top:150px}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .sec-head .emoji{font-size:24px}
+  .sec-head h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.3px}
+  .sec-head .cnt{margin-left:auto;font-size:12px;color:var(--muted);background:var(--card);
+    border:1px solid var(--line);padding:3px 10px;border-radius:999px}
+  .sec-desc{color:var(--muted);font-size:14px;margin:-8px 0 18px}
+
+  .grid{display:grid;gap:14px}
+  .grid.cols-2{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;box-shadow:var(--shadow);transition:.15s}
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}
+  .card h3{margin:0 0 6px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .card p{margin:0;color:var(--muted);font-size:13.5px}
+  .card .lead{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    border-radius:10px;background:color-mix(in srgb,var(--brand) 14%,transparent);font-size:19px;margin-bottom:10px}
+
+  .linkcard{display:flex;flex-direction:column;gap:6px}
+  .linkcard .go{margin-top:10px;font-weight:700;font-size:13px;color:var(--brand);display:inline-flex;gap:6px;align-items:center}
+  .linkcard:hover .go{gap:9px}
+
+  .routecard{padding:16px 18px}
+  .routecard .top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .routecard .top .emoji{font-size:20px}
+  .routecard .top b{font-size:14.5px}
+  .routecard .top .badge{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;
+    background:var(--ok-bg);color:var(--ok)}
+  .contact{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 0;border-top:1px dashed var(--line)}
+  .contact:first-of-type{border-top:none}
+  .contact .who{font-size:13px;color:var(--muted);min-width:90px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--card-2);border:1px solid var(--line);
+    border-radius:9px;padding:5px 9px;font-size:12.5px;font-weight:600;max-width:100%}
+  .chip a{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .copy{border:none;background:transparent;cursor:pointer;color:var(--muted);font-size:13px;padding:1px 3px;border-radius:5px;flex:none}
+  .copy:hover{color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,transparent)}
+  .copy.done{color:var(--ok)}
+
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:420px;background:var(--card);font-size:13.5px}
+  thead th{background:linear-gradient(135deg,var(--brand-deep),#1e3a8a);color:#eef2ff;text-align:left;
+    padding:12px 14px;font-size:12px;letter-spacing:.5px;text-transform:uppercase;font-weight:700}
+  :root[data-theme="dark"] thead th{background:linear-gradient(135deg,#080e26,#1e3a8a)}
+  tbody td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:var(--card-2)}
+  td .day{font-weight:700}
+  .notice{margin-top:12px;background:var(--warn-bg);border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));
+    border-radius:12px;padding:13px 15px}
+  .notice > b{color:var(--warn);display:flex;align-items:center;gap:7px;font-size:13px;margin-bottom:6px}
+  .notice ul{margin:0;padding-left:18px;font-size:13px;color:var(--text)}
+  .notice li{margin:4px 0}
+
+  .steps{counter-reset:s;display:grid;gap:10px;margin:0}
+  .step{display:flex;gap:12px;align-items:flex-start;background:var(--card-2);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px}
+  .step::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;
+    background:var(--brand);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+  :root[data-theme="dark"] .step::before{color:#0b1024}
+  .step div{font-size:13.5px}
+
+  .note-inline{background:var(--card-2);border-left:3px solid var(--brand);border-radius:8px;
+    padding:10px 12px;font-size:13px;color:var(--muted);margin-top:10px}
+  .applinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .minibtn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;
+    font-size:13px;font-weight:700;background:var(--card-2);border:1px solid var(--line);color:var(--text)}
+  .minibtn:hover{border-color:var(--brand);color:var(--brand);text-decoration:none;transform:translateY(-1px)}
+
+  .hidden{display:none !important}
+  .noresults{text-align:center;padding:60px 20px;color:var(--muted)}
+  .noresults .big{font-size:40px;margin-bottom:10px}
+
+  footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:12.5px}
+
+  @media(max-width:560px){
+    .facts .fact{flex:1 1 100%}
+    .contact .who{min-width:auto;flex-basis:100%}
+    .eventswitch{margin-left:0;width:100%}
+  }
+
+  /* ---------- CS Case guidance ---------- */
+  .cs-card{max-width:660px}
+  .cs-lead-txt{margin:0 0 12px;font-size:14.5px}
+  .cs-linkbtn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;font-weight:700;
+    font-size:14px;background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff;
+    box-shadow:0 8px 20px -8px color-mix(in srgb,var(--brand) 70%,transparent)}
+  :root[data-theme="dark"] .cs-linkbtn{color:#0b1024}
+  .cs-linkbtn:hover{transform:translateY(-2px);text-decoration:none}
+  .case-cat{margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card-2)}
+  .case-cat-head{display:flex;align-items:center;gap:8px;padding:11px 14px;font-weight:800;font-size:14px;
+    background:color-mix(in srgb,var(--brand) 10%,transparent)}
+  .case-cat-row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--line)}
+  .cc-k{min-width:98px;color:var(--muted);font-size:13px}
+  .cc-v{font-weight:700;font-size:14px}
+
+  .tbd{color:#c2410c;font-weight:800}
+  :root[data-theme="dark"] .tbd{color:#fbbf24}
+  .cs-badge{font-size:11px;font-weight:700;color:var(--muted)}
+  .cs-steps{background:var(--card-2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;
+    font-size:13px;font-weight:700;margin:8px 0}
+  .cs-tmpl{margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card-2)}
+  .cs-tmpl summary{cursor:pointer;padding:9px 12px;font-size:13px;font-weight:700;list-style:none}
+  .cs-tmpl summary::-webkit-details-marker{display:none}
+  .cs-tmpl summary:hover{color:var(--brand)}
+  .cs-tmpl[open] summary{border-bottom:1px solid var(--line)}
+  .cs-tmpl-wrap{position:relative;padding:12px}
+  .cs-tmpl pre{white-space:pre-wrap;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:12.5px;line-height:1.55;margin:0;color:var(--text)}
+  .copy-tmpl{position:absolute;top:8px;right:8px;border:1px solid var(--line);background:var(--card);
+    color:var(--muted);font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;cursor:pointer}
+  .copy-tmpl:hover{color:var(--brand);border-color:var(--brand)}
+  .cs-catlabel{font-size:13px;color:var(--muted);margin:14px 0 4px;font-weight:600}
+  .catimg{max-width:100%;border:1px solid var(--line);border-radius:10px;display:block;box-shadow:var(--shadow)}
+  .catimg-link:hover .catimg{border-color:var(--brand)}
+  /* ---------- Modern case browser ---------- */
+  .case-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:-6px 0 20px}
+  .case-tab{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;border:1px solid var(--line);
+    background:var(--card);color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .case-tab b{font-weight:800;color:var(--text);background:var(--bg-2);padding:1px 8px;border-radius:999px;font-size:12px}
+  .case-tab:hover{border-color:var(--brand);color:var(--brand)}
+  .case-tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  .case-tab.active b{background:rgba(255,255,255,.25);color:#fff}
+  :root[data-theme="dark"] .case-tab.active,:root[data-theme="dark"] .case-tab.active b{color:#0b1024}
+  .case-group{margin-bottom:24px}
+  .case-group-h{font-size:12.5px;font-weight:800;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;
+    margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .cases-wrap[data-cg="visitors"] .case-group[data-group="exhibitors"]{display:none}
+  .cases-wrap[data-cg="exhibitors"] .case-group[data-group="visitors"]{display:none}
+  details.case{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;box-shadow:var(--shadow);transition:.15s}
+  details.case[open]{border-color:color-mix(in srgb,var(--brand) 45%,var(--line));box-shadow:var(--shadow-lg)}
+  details.case:hover{border-color:color-mix(in srgb,var(--brand) 32%,var(--line))}
+  .case-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;font-weight:700;font-size:14.5px}
+  .case-sum::-webkit-details-marker{display:none}
+  .case-ic{font-size:19px;flex:none;width:26px;text-align:center}
+  .case-ttl{flex:1}
+  .case-chev{transition:transform .2s;color:var(--muted);font-size:20px;line-height:1}
+  details.case[open] .case-chev{transform:rotate(180deg);color:var(--brand)}
+  .case-body{padding:2px 16px 16px;border-top:1px solid var(--line)}
+  .case-body .cs-lead-txt:first-child{margin-top:12px}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="brandline">
+    <span class="diamond"></span>
+    <b>Nigeria&nbsp;Energy&nbsp;2026</b>
+    <span class="by">· Customer Service Knowledge Base · by Informa Markets</span>
+    <nav class="eventswitch">
+      <span class="es-label">Event</span>
+      <a href="index.html">Pharmaconex 2026</a>
+      <a href="sahara.html">Sahara Expo 2026</a>
+      <a href="autotech.html">Autotech 2026</a>
+      <a href="whx.html">WHX Johannesburg 2026</a>
+      <a href="nairobi.html">WHX Nairobi 2026</a>
+      <a href="nigeria.html" class="active">Nigeria Energy 2026</a>
+    </nav>
+  </div>
+  <h1>Everything the CS team needs — in one place.</h1>
+  <p class="tag">Quick answers, links, contacts, letters and deadlines for Nigeria Energy 2026 — West Africa's energy exhibition &amp; conference in Lagos. Search it, copy it, done.</p>
+
+  <div class="facts">
+    <div class="fact"><span class="ic">📅</span><span><span class="k">Dates</span><span class="v">27 – 29 October 2026</span></span></div>
+    <div class="fact"><span class="ic">📍</span><span><span class="k">Venue</span><span class="v">Landmark Centre, Victoria Island Annex, Lagos, Nigeria</span></span></div>
+    <div class="fact"><span class="ic">🎯</span><span><span class="k">Format</span><span class="v">Exhibition + Conference + Nigeria Energy Awards</span></span></div>
+  </div>
+
+  <div class="hero-actions">
+    <a class="btn primary" href="templates.html">🗂️ Response Templates</a>
+    <a class="btn ghost" href="https://www.nigeria-energy.com/en/home.html" target="_blank" rel="noopener">🌐 Event Website</a>
+    <a class="btn ghost" href="https://register.visitcloud.com/survey/27ojxu7q3jxi7?actioncode=WEB1" target="_blank" rel="noopener">📝 Visitor Registration</a>
+    <a class="btn ghost" href="https://www.google.com/maps/place/Landmark+Centre/@6.4235715,3.4448347,703m" target="_blank" rel="noopener">🧭 Location</a>
+  </div>
+</header>
+
+<!-- ================= TOOLBAR ================= -->
+<div class="toolbar">
+  <div class="toolbar-row">
+    <div class="search">
+      <span class="mag">🔍</span>
+      <input id="q" type="text" placeholder="Search links, contacts, letters, forms…" autocomplete="off">
+      <button class="clr" id="clr" aria-label="clear">✕</button>
+    </div>
+    <button class="theme-btn" id="theme" title="Toggle theme">🌙</button>
+  </div>
+  <nav class="navpills" id="navpills">
+    <a href="templates.html" style="background:var(--brand);border-color:var(--brand);color:#fff">🗂️ Templates</a>
+    <a href="#links" class="active">Quick Links</a>
+    <a href="#cases">CS Case Handling</a>
+    <a href="#contacts">Contacts &amp; Routing</a>
+    <a href="#visitors">Visitors</a>
+    <a href="#conference">Conference &amp; Awards</a>
+    <a href="#exhibitors">Exhibitors</a>
+    <a href="#letters">Letters &amp; Documents</a>
+    <a href="#timetables">Timetables</a>
+    <a href="#travel">Travel &amp; Stay</a>
+  </nav>
+</div>
+
+<main>
+  <div id="noresults" class="noresults hidden">
+    <div class="big">🔍</div>
+    <div>No results for “<span id="qecho"></span>”. Try another keyword.</div>
+  </div>
+
+  <!-- ============ QUICK LINKS ============ -->
+  <section class="kb-section" id="links">
+    <div class="sec-head"><span class="emoji">🔗</span><h2>Quick Links &amp; Resources</h2><span class="cnt"></span></div>
+    <p class="sec-desc">The most-used external pages. All open in a new tab.</p>
+    <div class="grid cols-3">
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/home.html" target="_blank" rel="noopener">
+        <span class="lead">🌐</span><h3>Event Website</h3><p>Official Nigeria Energy 2026 homepage.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/27ojxu7q3jxi7?actioncode=WEB1" target="_blank" rel="noopener">
+        <span class="lead">📝</span><h3>Visitor Registration</h3><p>Free visitor badge registration (VisitCloud).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/1d18750ezo3ai?actioncode=WEB100" target="_blank" rel="noopener">
+        <span class="lead">🎓</span><h3>Delegate Registration</h3><p>Register as a conference delegate.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/forms/stand-enquiry.html" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Book a Stand</h3><p>Stand / space enquiry form → forwarded to sales.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/exhibit/why-exhibit.html" target="_blank" rel="noopener">
+        <span class="lead">💼</span><h3>Why Exhibit</h3><p>The value proposition for exhibitors.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/exhibit/product-sectors.html" target="_blank" rel="noopener">
+        <span class="lead">⚡</span><h3>Product Sectors</h3><p>The core energy sectors covered by the show.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/forms/sponsorship-enquiry.html" target="_blank" rel="noopener">
+        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Become a sponsor — 2026 opportunities form.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/visit/exhibitor-listing.html" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Full list of confirmed exhibitors.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/visit/why-visit.html" target="_blank" rel="noopener">
+        <span class="lead">💡</span><h3>Why Visit</h3><p>Value proposition &amp; who the show is for.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/visit/hosted-buyer-programme.html" target="_blank" rel="noopener">
+        <span class="lead">🤝</span><h3>The Energy Club — Hosted Buyer</h3><p>Apply to join the hosted buyer programme.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/visit/nigeria-energy-awards.html" target="_blank" rel="noopener">
+        <span class="lead">🏆</span><h3>Nigeria Energy Awards</h3><p>Categories, pricing &amp; gala night details.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://appv2-eu.sessionboard.com/submit/nigeria-energy-2026/3b24ad6e-9d42-476c-a0a0-4dee5ac906dc" target="_blank" rel="noopener">
+        <span class="lead">📨</span><h3>Submit an Awards Entry</h3><p>Nigeria Energy Awards 2026 entry portal.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">
+        <span class="lead">🗓️</span><h3>Conference Agenda</h3><p>Full conference programme &amp; session times.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/conference/speakers.html" target="_blank" rel="noopener">
+        <span class="lead">🎤</span><h3>Speakers</h3><p>Confirmed conference speaker line-up.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/conference/global-innovation-forum-.html" target="_blank" rel="noopener">
+        <span class="lead">💻</span><h3>Global Innovation Forum</h3><p>Virtual forum — agenda, speakers &amp; registration.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/media/industry-partners.html" target="_blank" rel="noopener">
+        <span class="lead">📰</span><h3>Industry Partners</h3><p>Media &amp; industry partner listing.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/about/contact-us.html" target="_blank" rel="noopener">
+        <span class="lead">📇</span><h3>Meet the Team</h3><p>Contact-us page — routing for marketing &amp; content.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/travel/visa-requirements.html" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Visa Requirements</h3><p>Official entry requirements for Nigeria.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/travel/discounted-hotels.html" target="_blank" rel="noopener">
+        <span class="lead">🏨</span><h3>Discounted Hotels</h3><p>Event rates at hotels near the venue.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Landmark+Centre/@6.4235715,3.4448347,703m" target="_blank" rel="noopener">
+        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>Landmark Centre, Victoria Island Annex, Lagos.</p><span class="go">Open ↗</span></a>
+    </div>
+  </section>
+
+  <!-- ============ CS CASE HANDLING ============ -->
+  <section class="kb-section" id="cases">
+    <div class="sec-head"><span class="emoji">🗂️</span><h2>CS Case Handling</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Agenda of cases — click a case to see how to handle it, its Salesforce categories, and the email template. Search from the top bar, or filter by audience.</p>
+    <div class="case-tabs" id="caseTabs">
+      <button class="case-tab active" data-g="all">All <b>59</b></button>
+      <button class="case-tab" data-g="visitors">👤 Visitors <b>27</b></button>
+      <button class="case-tab" data-g="exhibitors">🏢 Exhibitors <b>32</b></button>
+    </div>
+    <div class="cases-wrap" id="casesWrap" data-cg="all">
+
+      <div class="case-group" data-group="visitors">
+        <div class="case-group-h">👤 Visitors</div>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎟️</span><span class="case-ttl">Visitor Participation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Visitor attendance at the exhibition is <b>free</b>. Here is the link the visitor gets their badge from:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/27ojxu7q3jxi7?actioncode=WEB1" target="_blank" rel="noopener">Visitor Registration Link ↗</a><div class="note-inline">A visitor badge gives access to the exhibition floor only. Access to the conference sessions requires a <b>delegate</b> registration — see the Conference / Delegate Registration case.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/registration.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/registration.png" alt="registration categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visitor Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can register as a visitor for Nigeria Energy 2026 through our official registration form below:
+https://register.visitcloud.com/survey/27ojxu7q3jxi7?actioncode=WEB1
+
+Once you have successfully completed your registration, you will receive a confirmation email containing your visitor badge.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✅</span><span class="case-ttl">Visitor Registration Confirmation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Confirm the visitor is registered and resend the confirmation email with the badge.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/confirmation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/confirmation.png" alt="confirmation categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Attendee / Visitor Registration Confirmation</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that, after checking our records, we can confirm that you have been successfully registered as a visitor for Nigeria Energy 2026.
+
+We have resent your registration confirmation email, which contains your visitor badge. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
+
+For your convenience, we have also attached your visitor badge to this email.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎓</span><span class="case-ttl">Conference / Delegate Registration</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Nigeria Energy 2026 runs a full <b>conference programme</b> alongside the exhibition. Attending the sessions requires a delegate pass — this is separate from the free visitor badge:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/1d18750ezo3ai?actioncode=WEB100" target="_blank" rel="noopener">Register as a Delegate ↗</a><p class="cs-lead-txt" style="margin-top:14px">Share the <a href="https://www.nigeria-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">agenda ↗</a> and the <a href="https://www.nigeria-energy.com/en/conference/speakers.html" target="_blank" rel="noopener">speaker line-up ↗</a> with the enquiry.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/cme.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/cme.png" alt="delegate registration categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Delegate registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in the Nigeria Energy 2026 conference.
+
+Please note that the free visitor badge gives access to the exhibition floor. To attend the conference sessions, you will need to register as a delegate through the link below:
+https://register.visitcloud.com/survey/1d18750ezo3ai?actioncode=WEB100
+
+You may review the full conference agenda here:
+https://www.nigeria-energy.com/en/conference/agenda.html
+
+Once your delegate registration is complete, you will receive a confirmation email with your badge and joining details.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🗓️</span><span class="case-ttl">Agenda Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The full conference agenda is published on the event website. Share the link and, if the customer wants to attend the sessions, the delegate registration link too.</p><a class="cs-linkbtn" href="https://www.nigeria-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">Conference Agenda ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/agenda.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/agenda.png" alt="agenda categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Agenda request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in Nigeria Energy 2026.
+
+Please find the full conference agenda at the link below:
+https://www.nigeria-energy.com/en/conference/agenda.html
+
+Should you wish to attend the conference sessions, you can register as a delegate here:
+https://register.visitcloud.com/survey/1d18750ezo3ai?actioncode=WEB100</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💬</span><span class="case-ttl">Conference Content &amp; Speakers</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Questions about session topics, tracks or who is speaking are answered from the published pages: <a href="https://www.nigeria-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">Agenda ↗</a> · <a href="https://www.nigeria-energy.com/en/conference/speakers.html" target="_blank" rel="noopener">Speakers ↗</a>.</p><div class="note-inline">Anything the published pages do not answer goes to the marketing / content team through the <a href="https://www.nigeria-energy.com/en/about/contact-us.html" target="_blank" rel="noopener">Meet the Team ↗</a> page.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/conference-content.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/conference-content.png" alt="conference-content categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎤</span><span class="case-ttl">Speaker Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Requests to speak at Nigeria Energy 2026 go <b>directly to the marketing team</b>. Put the case on hold, forward the request, and point the customer to the contact-us page.</p><a class="cs-linkbtn" href="https://www.nigeria-energy.com/en/about/contact-us.html" target="_blank" rel="noopener">Meet the Team ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/speaking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/speaking.png" alt="speaking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Speaking request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in speaking at Nigeria Energy 2026.
+
+Kindly note that speaking opportunities are handled by our marketing and content team. I have forwarded your request to them, and a member of the team will be in touch with you directly.
+
+In the meantime, you may review the confirmed speaker line-up and conference agenda here:
+https://www.nigeria-energy.com/en/conference/speakers.html
+https://www.nigeria-energy.com/en/conference/agenda.html</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💻</span><span class="case-ttl">Global Innovation Forum (Virtual)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The <b>Global Innovation Forum</b> is a separate <b>virtual</b> event supporting innovation in the energy sector — a series of masterclasses and mentorship courses aimed at empowering start-up founders in the energy and utilities industry.</p><a class="cs-linkbtn" href="https://www.nigeria-energy.com/en/conference/global-innovation-forum-.html" target="_blank" rel="noopener">Global Innovation Forum ↗</a><div class="note-inline">The same page carries the forum's agenda, speakers and registration — it is <b>not</b> the same registration as the on-site conference. Do not send delegates there by mistake.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/conference-content.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/conference-content.png" alt="conference-content categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏆</span><span class="case-ttl">Nigeria Energy Awards</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Nigeria Energy Awards take place on <b>27 October 2026</b> in Lagos, under the theme <i>Lighting the Path to Nigeria's Energy Future</i>. A gala evening bringing together industry leaders, policymakers, investors and innovators.</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li><b>Categories &amp; pricing</b> — <a href="https://www.nigeria-energy.com/en/visit/nigeria-energy-awards.html" target="_blank" rel="noopener">Awards page ↗</a></li><li><b>Submit an entry</b> — <a href="https://appv2-eu.sessionboard.com/submit/nigeria-energy-2026/3b24ad6e-9d42-476c-a0a0-4dee5ac906dc" target="_blank" rel="noopener">Entry portal ↗</a></li></ul></div><div class="note-inline">Entry deadlines and table / seat pricing are published on the awards page — always quote from the page, never from memory.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="awards categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Awards enquiry / entry</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in the Nigeria Energy Awards 2026, taking place on 27 October 2026 in Lagos.
+
+You can review the full list of award categories, along with the pricing and details of the gala evening, here:
+https://www.nigeria-energy.com/en/visit/nigeria-energy-awards.html
+
+To submit your entry, please use the official submission portal below:
+https://appv2-eu.sessionboard.com/submit/nigeria-energy-2026/3b24ad6e-9d42-476c-a0a0-4dee5ac906dc
+
+Should you require any assistance with your submission, please do not hesitate to contact us.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">The Energy Club — Hosted Buyer Programme</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The <b>Energy Club</b> is a data-driven, sector-aligned business platform. It connects <b>pre-vetted</b> buyers and investors with exhibiting solution providers, matched on active purchasing needs, live project pipelines and defined technical requirements.</p><a class="cs-linkbtn" href="https://www.nigeria-energy.com/en/visit/hosted-buyer-programme.html" target="_blank" rel="noopener">Apply as a Hosted Buyer ↗</a><div class="note-inline">Applicants are <b>vetted</b> — applying does not guarantee a place. Never confirm acceptance, hosted travel or meeting slots to the customer; the programme team decides and comes back to them.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/meeting-room.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/meeting-room.png" alt="hosted buyer categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Hosted buyer programme</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in The Energy Club at Nigeria Energy 2026.
+
+The Energy Club is our hosted buyer programme, connecting pre-vetted buyers and investors with exhibiting solution providers based on active purchasing needs, project pipelines and technical requirements.
+
+You can submit your application through the link below:
+https://www.nigeria-energy.com/en/visit/hosted-buyer-programme.html
+
+Please note that all applications are reviewed by our team, and a member of the programme team will contact you directly regarding the outcome of your application.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa Invitation (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The visitor invitation letter for Nigeria Energy 2026 is issued on the letterhead of the venue, <b>LM AES Victoria (The Landmark Centre)</b>, and signed by <b>Ijeoma Urasi, Business Development &amp; Public Relations</b>. It is addressed to the Nigerian High Commission / Consulate handling the applicant's case.</p><div class="note-inline">The <b>automated visitor visa-letter link</b> for this edition is <span class="tbd">⟪TBD⟫</span>. Until it is live, collect the applicant details below and request the letter internally — do not promise a same-day turnaround.</div><p class="cs-lead-txt" style="margin-top:14px">Details required, exactly as they appear in the passport:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li>First name and surname</li><li>Nationality</li><li>Passport number, issue date and expiry date</li><li>Date of birth</li><li>Company name and company address</li></ul></div><div class="note-inline">⚠️ The invitation letter is <b>not</b> a visa. The traveller still applies through the Nigerian mission / immigration portal themselves. CS never applies on the customer's behalf.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Request the applicant's details</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your request for a visa invitation letter for Nigeria Energy 2026, taking place from 27 to 29 October 2026 at the Landmark Centre, Lagos, Nigeria.
+
+In order to issue the letter, kindly provide the following details exactly as they appear in your passport:
+
+First Name:
+Surname:
+Nationality:
+Passport Number:
+Passport Issue Date:
+Passport Expiry Date:
+Date of Birth:
+Company Name:
+Company Address:
+
+Once we receive these details, we will issue your official invitation letter.
+
+Please note that the invitation letter supports your application only and is not a visa — the visa application itself must be submitted by you to the relevant Nigerian mission.</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Send the invitation letter</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly find attached your official invitation letter for Nigeria Energy 2026, taking place from 27 to 29 October 2026 at the Landmark Centre, Lagos, Nigeria.
+
+Please ensure that all details on the letter (name, nationality, passport number and dates) match your travel document exactly, and let us know if anything needs to be amended.
+
+You may also review the official entry requirements for Nigeria here:
+https://www.nigeria-energy.com/en/travel/visa-requirements.html
+
+Should you require any further assistance, please do not hesitate to contact us.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🇳🇬</span><span class="case-ttl">Nigeria Entry Requirements</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Always quote the official entry requirements page rather than describing the process from memory — Nigerian visa routes and fees change:</p><a class="cs-linkbtn" href="https://www.nigeria-energy.com/en/travel/visa-requirements.html" target="_blank" rel="noopener">Visa Requirements ↗</a><div class="note-inline">A <b>Visa on Arrival (VOA)</b> route exists for some travellers and its fee schedule is held internally by the team. Do not quote VOA fees or eligibility from memory — check the current price list with the team first.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Entry requirements</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your enquiry regarding travel to Nigeria for Nigeria Energy 2026.
+
+Entry requirements vary depending on your nationality. Please review the official requirements for the event here:
+https://www.nigeria-energy.com/en/travel/visa-requirements.html
+
+We recommend beginning your application well in advance of your travel date. Should you require an official invitation letter to support your application, please let us know and we will be happy to assist.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Exhibiting — Stand Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the exhibitor submits their details on:</p><a class="cs-linkbtn" href="https://www.nigeria-energy.com/en/forms/stand-enquiry.html" target="_blank" rel="noopener">Stand Enquiry Form ↗</a><p class="cs-lead-txt" style="margin-top:14px">Then forward the enquiry to the sales team: <b>adeleke.adeleye@ind-group.com</b>.<br>You can also share <a href="https://www.nigeria-energy.com/en/exhibit/why-exhibit.html" target="_blank" rel="noopener">Why Exhibit ↗</a> and the <a href="https://www.nigeria-energy.com/en/exhibit/product-sectors.html" target="_blank" rel="noopener">Product Sectors ↗</a> page.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-booking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-booking.png" alt="stand-booking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Stand booking enquiry (to customer)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your enquiry and for your interest in participating in Nigeria Energy 2026.
+
+Kindly complete the stand enquiry form below so that our team has your full requirements:
+https://www.nigeria-energy.com/en/forms/stand-enquiry.html
+
+Your request has also been forwarded to the relevant team, and they will get back to you at the earliest opportunity with further details regarding available stand spaces, pricing, and participation options.
+
+In the meantime, you may review the sectors covered by the show here:
+https://www.nigeria-energy.com/en/exhibit/product-sectors.html</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Forward to the sales team (internal)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Hi Adeleke,
+
+Appreciate your assistance with the customer enquiry below. The customer is interested in participating as an exhibitor at Nigeria Energy 2026 and would like to receive more information regarding the available stand options, pricing, and participation details.
+
+Please find the customer&#x27;s contact details below:
+Name: [Customer Name]
+Company: [Company Name]
+Email Address: [Email Address]
+Phone Number: [Phone Number]
+
+Thank you in advance for your support.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">⚡</span><span class="case-ttl">Product Sectors / Why Exhibit</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">For customers asking what the show covers or whether their products fit, share the two pages below before routing to sales:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li><a href="https://www.nigeria-energy.com/en/exhibit/product-sectors.html" target="_blank" rel="noopener">Product Sectors ↗</a> — the core energy sectors of Nigeria Energy</li><li><a href="https://www.nigeria-energy.com/en/exhibit/why-exhibit.html" target="_blank" rel="noopener">Why Exhibit ↗</a> — audience, reach and the value of exhibiting</li></ul></div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="general-1 categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">⭐</span><span class="case-ttl">Sponsorship</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Form: <a href="https://www.nigeria-energy.com/en/forms/sponsorship-enquiry.html" target="_blank" rel="noopener">Sponsorship Enquiry ↗</a>. The sponsorship brochure is downloadable from the same page. The customer completes the form and the relevant team follows up.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sponsorship.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sponsorship.png" alt="sponsorship categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Sponsorship request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in sponsoring Nigeria Energy 2026. Please find the link below to access our Sponsorship Enquiry form. Kindly complete the form, and a member of our relevant team will be in touch with you. We look forward to your participation in the event!
+
+https://www.nigeria-energy.com/en/forms/sponsorship-enquiry.html</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📋</span><span class="case-ttl">Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share this link: <a href="https://www.nigeria-energy.com/en/visit/exhibitor-listing.html" target="_blank" rel="noopener">Exhibitor Listing ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-list.png" alt="exhibitor-list categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✏️</span><span class="case-ttl">Correcting Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Put the case on hold and forward the amendment to the relevant team / request group, then confirm back to the customer once it is live.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/updating-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/updating-list.png" alt="updating-list categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📰</span><span class="case-ttl">Press, Media &amp; Industry Partners</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Press passes, interview requests, use of our content and media partnerships are handled by the marketing team via the <a href="https://www.nigeria-energy.com/en/about/contact-us.html" target="_blank" rel="noopener">Meet the Team ↗</a> page. Existing partners are listed on the <a href="https://www.nigeria-energy.com/en/media/industry-partners.html" target="_blank" rel="noopener">Industry Partners ↗</a> page.</p><div class="note-inline">A dedicated press inbox for this edition is <span class="tbd">⟪TBD⟫</span> — until it is confirmed, route through the contact-us page and put the case on hold.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/media-partner.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/media-partner.png" alt="media-partner categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Press / media enquiry</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your interest in Nigeria Energy 2026.
+
+Press accreditation, interview requests, use of our content and media partnerships are handled by our marketing team. Kindly get in touch with them through the contact page below and they will be delighted to assist you:
+https://www.nigeria-energy.com/en/about/contact-us.html
+
+You may also review our current industry partners here:
+https://www.nigeria-energy.com/en/media/industry-partners.html</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Meeting / Agreement Room Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Refer them to the sales team — <b>adeleke.adeleye@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/meeting-room.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/meeting-room.png" alt="meeting-room categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🧾</span><span class="case-ttl">Invoice Request (Visitor / Delegate)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Visitor attendance is free, so there is normally nothing to invoice. For <b>delegate passes</b>, <b>awards entries</b> or <b>awards tables</b>, put the case on hold and forward the request to the sales team — <b>adeleke.adeleye@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/invoice.png" alt="invoice categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🔁</span><span class="case-ttl">Change of Operations Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Requires confirmation from the current Operations Contact, then the new contact details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/update-main.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/update-main.png" alt="update-main categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Change of Operations Contact</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that, in order to change the Operations Contact in our system, we first require confirmation from the current Operations Contact.
+
+Once we receive this confirmation, we will forward your request to the relevant team for processing.
+
+Could you please provide the details of the new Operations Contact (Full Name, Email Address, Job Title, Phone Number) so that we can proceed?</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">👥</span><span class="case-ttl">Additional Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">One operation contact by default. To add one: collect (email, name, phone), put the case on hold, then forward internally to the sales-ops team / request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/additional-contact.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/additional-contact.png" alt="additional-contact categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛠️</span><span class="case-ttl">Registration Tech Issue</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Forward badge/registration technical issues to the Reg team (<span class="tbd">⟪TBD⟫</span>) with the registered email + registration key; put on hold until resolved. State clearly whether it is the <b>visitor</b> (WEB1) or the <b>delegate</b> (WEB100) form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/reg-tech-issue.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/reg-tech-issue.png" alt="reg-tech-issue categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💼</span><span class="case-ttl">Job Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Direct them to the Informa careers site and recommend the recruiting platform. <span class="tbd">⟪TBD⟫</span> careers link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Partnership</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Request: nature of service, official documents (CAC company registration, tax identification, business address), contact info, online presence. Then forward internally to the sales team.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💡</span><span class="case-ttl">Why Visit / Who Should Attend</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Nigeria Energy is for the whole energy value chain across West Africa — power and gas, renewables, infrastructure, utilities, EPCs, investors and policymakers. Share the <a href="https://www.nigeria-energy.com/en/visit/why-visit.html" target="_blank" rel="noopener">Why Visit ↗</a> page along with the registration link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="general-1 categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏨</span><span class="case-ttl">Discounted Hotels</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share the official hotel page with discounted event rates near the venue:</p><a class="cs-linkbtn" href="https://www.nigeria-energy.com/en/travel/discounted-hotels.html" target="_blank" rel="noopener">Discounted Hotels ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="hotels categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🗺️</span><span class="case-ttl">Floorplan Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The interactive floorplan link for Nigeria Energy 2026 is <span class="tbd">⟪TBD⟫</span>. Until it is published, share the <a href="https://www.nigeria-energy.com/en/visit/exhibitor-listing.html" target="_blank" rel="noopener">exhibitor listing ↗</a> and, for stand availability, route the customer to the sales team.</p><div class="note-inline">Do not send a floorplan from a previous edition — stand numbering changes every year.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="floorplan categories" loading="lazy"></a></div></details>
+      </div>
+
+      <div class="case-group" data-group="exhibitors">
+        <div class="case-group-h">🏢 Exhibitors</div>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🪪</span><span class="case-ttl">Exhibitor Badge Registration</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor registration is done through the <b>Customer Centre Portal</b> by the Operations Contact. Once they have successfully accessed the portal, advise them to follow these steps to register their team members:</p><div class="cs-steps">Home → Exhibitor Badge → Register Single Member → Register Multiple Members</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-badge.png" alt="exhibitor-badge categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Exhibitor Badge Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that exhibitor badge registration can be completed through the Customer Centre Portal. As the Operations Contact has access to the Customer Centre, we kindly ask you to contact him/her so they can register you.
+
+The Operations Contact can register exhibitors by following the steps below:
+Home → Exhibitor Badge → Register Single Member → Register Multiple Members
+
+Once your registration has been completed, each registered exhibitor will receive a Pending Email, then a Confirmation Email containing the exhibitor badge.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa for Exhibitor (+ Supporting Documents)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors receive the same <b>invitation letter</b> as visitors — issued on the letterhead of <b>LM AES Victoria (The Landmark Centre)</b> and signed by <b>Ijeoma Urasi</b> — but it is sent <b>together with the supporting documents pack</b>.</p><p class="cs-lead-txt" style="margin-top:14px">The supporting documents pack (held internally by the team, sent by email as attachments):</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li>Official <b>invitation letter</b> — LM AES Victoria (The Landmark Centre)</li><li><b>Participation letter</b> — issued by Informa (Indu Raghavan, Operations Manager)</li><li><b>Customs letter</b> — only if the exhibitor is bringing goods / samples</li><li>Venue <b>company registration (CAC) certificates</b></li><li>Venue <b>tax clearance certificate</b> and its supporting letter</li><li><b>VAT registration certificate</b> and the <b>event management licence</b> of the organiser</li><li><b>Passport data page</b> of the authorised signatory</li></ul></div><div class="note-inline">⚠️ The supporting documents contain third-party personal and company data. Send them as email attachments to the exhibitor who requested them only — never publish them, post them in a shared channel, attach them to a public page, or store them outside the approved location.</div><p class="cs-lead-txt" style="margin-top:12px">Before issuing the invitation letter, collect: first name, surname, nationality, passport number, passport issue and expiry dates, date of birth, company name, company address and stand number.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Request the participant's details</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your request for a visa invitation letter for Nigeria Energy 2026.
+
+In order to issue the letter, kindly provide the following details for each participant, exactly as they appear in the passport:
+
+First Name:
+Surname:
+Nationality:
+Passport Number:
+Passport Issue Date:
+Passport Expiry Date:
+Date of Birth:
+Company Name:
+Company Address:
+Stand Number:
+
+Once we receive these details, we will issue your official invitation letter together with the supporting documents required for your application.</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Send invitation letter + supporting documents</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly find attached your official invitation letter for Nigeria Energy 2026, together with the supporting documents required for your application.
+
+Please submit the invitation letter along with the attached supporting documents as part of your application. Kindly ensure all details on the letter (name, nationality, passport number and dates) match your travel document exactly, and let us know if anything needs to be amended.
+
+You may also review the official entry requirements here:
+https://www.nigeria-energy.com/en/travel/visa-requirements.html
+
+Should you require any further assistance, please do not hesitate to contact us.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📜</span><span class="case-ttl">Participation Letter</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The <b>participation letter</b> confirms that a company is exhibiting at Nigeria Energy 2026, with its stand number. It is issued by Informa and signed by <b>Indu Raghavan, Operations Manager</b>. It is an <b>event document — not part of the visa invitation letter</b>.</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li>Show dates quoted: <b>27 Oct 2026 – 29 Oct 2026</b>, Landmark Centre</li><li>Preparation commences <b>Sunday, 25 October 2026</b> and ends the evening of <b>Thursday, 29 October 2026</b></li><li>Fill in the <b>company name</b> and <b>stand number</b> before sending</li></ul></div><div class="notice"><b>⚠️ Template check before sending</b><ul><li>The letter header in the current template still reads <b>“NIGERIA ENERGY 2025 … 27 Oct 2025 – 29 Oct 2025”</b> while the body reads 2026. Correct the header to <b>2026</b> before issuing.</li><li>The date field auto-fills from the system date — check it before converting to PDF.</li></ul></div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="participation letter categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Participation letter</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly find attached the participation letter for your company&#x27;s participation at Nigeria Energy 2026, taking place from 27 to 29 October 2026 at the Landmark Centre, Lagos, Nigeria.
+
+Please review the details and confirm that the company name and stand number are correct. Should any amendment be required, kindly let us know and we will reissue the letter.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📦</span><span class="case-ttl">Customs Letter (Exhibitor &amp; Pavilion/Agent)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The <b>customs letter</b> supports an exhibitor bringing goods or materials into Nigeria for the show. There are <b>two versions</b> — pick the right one:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li><b>Exhibitor template</b> — for a company exhibiting on its own stand</li><li><b>Agent / Pavilion template</b> — for a company exhibiting <b>as a pavilion</b> (group / country pavilion organiser)</li></ul></div><p class="cs-lead-txt" style="margin-top:12px">Both letters state that Informa is <b>not</b> the owner or importer of the goods, are issued at the exhibitor's request with no liability to <b>Informa Middle East Limited (Dubai Branch)</b>, and ask customs to allow the lawful goods through. Preparation window quoted: <b>Sunday, 25 October</b> to the evening of <b>Thursday, 29 October 2026</b>. Signed by <b>Indu Raghavan, Operations Manager</b>.</p><div class="note-inline">Issue the customs letter <b>only</b> when the exhibitor is actually shipping goods, and always fill in the company name and stand number first.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/onsite-logistics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/onsite-logistics.png" alt="customs letter categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Customs letter</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly find attached the customs letter for your participation at Nigeria Energy 2026, taking place from 27 to 29 October 2026 at the Landmark Centre, Lagos, Nigeria.
+
+Please review the details and confirm that the company name and stand number are correct. Should any amendment be required, kindly let us know and we will reissue the letter.
+
+Please note that the letter is issued at your request and that Informa is not the owner or importer of the goods shipped for the exhibition. All customs duties, clearance and applicable charges remain the responsibility of the participating company.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖥️</span><span class="case-ttl">Exhibitor Portal (Customer Centre)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact receives a welcome email with login credentials and access to the Customer Centre Portal (manuals, forms, deadlines, badge registration, client invitations, product details).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/un-pw.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/un-pw.png" alt="un-pw categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Welcome email</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that a welcome email has been sent to you, as you are the Operations Contact. The email contains a link to access the Customer Centre Portal, along with your login credentials.
+
+Please check your inbox for this email. If you cannot locate it, we kindly recommend checking your Junk or Spam folder as well.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">💌</span><span class="case-ttl">Client Invitations</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors can invite their most valued clients and business contacts to attend as visitors. Through the Customer Centre Portal:</p><div class="cs-steps">Home → Client Invitations → Nigeria Energy Invite Your Client</div><p class="cs-lead-txt">How it works: copy the invitation link provided, share it with the client, and the client claims their free badge by registering through the link. Once registered, the client receives a confirmation email with their event details.</p><div class="note-inline">These invitations are designed for clients and business contacts — they must <b>not</b> be used to register stand staff. Stand staff go through Exhibitor Badge Registration.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="client invitations categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Client invitations</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+As an exhibitor at Nigeria Energy 2026, you have the opportunity to invite your most valued clients to attend the show as visitors.
+
+You can access your client invitations through the Customer Centre Portal by following the steps below:
+Home → Client Invitations → Nigeria Energy Invite Your Client
+
+Inviting your clients is simple:
+1. Copy the invitation link provided.
+2. Share the link with your client.
+3. Your client can claim their free badge directly by registering through the link.
+
+Once registered, your client will receive a confirmation email containing their event details.
+
+Please note that these invitations are designed specifically for your clients and business contacts and should not be used to register stand staff.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📦</span><span class="case-ttl">Exhibitor Product Details / Company Profile</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors can showcase their products and solutions across Nigeria Energy platforms (website and social media) to reach energy buyers and decision-makers across West Africa. Through the Customer Centre Portal:</p><div class="cs-steps">Home → Exhibitor Product Details → Submit your product details now</div><p class="cs-lead-txt">The company profile submitted here is what appears on the <a href="https://www.nigeria-energy.com/en/visit/exhibitor-listing.html" target="_blank" rel="noopener">exhibitor listing ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="product details categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Exhibitor product details</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Boost your brand visibility before the show. You can showcase your products and solutions across Nigeria Energy platforms, including our website and social media, reaching a targeted audience of energy buyers and decision-makers across West Africa.
+
+You can submit your product highlights through the Customer Centre Portal by following the steps below:
+Home → Exhibitor Product Details → Submit your product details now
+
+Sharing your product highlights ahead of the show helps build awareness, attract the right audience and drive interest in your brand before the event begins.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📱</span><span class="case-ttl">Event App</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Event app details for Nigeria Energy 2026 are <span class="tbd">⟪TBD⟫</span>. Until confirmed, do not promise app functionality — profile and product updates go through the Customer Centre Portal.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Nomination</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact submits contractor details through the Customer Centre Portal:</p><div class="cs-steps">Home → Stand Contractor Details → Add Contractor</div><div class="note-inline">The contractor nomination deadline for this edition is <span class="tbd">⟪TBD⟫</span> — take it from the exhibitor manual once it is issued, and never quote a deadline from another show.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-nomination.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-nomination.png" alt="contractor-nomination categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Contractor Details Submission</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can submit your contractor details through the Customer Centre Portal.
+
+As you are the Operations Contact, a welcome email has been sent to you containing your login credentials and access to the Customer Centre Portal.
+
+Once you have logged in, please follow the steps below:
+Home → Stand Contractor Details → Add Contractor
+
+After you submit the contractor details, they will be forwarded to the Technical Team for review. Once approved, the contractor will receive access to the Contractor Portal.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🧰</span><span class="case-ttl">Exhibitor Appointed Contractors (EAC)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">An <b>Exhibitor Appointed Contractor (EAC)</b> is any company other than the designated Official Contractor listed in the Customer Centre. This includes:</p><div class="notice" style="background:var(--card-2);border-color:var(--line)"><ul style="color:var(--text)"><li>Independent display / installation &amp; dismantling companies</li><li>Any furnishing supplier that is not one of the Official Vendors listed in the Online Customer Centre</li><li>Anyone who is not an employee of the exhibitor's company but will work on their booth, equipment or products</li><li>Delivery personnel, technicians, photographers, florists and anyone hired by the exhibitor who needs access to the exhibit hall</li></ul></div><div class="note-inline">Permission to use an EAC is normally <b>not</b> given for utilities, booth cleaning or material handling — these are exclusive to the venue and/or the official general contractor. The official contractor for this edition is <span class="tbd">⟪TBD⟫</span>.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-nomination.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-nomination.png" alt="EAC categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📐</span><span class="case-ttl">Stand Design (Space-Only) &amp; Height Limits</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only exhibitors submit their proposed stand design for approval via the technical team or the contractor portal. The submission deadline and the maximum build height for Nigeria Energy 2026 are <span class="tbd">⟪TBD⟫</span> — both come from the exhibitor manual.</p><div class="note-inline">Never quote the height limit of another show. If the exhibitor needs a number before the manual is out, put the case on hold and check with the operations team.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-design.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-design.png" alt="stand-design categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🪑</span><span class="case-ttl">Shell Scheme, Furniture &amp; Carpet</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The shell scheme package (panels, fascia, lighting, carpet and basic furniture) is provided by the official contractor for the show. The appointed contractor and the exact package contents for this edition are <span class="tbd">⟪TBD⟫</span>.</p><div class="note-inline">Check the shell-scheme manual before promising any included item, and confirm the exhibitor's stand type (shell scheme vs space-only) first.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="shell scheme categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🚢</span><span class="case-ttl">Freight, Shipping &amp; Local Deliveries</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The official freight forwarder and the air / sea freight arrival deadlines for Nigeria Energy 2026 are <span class="tbd">⟪TBD⟫</span> and will be published in the exhibitor manual.</p><p class="cs-lead-txt">What CS can do today: confirm the build-up window (<b>from Sunday, 25 October 2026</b>), and issue the <b>customs letter</b> for exhibitors bringing goods or samples.</p><div class="note-inline">Goods entering Nigeria clear through Nigerian customs — the customs letter supports the shipment but does not replace clearance. All duties and charges remain the exhibitor's responsibility.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/onsite-logistics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/onsite-logistics.png" alt="freight categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Freight &amp; shipping enquiry</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your enquiry regarding freight and shipping for Nigeria Energy 2026.
+
+Kindly note that the details of our official freight forwarder, together with the air and sea freight deadlines, will be confirmed in the exhibitor manual. I have placed your request with our operations team and will share the details with you as soon as they are released.
+
+In the meantime, exhibition preparation commences on Sunday, 25 October 2026 and the show runs from 27 to 29 October 2026 at the Landmark Centre, Lagos.
+
+Should you be bringing goods or samples for display, please let us know and we will issue the customs letter to support your shipment.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Rigging Query</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Rigging = hanging a banner or board above the stand. The regulations, rigging points and maximum build height are in the exhibitor manual (<span class="tbd">⟪TBD⟫</span>). Route technical questions to the operations / technical team.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/rigging.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/rigging.png" alt="rigging categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📺</span><span class="case-ttl">Audio-Visual Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official AV supplier contact from the A-Z manual once it is issued (<span class="tbd">⟪TBD⟫</span>). Shell scheme exhibitors order AV extras through the official contractor.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/audio-visual.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/audio-visual.png" alt="audio-visual categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔌</span><span class="case-ttl">Electricity Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only exhibitors order electricity from the official supplier in the manual. Shell scheme stands include a basic electrical supply in the package but can order more. Supplier details for this edition: <span class="tbd">⟪TBD⟫</span>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/electricity.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/electricity.png" alt="electricity categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖼️</span><span class="case-ttl">Graphic Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Locate the graphics supplier in the Contact / A-Z manual (space-only) or the Shell Scheme manual (shell scheme). <span class="tbd">⟪TBD⟫</span> for this edition.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/graphics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/graphics.png" alt="graphics categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍽️</span><span class="case-ttl">Catering Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official catering supplier from the Customer Centre manuals. Catering at the Landmark Centre is normally exclusive to the venue and/or its appointed supplier. <span class="tbd">⟪TBD⟫</span> supplier details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/catering-order.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/catering-order.png" alt="catering-order categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍴</span><span class="case-ttl">External Catering</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Booth cleaning, material handling and catering are normally exclusive to the venue / official contractor, so an external caterer generally cannot be appointed as an EAC. Give the supplier to coordinate with, and ask the exhibitor to submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/external-catering.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/external-catering.png" alt="external-catering categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏷️</span><span class="case-ttl">Display / Company Name</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Put the case on hold and forward the amendment to the relevant team (senior approval for any sales-ops email). Remember the same name feeds the exhibitor listing and the fascia board.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/display-name.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/display-name.png" alt="display-name categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🕒</span><span class="case-ttl">Timetable (Contractor-Exhibitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor times differ from visitor times. Per the official letters: exhibition preparation commences <b>Sunday, 25 October 2026</b> and the exhibition ends the evening of <b>Thursday, 29 October 2026</b>. Detailed build-up, registration desk and dismantling timings are in the exhibitor manual (<span class="tbd">⟪TBD⟫</span>).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/timetable.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/timetable.png" alt="timetable categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">➕</span><span class="case-ttl">Extra / Additional Badges</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Extend badge allotments after approval from the account manager, then add them from the Customer Centre.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/extra-badges.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/extra-badges.png" alt="extra-badges categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Badge</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Once the contractor is assigned and approved, they collect their badge / wrist band on the first build-up day. Build-up starts <b>Sunday, 25 October 2026</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-badge.png" alt="contractor-badge categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">❌</span><span class="case-ttl">Exhibitor Cancellation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Instruct the exhibitor to contact their account manager (found via the Salesforce customer centre by account name); provide the AM email.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-cancellation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-cancellation.png" alt="exhibitor-cancellation categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">💳</span><span class="case-ttl">Exhibitor Invoice</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Invoice requests for Nigeria Energy 2026 go to the <b>sales team</b> — <b>adeleke.adeleye@ind-group.com</b>. For booth pricing questions, redirect the exhibitor to their account manager.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-invoice.png" alt="exhibitor-invoice categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🎪</span><span class="case-ttl">On-Stand Activity</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors hosting an activity or bringing non-exhibit items submit the on-stand activity form. <span class="tbd">⟪TBD⟫</span> form link — until it is issued, collect the details and forward to operations.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🚚</span><span class="case-ttl">Onsite Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor onsite orders (forklift, material handling, storage) are ordered from the A-Z manual. Material handling is normally exclusive to the venue / official contractor.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/onsite-logistics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/onsite-logistics.png" alt="onsite-logistics categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📷</span><span class="case-ttl">Photographer</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">General / press photographers → marketing team via the <a href="https://www.nigeria-energy.com/en/about/contact-us.html" target="_blank" rel="noopener">contact-us ↗</a> page. An exhibitor's own photographer → manual / on-stand activity form, or an exhibitor badge under the company. A hired photographer needing hall access counts as an <b>EAC</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📇</span><span class="case-ttl">Lead Capture / Retrieval</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Lead retrieval details for Nigeria Energy 2026 are <span class="tbd">⟪TBD⟫</span> — the access link and pricing will be shared once live. Do not confirm availability or pricing before that.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔗</span><span class="case-ttl">Stand Sharing</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Guide the exhibitor to their account manager, who provides the stand-sharing form. Co-exhibitors listed on a shared stand also need their own participation letter if they are applying for visas.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sharing-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sharing-stand.png" alt="sharing-stand categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🌍</span><span class="case-ttl">Pavilion / Group Participation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Companies exhibiting as part of a <b>country or group pavilion</b> are handled through the pavilion organiser, not individually. For customs documentation, use the <b>Agent / Pavilion</b> version of the customs letter — not the standard exhibitor version.</p><div class="note-inline">Pavilion pricing, allocation and badge allotments come from the account manager who owns the pavilion account — never quote them directly to an individual co-exhibitor.</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sharing-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sharing-stand.png" alt="pavilion categories" loading="lazy"></a></div></details>
+
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📚</span><span class="case-ttl">Exhibitor Manuals</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Nigeria Energy exhibitor manuals, timetable and technical regulations are shared through the Customer Centre Portal by the CS team — they are not public links. <span class="tbd">⟪TBD⟫</span> manual files for this edition.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/timetable.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/timetable.png" alt="manuals categories" loading="lazy"></a></div></details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTS ============ -->
+  <section class="kb-section" id="contacts">
+    <div class="sec-head"><span class="emoji">📨</span><h2>Contacts &amp; Routing</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Who to forward each type of request to. Click the copy icon to grab an email.</p>
+    <div class="grid cols-2">
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">💼</span><b>Sales Team — Stand Booking &amp; Invoices</b><span class="badge">Sales</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Stand / space booking enquiries, meeting-room bookings and invoice requests. Stand enquiry forms are forwarded here.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:adeleke.adeleye@ind-group.com">adeleke.adeleye@ind-group.com</a></span>
+          <button class="copy" data-copy="adeleke.adeleye@ind-group.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📰</span><b>Marketing — Press, Content &amp; Speakers</b><span class="badge">Marketing</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Speaker requests, press accreditation, interviews and partnership enquiries route through the contact-us page. A dedicated inbox is <span class="tbd">⟪TBD⟫</span>.</p>
+        <div class="contact"><span class="who">Route</span>
+          <span class="chip"><a href="https://www.nigeria-energy.com/en/about/contact-us.html" target="_blank" rel="noopener">Meet the Team ↗</a></span></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📜</span><b>Operations — Participation &amp; Customs Letters</b><span class="badge">Operations</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Participation letters and both customs letters are issued and signed by the Operations Manager for Informa Middle East Limited (Dubai Branch).</p>
+        <div class="contact"><span class="who">Signatory</span>
+          <span class="chip">Indu Raghavan — Operations Manager</span></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><span class="tbd">⟪TBD⟫</span></span></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🏛️</span><b>The Landmark Centre — Invitation Letters</b><span class="badge">Venue</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Visa invitation letters are issued on the venue's letterhead — LM AES Victoria (The Landmark Centre), Plot 3 &amp; 4 Water Corporation Road, Oniru, Victoria Island, Lagos.</p>
+        <div class="contact"><span class="who">Signatory</span>
+          <span class="chip">Ijeoma Urasi — Business Dev. &amp; Public Relations</span></div>
+        <div class="contact"><span class="who">Website</span>
+          <span class="chip"><a href="https://www.landmarklagos.com" target="_blank" rel="noopener">landmarklagos.com</a></span>
+          <button class="copy" data-copy="https://www.landmarklagos.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🏆</span><b>Nigeria Energy Awards</b><span class="badge">Awards</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Award entries are submitted through the official portal. Categories and pricing are on the awards page.</p>
+        <div class="contact"><span class="who">Entries</span>
+          <span class="chip"><a href="https://appv2-eu.sessionboard.com/submit/nigeria-energy-2026/3b24ad6e-9d42-476c-a0a0-4dee5ac906dc" target="_blank" rel="noopener">Entry portal ↗</a></span></div>
+        <div class="contact"><span class="who">Info</span>
+          <span class="chip"><a href="https://www.nigeria-energy.com/en/visit/nigeria-energy-awards.html" target="_blank" rel="noopener">Awards page ↗</a></span></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🏗️</span><b>Official Contractor &amp; Freight Forwarder</b></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">The appointed official contractor, freight forwarder and technical team for Nigeria Energy 2026 have not been published yet.</p>
+        <div class="contact"><span class="who">Status</span>
+          <span class="chip"><span class="tbd">⟪TBD⟫</span> — take from the exhibitor manual</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ VISITORS ============ -->
+  <section class="kb-section" id="visitors">
+    <div class="sec-head"><span class="emoji">🧑‍🤝‍🧑</span><h2>Visitors</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Registration, invitation letters, entry requirements and who the show is for.</p>
+    <div class="grid cols-2">
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/27ojxu7q3jxi7?actioncode=WEB1" target="_blank" rel="noopener">
+        <span class="lead">📝</span><h3>Visitor Registration Form</h3><p>Free exhibition badge (VisitCloud, action code WEB1).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/1d18750ezo3ai?actioncode=WEB100" target="_blank" rel="noopener">
+        <span class="lead">🎓</span><h3>Delegate Registration Form</h3><p>Conference delegate pass (VisitCloud, action code WEB100).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/travel/visa-requirements.html" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Visa Requirements</h3><p>Official entry requirements — always quote from this page.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/visit/why-visit.html" target="_blank" rel="noopener">
+        <span class="lead">💡</span><h3>Why Visit</h3><p>The value proposition for visitors.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">⚡</span><h3>Who Should Attend</h3>
+        <p style="margin-bottom:10px">Nigeria Energy covers the whole energy value chain in West Africa:</p>
+        <div class="notice" style="margin-top:0;background:var(--card-2);border-color:var(--line)">
+          <ul style="color:var(--text)">
+            <li>Power generation, transmission &amp; distribution</li>
+            <li>Gas &amp; conventional energy</li>
+            <li>Renewables &amp; solar</li>
+            <li>Energy infrastructure &amp; EPC contractors</li>
+            <li>Utilities, regulators &amp; policymakers</li>
+            <li>Investors, financiers &amp; project developers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">📍</span><h3>Venue</h3>
+        <p><b>The Landmark Centre</b>, Plot 2 &amp; 3 Water Corporation Road, Victoria Island Annex, Lagos, Nigeria.</p>
+        <div class="note-inline">The venue's own letterhead gives the address as <b>Plot 3 &amp; 4, Water Corporation Road, Oniru, Off Ligali Ayorinde, Victoria Island</b>. Both refer to the same complex — use the letterhead version on official letters.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CONFERENCE & AWARDS ============ -->
+  <section class="kb-section" id="conference">
+    <div class="sec-head"><span class="emoji">🎓</span><h2>Conference, Awards &amp; Features</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Everything running alongside the exhibition floor.</p>
+    <div class="grid cols-3">
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">
+        <span class="lead">🗓️</span><h3>Conference Agenda</h3><p>Full session programme. Delegate pass required to attend.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/conference/speakers.html" target="_blank" rel="noopener">
+        <span class="lead">🎤</span><h3>Speakers</h3><p>Confirmed speaker line-up. Speaking requests go to marketing.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/conference/global-innovation-forum-.html" target="_blank" rel="noopener">
+        <span class="lead">💻</span><h3>Global Innovation Forum</h3><p>Virtual masterclasses &amp; mentorship for energy start-up founders.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">🏆</span><h3>Nigeria Energy Awards</h3>
+        <p><b>27 October 2026, Lagos.</b> A gala evening under the theme <i>Lighting the Path to Nigeria's Energy Future</i>, recognising the organisations, projects and individuals driving change across power, gas, renewables and infrastructure.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🤝</span><h3>The Energy Club — Hosted Buyers</h3>
+        <p>A data-driven, sector-aligned platform matching <b>pre-vetted</b> buyers and investors with exhibiting solution providers based on purchasing needs, project pipelines and technical requirements.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🎫</span><h3>Visitor vs Delegate</h3>
+        <p><b>Visitor badge</b> — free, exhibition floor only (WEB1).<br><b>Delegate pass</b> — paid, conference sessions (WEB100). Never promise session access on a visitor badge.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EXHIBITORS ============ -->
+  <section class="kb-section" id="exhibitors">
+    <div class="sec-head"><span class="emoji">🏢</span><h2>Exhibitors</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Stand booking, sectors, sponsorship and the Customer Centre.</p>
+    <div class="grid cols-2">
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/forms/stand-enquiry.html" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Book a Stand</h3><p>Stand / space enquiry for new exhibitors → forwarded to Adeleke Adeleye.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/exhibit/why-exhibit.html" target="_blank" rel="noopener">
+        <span class="lead">💼</span><h3>Why Exhibit</h3><p>Audience, reach and the value of exhibiting.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/exhibit/product-sectors.html" target="_blank" rel="noopener">
+        <span class="lead">⚡</span><h3>Product Sectors</h3><p>The core energy sectors covered by Nigeria Energy.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/forms/sponsorship-enquiry.html" target="_blank" rel="noopener">
+        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Sponsorship opportunities &amp; downloadable brochure.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/visit/exhibitor-listing.html" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor Listing</h3><p>Confirmed exhibitors — fed by the Customer Centre profile.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">📚</span><h3>Exhibitor Manuals</h3>
+        <p>The <b>exhibitor manual</b>, <b>timetable</b>, technical regulations, official contractor and freight deadlines are shared through the Customer Centre Portal by the CS team (not public links). <span class="tbd">⟪TBD⟫</span></p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🖥️</span><h3>Customer Centre Shortcuts</h3>
+        <p><b>Badges:</b> Home → Exhibitor Badge → Register Single / Multiple Members<br>
+        <b>Contractors:</b> Home → Stand Contractor Details → Add Contractor<br>
+        <b>Clients:</b> Home → Client Invitations → Nigeria Energy Invite Your Client<br>
+        <b>Products:</b> Home → Exhibitor Product Details → Submit your product details now</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🗺️</span><h3>Floorplan</h3>
+        <p>The interactive floorplan for Nigeria Energy 2026 has not been published yet. <span class="tbd">⟪TBD⟫</span> — do not reuse a previous edition's floorplan.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ LETTERS & DOCUMENTS ============ -->
+  <section class="kb-section" id="letters">
+    <div class="sec-head"><span class="emoji">📜</span><h2>Letters &amp; Official Documents</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Which letter to issue, who signs it, and what goes in the supporting documents pack.</p>
+
+    <div class="searchable">
+      <div class="table-wrap"><table>
+        <thead><tr><th>Letter</th><th>Purpose</th><th>Issued &amp; signed by</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Invitation letter (visa)</td><td>Supports a visitor's or exhibitor's visa application. Not a visa.</td><td>LM AES Victoria (The Landmark Centre) — Ijeoma Urasi, Business Dev. &amp; PR</td></tr>
+          <tr><td class="day">Participation letter</td><td>Confirms the company is exhibiting, with its stand number.</td><td>Informa — Indu Raghavan, Operations Manager</td></tr>
+          <tr><td class="day">Customs letter — Exhibitor</td><td>For a company shipping goods for its own stand.</td><td>Informa — Indu Raghavan, Operations Manager</td></tr>
+          <tr><td class="day">Customs letter — Agent / Pavilion</td><td>Same purpose, for a company exhibiting as a pavilion.</td><td>Informa — Indu Raghavan, Operations Manager</td></tr>
+        </tbody>
+      </table></div>
+      <div class="notice"><b>⚠️ Before you send any letter</b>
+        <ul>
+          <li>Fill in the <b>company name</b> and <b>stand number</b> — both templates ship with blanks.</li>
+          <li>Check the auto-filled <b>date field</b> and the <b>year in the header</b> (the participation-letter template still says 2025 in its header).</li>
+          <li>Applicant details on the invitation letter must match the passport <b>exactly</b>.</li>
+          <li>Convert to PDF before sending — never send the editable template to a customer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="searchable" style="margin-top:26px">
+      <h3 style="margin:0 0 10px">📎 Supporting Documents Pack (exhibitor visa applications)</h3>
+      <div class="card" style="max-width:none">
+        <p style="color:var(--text);margin-bottom:10px">Sent as email attachments alongside the invitation letter. Document <b>types</b> only are listed here — the files themselves are held internally.</p>
+        <div class="notice" style="background:var(--card-2);border-color:var(--line)">
+          <ul style="color:var(--text)">
+            <li>Venue <b>company registration (CAC) certificates</b></li>
+            <li>Venue <b>tax clearance certificate</b> + tax clearance supporting letter</li>
+            <li><b>VAT registration certificate</b> of the organiser</li>
+            <li><b>Event management licence</b> of the organiser</li>
+            <li><b>Passport data page</b> of the authorised signatory</li>
+            <li>Visa-on-arrival <b>price list</b> (internal reference — do not forward to customers)</li>
+          </ul>
+        </div>
+        <div class="notice">
+          <b>🔒 Handling rule</b>
+          <ul>
+            <li>These files contain third-party <b>personal and company data</b>.</li>
+            <li>Send them only to the exhibitor who requested them, as email attachments.</li>
+            <li><b>Never</b> publish them, upload them to a public page or repository, post them in a shared channel, or store them outside the approved location.</li>
+            <li>Never copy passport, tax or registration numbers into a case note, a template or this knowledge base.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIMETABLES ============ -->
+  <section class="kb-section" id="timetables">
+    <div class="sec-head"><span class="emoji">🕒</span><h2>Timetables</h2><span class="cnt"></span></div>
+    <p class="sec-desc">What we can confirm today, and what still comes from the exhibitor manual.</p>
+
+    <div class="searchable">
+      <h3 style="margin:0 0 10px">🚪 Event Days</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Day</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Sun, 25 Oct 2026</td><td>Exhibition preparation / build-up commences</td></tr>
+          <tr><td class="day">Mon, 26 Oct 2026</td><td>Build-up continues</td></tr>
+          <tr><td class="day">Tue, 27 Oct 2026</td><td>Show day 1 · Conference · <b>Nigeria Energy Awards</b> gala evening</td></tr>
+          <tr><td class="day">Wed, 28 Oct 2026</td><td>Show day 2 · Conference</td></tr>
+          <tr><td class="day">Thu, 29 Oct 2026</td><td>Show day 3 · Exhibition ends in the evening</td></tr>
+        </tbody>
+      </table></div>
+      <div class="notice"><b>ℹ️ Note</b>
+        <ul>
+          <li>The build-up and end dates above are quoted from the <b>participation and customs letters</b>.</li>
+          <li><b>Daily opening hours</b>, registration desk times and dismantling timings are <span class="tbd">⟪TBD⟫</span> — they come from the exhibitor manual. Do not quote hours from another edition.</li>
+          <li>Badges must be worn at all times on the exhibition floor; bring a valid ID to the venue.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRAVEL ============ -->
+  <section class="kb-section" id="travel">
+    <div class="sec-head"><span class="emoji">✈️</span><h2>Travel &amp; Stay</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Accommodation, entry requirements and getting to the venue in Lagos.</p>
+    <div class="grid cols-3">
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/travel/discounted-hotels.html" target="_blank" rel="noopener">
+        <span class="lead">🏨</span><h3>Discounted Hotels</h3><p>Recommended hotels with event rates near the venue.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.nigeria-energy.com/en/travel/visa-requirements.html" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Visa Requirements</h3><p>Entry requirements for Nigeria — the page CS should always quote.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Landmark+Centre/@6.4235715,3.4448347,703m" target="_blank" rel="noopener">
+        <span class="lead">🧭</span><h3>Getting to the Venue</h3><p>The Landmark Centre, Victoria Island Annex, on Google Maps.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">✈️</span><h3>Airport</h3>
+        <p><b>Murtala Muhammed International Airport (LOS)</b> is Lagos's international gateway, on the mainland — allow generous time for traffic between the airport and Victoria Island.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🚕</span><h3>Getting Around Lagos</h3>
+        <p>Ridesharing apps are the practical option for visitors. Lagos traffic is heavy — advise attendees to plan extra travel time, especially on show mornings.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">🛡️</span><h3>Travel Advice</h3>
+        <p>Attendees should follow the travel advice of their own government and their company's travel policy. CS does not give security or health advice — point to the official <a href="https://www.nigeria-energy.com/en/travel/visa-requirements.html" target="_blank" rel="noopener">travel pages ↗</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Nigeria Energy 2026 · Customer Service Knowledge Base · Informa Markets &nbsp;·&nbsp; <span style="opacity:.7">Information Classification: General</span>
+</footer>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var clr = document.getElementById('clr');
+  var noresults = document.getElementById('noresults');
+  var qecho = document.getElementById('qecho');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.kb-section'));
+
+  function totalCounts(){
+    sections.forEach(function(sec){
+      var badge = sec.querySelector('.cnt');
+      if(!badge) return;
+      badge.dataset.total = sec.querySelectorAll('.searchable').length;
+    });
+  }
+  totalCounts();
+
+  function runSearch(){
+    var term = q.value.trim().toLowerCase();
+    clr.classList.toggle('on', term.length>0);
+    var anyGlobal = false;
+    sections.forEach(function(sec){
+      var cards = Array.prototype.slice.call(sec.querySelectorAll('.searchable'));
+      var visible = 0;
+      cards.forEach(function(c){
+        var hit = !term || c.textContent.toLowerCase().indexOf(term) !== -1;
+        c.classList.toggle('hidden', !hit);
+        if(hit) visible++;
+      });
+      sec.classList.toggle('hidden', term && visible===0);
+      if(visible>0) anyGlobal = true;
+      var badge = sec.querySelector('.cnt');
+      if(badge){ badge.textContent = term ? (visible + ' / ' + badge.dataset.total) : (badge.dataset.total + ' items'); }
+    });
+    noresults.classList.toggle('hidden', anyGlobal);
+    qecho.textContent = term;
+  }
+  q.addEventListener('input', runSearch);
+  clr.addEventListener('click', function(){ q.value=''; runSearch(); q.focus(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }
+    if(e.key==='Escape' && document.activeElement===q){ q.value=''; runSearch(); }
+  });
+  runSearch();
+
+  var themeBtn = document.getElementById('theme');
+  var saved = null;
+  try { saved = localStorage.getItem('phc-theme'); } catch(e){}
+  if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+  function syncIcon(){ themeBtn.textContent = document.documentElement.getAttribute('data-theme')==='dark' ? '☀️' : '🌙'; }
+  syncIcon();
+  themeBtn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('phc-theme', next); } catch(e){}
+    syncIcon();
+  });
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.copy');
+    if(!btn) return;
+    var val = btn.getAttribute('data-copy');
+    var done = function(){ var t=btn.textContent; btn.textContent='✓'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent=t; btn.classList.remove('done'); }, 1200); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(val).then(done, function(){ fallback(val); done(); });
+    } else { fallback(val); done(); }
+  });
+  function fallback(text){
+    var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+  }
+
+  var pills = Array.prototype.slice.call(document.querySelectorAll('#navpills a'));
+  var map = {};
+  pills.forEach(function(p){ map[p.getAttribute('href').slice(1)] = p; });
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          pills.forEach(function(p){ p.classList.remove('active'); });
+          var a = map[en.target.id]; if(a) a.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+})();
+</script>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.copy-tmpl'); if(!b) return;
+  var pre=b.parentNode.querySelector('pre'); if(!pre) return;
+  var t=pre.innerText||pre.textContent;
+  function ok(){var o=b.textContent;b.textContent='✓ Copied';setTimeout(function(){b.textContent=o;},1200);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,ok);}else{ok();}
+});
+</script>
+<script>
+(function(){
+  var tabs=document.getElementById('caseTabs'), wrap=document.getElementById('casesWrap');
+  if(tabs&&wrap){
+    tabs.addEventListener('click',function(e){
+      var b=e.target.closest('.case-tab'); if(!b) return;
+      tabs.querySelectorAll('.case-tab').forEach(function(t){t.classList.remove('active');});
+      b.classList.add('active'); wrap.setAttribute('data-cg', b.getAttribute('data-g'));
+    });
+  }
+})();
+</script>
+</body>
+</html>

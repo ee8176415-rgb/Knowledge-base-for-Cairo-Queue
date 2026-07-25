@@ -35,11 +35,27 @@
   .hero{
     position:relative; overflow:hidden; color:#eefbe4;
     background:
-      radial-gradient(1100px 500px at 85% -10%, rgba(124,193,66,.5), transparent 60%),
-      radial-gradient(900px 500px at 0% 0%, rgba(23,58,18,.9), transparent 55%),
+      linear-gradient(100deg, #0f1f0a 0%, rgba(18,36,12,.95) 30%, rgba(36,77,21,.60) 66%, rgba(53,107,31,.26) 100%),
+      url('assets/sahara-banner.png') center right / cover no-repeat,
       linear-gradient(135deg, #12240c 0%, #244d15 55%, #356b1f 100%);
     padding:34px clamp(18px,5vw,64px) 30px;
   }
+  @media(max-width:720px){
+    .hero{ background:
+      linear-gradient(180deg, rgba(18,36,12,.80) 0%, rgba(18,36,12,.93) 100%),
+      url('assets/sahara-banner.png') center / cover no-repeat, #12240c; }
+  }
+
+  /* Informa Markets logo watermark (from the official letterhead) */
+  .hero::after{
+    content:"";position:absolute;pointer-events:none;
+    right:clamp(18px,5vw,64px);bottom:20px;
+    width:clamp(120px,14vw,200px);aspect-ratio:1554/309;
+    background:url('assets/informa-markets-logo-white.png') right bottom / contain no-repeat;
+    opacity:.24;
+  }
+  @media(max-width:720px){ .hero::after{display:none} }
+
   .hero .brandline{display:flex; align-items:center; gap:12px; margin-bottom:22px; flex-wrap:wrap}
   .diamond{width:30px;height:30px;flex:none;transform:rotate(45deg);border-radius:7px;
     background:linear-gradient(135deg,#a7e267,#4c9a2a);box-shadow:0 6px 16px rgba(76,154,42,.6)}
@@ -173,6 +189,45 @@
     .contact .who{min-width:auto;flex-basis:100%}
     .eventswitch{margin-left:0;width:100%}
   }
+  /* ---------- CS cases + case browser ---------- */
+  .cs-card{max-width:660px}.cs-lead-txt{margin:0 0 12px;font-size:14.5px}
+  .cs-linkbtn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;font-weight:700;font-size:14px;background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff;box-shadow:0 8px 20px -8px color-mix(in srgb,var(--brand) 70%,transparent)}
+  .cs-linkbtn:hover{transform:translateY(-2px);text-decoration:none}
+  .case-cat{margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card-2)}
+  .case-cat-head{display:flex;align-items:center;gap:8px;padding:11px 14px;font-weight:800;font-size:14px;background:color-mix(in srgb,var(--brand) 10%,transparent)}
+  .case-cat-row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--line)}
+  .cc-k{min-width:98px;color:var(--muted);font-size:13px}.cc-v{font-weight:700;font-size:14px}
+  .tbd{color:var(--brand);font-weight:800}.cs-badge{font-size:11px;font-weight:700;color:var(--muted)}
+  .cs-steps{background:var(--card-2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:13px;font-weight:700;margin:8px 0}
+  .cs-tmpl{margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card-2)}
+  .cs-tmpl summary{cursor:pointer;padding:9px 12px;font-size:13px;font-weight:700;list-style:none}
+  .cs-tmpl summary::-webkit-details-marker{display:none}.cs-tmpl summary:hover{color:var(--brand)}
+  .cs-tmpl[open] summary{border-bottom:1px solid var(--line)}.cs-tmpl-wrap{position:relative;padding:12px}
+  .cs-tmpl pre{white-space:pre-wrap;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12.5px;line-height:1.55;margin:0;color:var(--text)}
+  .copy-tmpl{position:absolute;top:8px;right:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;cursor:pointer}
+  .copy-tmpl:hover{color:var(--brand);border-color:var(--brand)}
+  .cs-catlabel{font-size:13px;color:var(--muted);margin:14px 0 4px;font-weight:600}
+  .catimg{max-width:100%;border:1px solid var(--line);border-radius:10px;display:block;box-shadow:var(--shadow)}
+  .catimg-link:hover .catimg{border-color:var(--brand)}
+  .case-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:-6px 0 20px}
+  .case-tab{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
+  .case-tab b{font-weight:800;color:var(--text);background:var(--bg-2);padding:1px 8px;border-radius:999px;font-size:12px}
+  .case-tab:hover{border-color:var(--brand);color:var(--brand)}
+  .case-tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  .case-tab.active b{background:rgba(255,255,255,.25);color:#fff}
+  .case-group{margin-bottom:24px}
+  .case-group-h{font-size:12.5px;font-weight:800;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .cases-wrap[data-cg="visitors"] .case-group[data-group="exhibitors"]{display:none}
+  .cases-wrap[data-cg="exhibitors"] .case-group[data-group="visitors"]{display:none}
+  details.case{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;box-shadow:var(--shadow);transition:.15s}
+  details.case[open]{border-color:color-mix(in srgb,var(--brand) 45%,var(--line));box-shadow:var(--shadow-lg)}
+  details.case:hover{border-color:color-mix(in srgb,var(--brand) 32%,var(--line))}
+  .case-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;font-weight:700;font-size:14.5px}
+  .case-sum::-webkit-details-marker{display:none}
+  .case-ic{font-size:19px;flex:none;width:26px;text-align:center}.case-ttl{flex:1}
+  .case-chev{transition:transform .2s;color:var(--muted);font-size:20px;line-height:1}
+  details.case[open] .case-chev{transform:rotate(180deg);color:var(--brand)}
+  .case-body{padding:2px 16px 16px;border-top:1px solid var(--line)}.case-body .cs-lead-txt:first-child{margin-top:12px}
 </style>
 </head>
 <body>
@@ -187,6 +242,10 @@
       <span class="es-label">Event</span>
       <a href="index.html">Pharmaconex 2026</a>
       <a href="sahara.html" class="active">Sahara Expo 2026</a>
+      <a href="autotech.html">Autotech 2026</a>
+      <a href="whx.html">WHX Johannesburg 2026</a>
+      <a href="nairobi.html">WHX Nairobi 2026</a>
+      <a href="nigeria.html">Nigeria Energy 2026</a>
     </nav>
   </div>
   <h1>Everything the CS team needs — in one place.</h1>
@@ -218,6 +277,7 @@
     <button class="theme-btn" id="theme" title="Toggle theme">🌙</button>
   </div>
   <nav class="navpills" id="navpills">
+    <a href="#cases">🗂️ CS Case Handling</a>
     <a href="templates.html" style="background:var(--brand);border-color:var(--brand);color:#fff">🗂️ Templates</a>
     <a href="#links" class="active">Quick Links</a>
     <a href="#contacts">Contacts &amp; Routing</a>
@@ -616,6 +676,152 @@
     </div>
   </section>
 
+  <!-- ============ CS CASE HANDLING ============ -->
+    <!-- ============ CS CASE HANDLING ============ -->
+  <section class="kb-section" id="cases">
+    <div class="sec-head"><span class="emoji">🗂️</span><h2>CS Case Handling</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Agenda of cases — click a case to see how to handle it, its Salesforce categories, and the email template. Search from the top bar, or filter by audience.</p>
+    <div class="case-tabs" id="caseTabs">
+      <button class="case-tab active" data-g="all">All <b>43</b></button>
+      <button class="case-tab" data-g="visitors">👤 Visitors <b>19</b></button>
+      <button class="case-tab" data-g="exhibitors">🏢 Exhibitors <b>24</b></button>
+    </div>
+    <div class="cases-wrap" id="casesWrap" data-cg="all">
+      <div class="case-group" data-group="visitors">
+        <div class="case-group-h">👤 Visitors</div>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎟️</span><span class="case-ttl">Visitor Participation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the visitor gets their tickets from:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/3km5ruyqo85qj?formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">Visitor Registration Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/registration.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/registration.png" alt="registration categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visitor Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can register as a visitor through our official website using the registration form below:
+https://register.visitcloud.com/survey/3km5ruyqo85qj?formType=VISITOR_REGISTRATION
+
+Once you have successfully completed your registration, you will receive a confirmation email containing your visitor badge.</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Exhibiting — Stand Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the exhibitor submits their details on:</p><a class="cs-linkbtn" href="https://www.saharaexpo.com/exhibit/book-stand/" target="_blank" rel="noopener">Book a Stand ↗</a><p class="cs-lead-txt" style="margin-top:14px">Then forward the enquiry to the sales team: <b>christine.hanna.eg@ind-group.com</b> · <b>samar.mohamed@ind-group.com</b></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-booking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-booking.png" alt="stand-booking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Stand booking enquiry (to customer)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Thank you for your enquiry and for your interest in participating in Sahara Expo 2026.
+
+Kindly note that your request has been forwarded to the relevant team. They will get back to you at the earliest opportunity with further details regarding available stand spaces, pricing, and participation options.</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Forward to the sales team (internal)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Hi Team,
+
+Appreciate your assistance with the customer enquiry below. The customer is interested in participating as an exhibitor and would like to receive more information regarding the available stand options, pricing, and participation details.
+
+Please find the customer&#x27;s contact details below:
+Name: [Customer Name]
+Company: [Company Name]
+Email Address: [Email Address]
+Phone Number: [Phone Number]
+
+Thank you in advance for your support.</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa Invitation (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The visitor issues their visa invitation letter through the automated link:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/166kkcudjhvnn/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">Visitor Visa Invitation Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa Invitation Letter for Visitors</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can issue your visa invitation letter as a visitor using the automated link below:
+https://register.visitcloud.com/survey/166kkcudjhvnn/start?visitor-contact=#contact_code#
+
+The form will require your registration key, provided in your registration confirmation email. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
+
+For your convenience, your registration key is:
+[Insert Registration Key]</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✅</span><span class="case-ttl">Visitor Registration Confirmation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Confirm the visitor is registered and resend the confirmation email with the badge.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/confirmation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/confirmation.png" alt="confirmation categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Attendee / Visitor Registration Confirmation</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that, after checking our records, we can confirm that you have been successfully registered as a visitor for Sahara Expo 2026.
+
+We have resent your registration confirmation email, which contains your visitor badge. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
+
+For your convenience, we have also attached your visitor badge to this email.</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🔁</span><span class="case-ttl">Change of Operations Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Requires confirmation from the current Operations Contact, then the new contact details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/update-main.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/update-main.png" alt="update-main categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Change of Operations Contact</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that, in order to change the Operations Contact in our system, we first require confirmation from the current Operations Contact.
+
+Once we receive this confirmation, we will forward your request to the relevant team for processing.
+
+Could you please provide the details of the new Operations Contact (Full Name, Email Address, Job Title, Phone Number) so that we can proceed?</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📋</span><span class="case-ttl">Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share this link: <a href="https://www.saharaexpo.com/visit/exhibitor-list/" target="_blank" rel="noopener">Exhibitor List ↗</a> — also available in the app.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-list.png" alt="exhibitor-list categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📰</span><span class="case-ttl">Press &amp;amp; Media</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">1) Media partnership → marketing team: <b>mario.milad@ind-group.com</b> · <b>mario.milad@ind-group.com</b>.<br>2) Full-event media badge → treat as registration / registration help.<br>3) Booth-only coverage → register as exhibitor + submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/media-partner.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/media-partner.png" alt="media-partner categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎤</span><span class="case-ttl">Speaker</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Speaking requests → conference team: <b>adham.ibrahim@ind-group.com</b> · <b>saharacustomerservice@informa.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/speaking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/speaking.png" alt="speaking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Speaking request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in speaking at Sahara Expo 2026. Please review the link below to access the Speaker Form. Kindly complete the form to connect with our content team and be considered for a speaking opportunity at Sahara Expo 2026.</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎓</span><span class="case-ttl">CME Hours / Competition</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">No CME hours or startup competition confirmed for Sahara in the brief. <span class="tbd">⟪TBD⟫</span> confirm any Sahara feature.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/cme.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/cme.png" alt="cme categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✏️</span><span class="case-ttl">Correcting Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor amends their profile from the app (instant). If the app is not live, put the case on hold and forward to the request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/updating-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/updating-list.png" alt="updating-list categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">⭐</span><span class="case-ttl">Sponsorship</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Form: <a href="https://www.saharaexpo.com/exhibit/sponsorship/sponsorship-form/" target="_blank" rel="noopener">Sponsorship Opportunities ↗</a>. Sponsor team: <b>christine.hanna.eg@ind-group.com</b> · <b>samar.mohamed@ind-group.com</b>. Brochure: <a href="https://www.saharaexpo.com/exhibit/download-sales-brochure/" target="_blank" rel="noopener">Download ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sponsorship.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sponsorship.png" alt="sponsorship categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Sponsorship request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in sponsoring Sahara Expo 2026. Please find the link below to access our Sponsorship Form. Kindly complete the form, and a member of our relevant team will be in touch with you. I have attached the sponsorship brochure for your review. We look forward to your participation in the event!</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🗓️</span><span class="case-ttl">Agenda Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The agenda is published on the official website closer to the event date; keep an eye on the site.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/agenda.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/agenda.png" alt="agenda categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🧾</span><span class="case-ttl">Invoice Request (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Put the case on hold and raise a ticket / forward the invoice request internally. <span class="tbd">⟪TBD⟫</span> invoice contact.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/invoice.png" alt="invoice categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Meeting / Agreement Room Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Refer them to the sales team (sales contacts / brochure above).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/meeting-room.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/meeting-room.png" alt="meeting-room categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">👥</span><span class="case-ttl">Additional Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">One operation contact by default. To add one: collect (email, name, phone), put the case on hold, then forward internally to the sales-ops team / request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/additional-contact.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/additional-contact.png" alt="additional-contact categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💬</span><span class="case-ttl">Conference Content</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">If the enquiry is about conference content / sessions, check the info and inform the customer.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/conference-content.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/conference-content.png" alt="conference-content categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛠️</span><span class="case-ttl">Registration Tech Issue</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Forward badge/registration technical issues to the Reg team (<span class="tbd">⟪TBD⟫</span>) with the registered email + registration key; put on hold until resolved.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/reg-tech-issue.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/reg-tech-issue.png" alt="reg-tech-issue categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💼</span><span class="case-ttl">Job Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Direct them to the Informa careers site and recommend the recruiting platform. <span class="tbd">⟪TBD⟫</span> careers link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Partnership</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Request: nature of service, official documents (CR, VAT, National Address), contact info, online presence. Then forward internally to the sales email (<span class="tbd">⟪TBD⟫</span>).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
+      </div>
+      <div class="case-group" data-group="exhibitors">
+        <div class="case-group-h">🏢 Exhibitors</div>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🪪</span><span class="case-ttl">Exhibitor Badge Registration</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Done through the Customer Centre Portal by the Operations Contact:</p><div class="cs-steps">Home → Exhibitor Badge Registration → Register Single / Multiple Members</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-badge.png" alt="exhibitor-badge categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Exhibitor Badge Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that exhibitor badge registration can be completed through the Customer Centre Portal. As the Operations Contact has access to the Customer Centre, we kindly ask you to contact him/her so they can register you.
+
+The Operations Contact can register exhibitors by following the steps below:
+Home → Exhibitor Badge Registration → Register Single Member / Multiple Members
+
+Once your registration has been completed, each registered exhibitor will receive a Pending Email, then a Confirmation Email containing the exhibitor badge.</pre></div></details></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa for Exhibitor</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The exhibitor issues their visa invitation letter via an automated link using their registration key. Exhibitor visa link: <span class="tbd">⟪TBD⟫</span></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="general-1 categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa invitation letter for exhibitor (automated link)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can issue your visa invitation letter as an exhibitor through the link below:
+[Insert Visa Invitation Letter Link]
+
+The link will ask you to enter your registration key, which is provided in your registration confirmation email, along with the automated visa email you received after successfully completing your registration.
+
+For your convenience, your registration key is:
+[Insert Registration Key]</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Visa invitation letter + supporting documents</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can issue your visa invitation letter as an exhibitor through the link below:
+[Insert Visa Invitation Letter Link]
+
+The link will ask you to enter your registration key (in your registration confirmation email and the automated visa email). Please check your inbox, including Junk/Spam.
+
+For your convenience, your registration key is:
+[Insert Registration Key]
+
+Additionally, we have attached the supporting documents that can assist you with your visa application. These should be submitted together with your visa invitation letter as part of your visa application process.</pre></div></details></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📱</span><span class="case-ttl">Event App</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">When the app is live, exhibitors log in with their registered email to update their company profile. App link: <span class="tbd">⟪TBD⟫</span></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Event App</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+We are delighted to inform you that the Sahara Expo 2026 event application is now live.
+
+You can log in using your registered exhibitor email address and update your company profile. Completing your profile increases your visibility with exhibitors, buyers, and visitors.
+
+For your convenience, please find the access link below:
+[Insert Event App Link]</pre></div></details></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Nomination</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact submits contractor details through the Customer Centre Portal:</p><div class="cs-steps">Home → Stand Contractor Details → Add Contractor</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-nomination.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-nomination.png" alt="contractor-nomination categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Contractor Details Submission</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that you can submit your contractor details through the Customer Centre Portal.
+
+As you are the Operations Contact, a welcome email has been sent to you containing your login credentials and access to the Customer Centre Portal.
+
+Once you have logged in, please follow the steps below:
+Home → Stand Contractor Details → Add Contractor
+
+After you submit the contractor details, they will be forwarded to the Technical Team for review. Once approved, the contractor will receive access to the Contractor Portal.</pre></div></details></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖥️</span><span class="case-ttl">Exhibitor Portal (Customer Centre)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact receives a welcome email with login credentials and access to the Customer Centre Portal (manuals, forms, deadlines).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/un-pw.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/un-pw.png" alt="un-pw categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Welcome email</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+
+Kindly note that a welcome email has been sent to you, as you are the Operations Contact. The email contains a link to access the Customer Centre Portal, along with your login credentials.
+
+Please check your inbox for this email. If you cannot locate it, we kindly recommend checking your Junk or Spam folder as well.</pre></div></details></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍽️</span><span class="case-ttl">Catering Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official catering supplier from the event Customer Centre manuals. <span class="tbd">⟪TBD⟫</span> supplier details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/catering-order.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/catering-order.png" alt="catering-order categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍴</span><span class="case-ttl">External Catering</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the supplier to coordinate with, mention the tech team (<span class="tbd">⟪TBD⟫</span>), and submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/external-catering.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/external-catering.png" alt="external-catering categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏷️</span><span class="case-ttl">Display / Company Name</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor amends their profile from the app; if not live, put on hold and forward to the relevant team (senior approval for any sales-ops email).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/display-name.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/display-name.png" alt="display-name categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Rigging Query</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Rigging = hanging a banner/board above the stand. Regulations are in the manuals (send the PDF). Tech team for technical questions: <span class="tbd">⟪TBD⟫</span>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/rigging.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/rigging.png" alt="rigging categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📐</span><span class="case-ttl">Stand-Design (Space-Only)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Submit the design to the tech team (<span class="tbd">⟪TBD⟫</span>) or via the contractor portal for approval.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-design.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-design.png" alt="stand-design categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📺</span><span class="case-ttl">Audio-Visual Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official AV supplier contact from the A-Z Manual.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/audio-visual.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/audio-visual.png" alt="audio-visual categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔌</span><span class="case-ttl">Electricity Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only exhibitors order electricity from the official supplier in the manual. Shell scheme / start-up include electricity but can order more.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/electricity.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/electricity.png" alt="electricity categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖼️</span><span class="case-ttl">Graphic Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Locate the graphics supplier in the Contact / A-Z Manual (space-only) or Shell Scheme Manual (shell scheme).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/graphics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/graphics.png" alt="graphics categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🕒</span><span class="case-ttl">Timetable (Contractor-Exhibitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor show times differ from visitors. Build-up / break-down timings are in the manuals. Set the first category by who asks.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/timetable.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/timetable.png" alt="timetable categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">➕</span><span class="case-ttl">Extra / Additional Badges</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Extend badge allotments after approval from the account manager, then add them from the Customer Centre.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/extra-badges.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/extra-badges.png" alt="extra-badges categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Badge</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Once the contractor is assigned (official way or via the tech team <span class="tbd">⟪TBD⟫</span>), they receive a wrist band on the first build-up day.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-badge.png" alt="contractor-badge categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">❌</span><span class="case-ttl">Exhibitor Cancellation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Instruct the exhibitor to contact their account manager (found via the Salesforce customer centre by account name); provide the AM email.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-cancellation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-cancellation.png" alt="exhibitor-cancellation categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">💳</span><span class="case-ttl">Exhibitor Invoice</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Redirect the exhibitor to their account manager for booth invoices.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-invoice.png" alt="exhibitor-invoice categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🎪</span><span class="case-ttl">On-Stand Activity</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors hosting an activity / bringing non-exhibit items submit the on-stand activity form. <span class="tbd">⟪TBD⟫</span> form link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📦</span><span class="case-ttl">Onsite Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor onsite orders (e.g. forklift) — find the info in the A-Z manual.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/onsite-logistics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/onsite-logistics.png" alt="onsite-logistics categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📷</span><span class="case-ttl">Photographer</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">General photographers → media section. Exhibitor photographer → manual / on-stand activity form, or an exhibitor badge related to the company.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏢</span><span class="case-ttl">Company Profile / Logo</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors update profile, logo and products through the event app (Help Desk PDFs).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📇</span><span class="case-ttl">Lead Capture / Retrieval</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The app captures leads by scanning the badge QR, rates 1–5, and qualifies by custom questions.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔗</span><span class="case-ttl">Stand Sharing</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Guide the exhibitor to their account manager, who provides the stand-sharing form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sharing-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sharing-stand.png" alt="sharing-stand categories" loading="lazy"></a></div></details>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -710,6 +916,10 @@
     sections.forEach(function(s){ obs.observe(s); });
   }
 })();
+</script>
+<script>
+document.addEventListener('click',function(e){var b=e.target.closest('.copy-tmpl');if(!b)return;var pre=b.parentNode.querySelector('pre');if(!pre)return;var t=pre.innerText||pre.textContent;function ok(){var o=b.textContent;b.textContent='✓ Copied';setTimeout(function(){b.textContent=o;},1200);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,ok);}else{ok();}});
+(function(){var tabs=document.getElementById('caseTabs'),wrap=document.getElementById('casesWrap');if(tabs&&wrap){tabs.addEventListener('click',function(e){var b=e.target.closest('.case-tab');if(!b)return;tabs.querySelectorAll('.case-tab').forEach(function(t){t.classList.remove('active');});b.classList.add('active');wrap.setAttribute('data-cg',b.getAttribute('data-g'));});}})();
 </script>
 </body>
 </html>
