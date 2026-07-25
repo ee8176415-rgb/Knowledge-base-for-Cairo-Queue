@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahara Expo 2026 — Knowledge Base</title>
+<style>
+  :root{
+    --brand:#4c9a2a; --brand-2:#7cc142; --brand-deep:#173a12;
+    --bg:#eef4ea; --bg-2:#e6efe0; --card:#ffffff; --card-2:#f5faf1;
+    --text:#1c2e15; --muted:#5f7355; --line:#dbe8d1;
+    --ok:#1a9e6a; --ok-bg:#e5f6ee; --warn:#c67c00; --warn-bg:#fff5e2;
+    --shadow:0 6px 18px -12px rgba(28,46,21,.28);
+    --shadow-lg:0 18px 40px -20px rgba(23,58,18,.4);
+    --radius:16px;
+  }
+  :root[data-theme="dark"]{
+    --brand:#8fd14f; --brand-2:#a7e267; --brand-deep:#08130a;
+    --bg:#0f1710; --bg-2:#121c12; --card:#182515; --card-2:#131f13;
+    --text:#e8f1e4; --muted:#9fb392; --line:#2a3a24;
+    --ok:#3ddc97; --ok-bg:#0f2c22; --warn:#ffcb6b; --warn-bg:#2c2413;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
+    --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden; color:#eefbe4;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(124,193,66,.5), transparent 60%),
+      radial-gradient(900px 500px at 0% 0%, rgba(23,58,18,.9), transparent 55%),
+      linear-gradient(135deg, #12240c 0%, #244d15 55%, #356b1f 100%);
+    padding:34px clamp(18px,5vw,64px) 30px;
+  }
+  .hero .brandline{display:flex; align-items:center; gap:12px; margin-bottom:22px; flex-wrap:wrap}
+  .diamond{width:30px;height:30px;flex:none;transform:rotate(45deg);border-radius:7px;
+    background:linear-gradient(135deg,#a7e267,#4c9a2a);box-shadow:0 6px 16px rgba(76,154,42,.6)}
+  .brandline b{font-size:20px;letter-spacing:.3px}
+  .brandline .by{color:#bfe3a3;font-size:13px;opacity:.9}
+  .eventswitch{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap}
+  .eventswitch .es-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#bfe3a3;margin-right:2px}
+  .eventswitch a{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;color:#e6f7d6;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
+  .eventswitch a:hover{background:rgba(255,255,255,.18);text-decoration:none}
+  .eventswitch a.active{background:linear-gradient(135deg,#a7e267,#4c9a2a);color:#0c2207;border-color:transparent}
+  .hero h1{margin:0 0 6px;font-size:clamp(30px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-.5px}
+  .hero .tag{color:#d5eec1;font-size:clamp(15px,2vw,18px);max-width:640px}
+  .facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .fact{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.16);padding:10px 15px;border-radius:12px}
+  .fact .ic{font-size:18px}
+  .fact .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#a9d189;display:block}
+  .fact .v{font-weight:700;font-size:14px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;
+    font-weight:700;font-size:14px;cursor:pointer;border:1px solid transparent;transition:.15s}
+  .btn.primary{background:linear-gradient(135deg,#a7e267,#4c9a2a);color:#0c2207;box-shadow:0 8px 20px -6px rgba(124,193,66,.6)}
+  .btn.primary:hover{transform:translateY(-2px);text-decoration:none}
+  .btn.ghost{background:rgba(255,255,255,.09);color:#eefbe4;border-color:rgba(255,255,255,.22)}
+  .btn.ghost:hover{background:rgba(255,255,255,.18);text-decoration:none}
+
+  /* ---------- Sticky search / nav ---------- */
+  .toolbar{position:sticky;top:0;z-index:50;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:12px clamp(14px,4vw,40px);
+    box-shadow:0 6px 20px -18px rgba(0,0,0,.5)}
+  .toolbar-row{display:flex;gap:12px;align-items:center;max-width:1180px;margin:0 auto}
+  .search{position:relative;flex:1}
+  .search input{width:100%;padding:13px 44px 13px 44px;border-radius:12px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:15px;outline:none;transition:.15s;box-shadow:var(--shadow)}
+  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(76,154,42,.15)}
+  .search .mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.5;font-size:17px}
+  .search .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;
+    border:none;background:var(--bg-2);color:var(--muted);width:26px;height:26px;border-radius:50%;
+    font-size:15px;display:none;align-items:center;justify-content:center}
+  .search .clr.on{display:flex}
+  .theme-btn{flex:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:19px;cursor:pointer;box-shadow:var(--shadow)}
+  .navpills{display:flex;gap:8px;overflow-x:auto;max-width:1180px;margin:10px auto 0;padding-bottom:2px;scrollbar-width:none}
+  .navpills::-webkit-scrollbar{display:none}
+  .navpills a{white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;
+    color:var(--muted);background:var(--card);border:1px solid var(--line)}
+  .navpills a:hover{color:var(--brand);text-decoration:none}
+  .navpills a.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  :root[data-theme="dark"] .navpills a.active{color:#0c2207}
+
+  /* ---------- Layout ---------- */
+  main{max-width:1180px;margin:0 auto;padding:26px clamp(14px,4vw,40px) 80px}
+  .kb-section{margin-top:40px;scroll-margin-top:150px}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .sec-head .emoji{font-size:24px}
+  .sec-head h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.3px}
+  .sec-head .cnt{margin-left:auto;font-size:12px;color:var(--muted);background:var(--card);
+    border:1px solid var(--line);padding:3px 10px;border-radius:999px}
+  .sec-desc{color:var(--muted);font-size:14px;margin:-8px 0 18px}
+
+  .grid{display:grid;gap:14px}
+  .grid.cols-2{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;box-shadow:var(--shadow);transition:.15s}
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}
+  .card h3{margin:0 0 6px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .card p{margin:0;color:var(--muted);font-size:13.5px}
+  .card .lead{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+    border-radius:10px;background:color-mix(in srgb,var(--brand) 14%,transparent);font-size:19px;margin-bottom:10px}
+
+  .linkcard{display:flex;flex-direction:column;gap:6px}
+  .linkcard .go{margin-top:10px;font-weight:700;font-size:13px;color:var(--brand);display:inline-flex;gap:6px;align-items:center}
+  .linkcard:hover .go{gap:9px}
+
+  .routecard{padding:16px 18px}
+  .routecard .top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .routecard .top .emoji{font-size:20px}
+  .routecard .top b{font-size:14.5px}
+  .routecard .top .badge{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;
+    background:var(--ok-bg);color:var(--ok)}
+  .contact{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 0;border-top:1px dashed var(--line)}
+  .contact:first-of-type{border-top:none}
+  .contact .who{font-size:13px;color:var(--muted);min-width:90px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--card-2);border:1px solid var(--line);
+    border-radius:9px;padding:5px 9px;font-size:12.5px;font-weight:600;max-width:100%}
+  .chip a{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .copy{border:none;background:transparent;cursor:pointer;color:var(--muted);font-size:13px;padding:1px 3px;border-radius:5px;flex:none}
+  .copy:hover{color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,transparent)}
+  .copy.done{color:var(--ok)}
+
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:420px;background:var(--card);font-size:13.5px}
+  thead th{background:linear-gradient(135deg,var(--brand-deep),#356b1f);color:#eefbe4;text-align:left;
+    padding:12px 14px;font-size:12px;letter-spacing:.5px;text-transform:uppercase;font-weight:700}
+  :root[data-theme="dark"] thead th{background:linear-gradient(135deg,#173a12,#2c5a1c)}
+  tbody td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:var(--card-2)}
+  td .day{font-weight:700}
+  .notice{margin-top:12px;background:var(--warn-bg);border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));
+    border-radius:12px;padding:13px 15px}
+  .notice b{color:var(--warn);display:flex;align-items:center;gap:7px;font-size:13px;margin-bottom:6px}
+  .notice ul{margin:0;padding-left:18px;font-size:13px;color:var(--text)}
+  .notice li{margin:4px 0}
+
+  .steps{counter-reset:s;display:grid;gap:10px;margin:0}
+  .step{display:flex;gap:12px;align-items:flex-start;background:var(--card-2);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px}
+  .step::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;
+    background:var(--brand);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+  :root[data-theme="dark"] .step::before{color:#0c2207}
+  .step div{font-size:13.5px}
+
+  .note-inline{background:var(--card-2);border-left:3px solid var(--brand);border-radius:8px;
+    padding:10px 12px;font-size:13px;color:var(--muted);margin-top:10px}
+  .applinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .minibtn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;
+    font-size:13px;font-weight:700;background:var(--card-2);border:1px solid var(--line);color:var(--text)}
+  .minibtn:hover{border-color:var(--brand);color:var(--brand);text-decoration:none;transform:translateY(-1px)}
+
+  .hidden{display:none !important}
+  .noresults{text-align:center;padding:60px 20px;color:var(--muted)}
+  .noresults .big{font-size:40px;margin-bottom:10px}
+
+  footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:12.5px}
+
+  @media(max-width:560px){
+    .facts .fact{flex:1 1 100%}
+    .contact .who{min-width:auto;flex-basis:100%}
+    .eventswitch{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="brandline">
+    <span class="diamond"></span>
+    <b>Sahara&nbsp;Expo&nbsp;2026</b>
+    <span class="by">· Customer Service Knowledge Base · by Informa Markets</span>
+    <nav class="eventswitch">
+      <span class="es-label">Event</span>
+      <a href="index.html">Pharmaconex 2026</a>
+      <a href="sahara.html" class="active">Sahara Expo 2026</a>
+    </nav>
+  </div>
+  <h1>Everything the CS team needs — in one place.</h1>
+  <p class="tag">Quick answers, links, contacts and programmes for Sahara Expo 2026 — the international agriculture exhibition. Search it, copy it, done.</p>
+
+  <div class="facts">
+    <div class="fact"><span class="ic">📅</span><span><span class="k">Dates</span><span class="v">22 – 24 September 2026</span></span></div>
+    <div class="fact"><span class="ic">🕒</span><span><span class="k">Opening hours</span><span class="v">10:00 AM – 7:00 PM (Tue–Thu)</span></span></div>
+    <div class="fact"><span class="ic">📍</span><span><span class="k">Venue</span><span class="v">Egypt International Exhibition Center (EIEC)</span></span></div>
+  </div>
+
+  <div class="hero-actions">
+    <a class="btn primary" href="templates.html">🗂️ Response Templates</a>
+    <a class="btn ghost" href="https://www.saharaexpo.com/" target="_blank" rel="noopener">🌐 Event Website</a>
+    <a class="btn ghost" href="https://www.expocad.com/host/fx/informa/26saha/exfx.html#floorplan" target="_blank" rel="noopener">🗺️ Floorplan</a>
+    <a class="btn ghost" href="https://apps.apple.com/us/app/sahara-expo/id6615080691" target="_blank" rel="noopener">📱 Event App</a>
+    <a class="btn ghost" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144816,31.381825,2450m" target="_blank" rel="noopener">🧭 Location</a>
+  </div>
+</header>
+
+<!-- ================= TOOLBAR ================= -->
+<div class="toolbar">
+  <div class="toolbar-row">
+    <div class="search">
+      <span class="mag">🔍</span>
+      <input id="q" type="text" placeholder="Search links, contacts, programmes, forms…" autocomplete="off">
+      <button class="clr" id="clr" aria-label="clear">✕</button>
+    </div>
+    <button class="theme-btn" id="theme" title="Toggle theme">🌙</button>
+  </div>
+  <nav class="navpills" id="navpills">
+    <a href="templates.html" style="background:var(--brand);border-color:var(--brand);color:#fff">🗂️ Templates</a>
+    <a href="#links" class="active">Quick Links</a>
+    <a href="#contacts">Contacts &amp; Routing</a>
+    <a href="#visitors">Visitors</a>
+    <a href="#programme">Programme &amp; Features</a>
+    <a href="#exhibitors">Exhibitors</a>
+    <a href="#onsite">Onsite &amp; Suppliers</a>
+    <a href="#timetables">Timetables</a>
+    <a href="#travel">Travel &amp; Stay</a>
+  </nav>
+</div>
+
+<main>
+  <div id="noresults" class="noresults hidden">
+    <div class="big">🔍</div>
+    <div>No results for “<span id="qecho"></span>”. Try another keyword.</div>
+  </div>
+
+  <!-- ============ QUICK LINKS ============ -->
+  <section class="kb-section" id="links">
+    <div class="sec-head"><span class="emoji">🔗</span><h2>Quick Links &amp; Resources</h2><span class="cnt"></span></div>
+    <p class="sec-desc">The most-used external pages. All open in a new tab.</p>
+    <div class="grid cols-3">
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/" target="_blank" rel="noopener">
+        <span class="lead">🌐</span><h3>Event Website</h3><p>Official Sahara Expo 2026 homepage.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.expocad.com/host/fx/informa/26saha/exfx.html#floorplan" target="_blank" rel="noopener">
+        <span class="lead">🗺️</span><h3>Interactive Floorplan</h3><p>Live hall &amp; stand floorplan (ExpoCAD).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/exhibit/book-stand/" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Stand Booking Form</h3><p>Book a stand / space as an exhibitor.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/exhibit/download-sales-brochure/" target="_blank" rel="noopener">
+        <span class="lead">📄</span><h3>Sales Brochure 2026</h3><p>Download the exhibitor sales brochure.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/exhibit/sponsorship/sponsorship-form/" target="_blank" rel="noopener">
+        <span class="lead">⭐</span><h3>Sponsorship Brochure</h3><p>Sponsorship opportunities &amp; form.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/exhibitor-list/" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Full list of confirmed exhibitors.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://drive.google.com/drive/folders/1jk3rBfSBFToqyZ2yS9bEgDZk3jlkCAF1" target="_blank" rel="noopener">
+        <span class="lead">🧰</span><h3>Marketing Toolkit</h3><p>Shared marketing assets (Google Drive — may need access).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144816,31.381825,2450m" target="_blank" rel="noopener">
+        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>Egypt International Exhibition Center.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">📱</span><h3>Event App — Sahara Expo</h3>
+        <p>Exhibitor list, agenda &amp; networking. Get it on your phone:</p>
+        <div class="applinks">
+          <a class="minibtn" href="https://apps.apple.com/us/app/sahara-expo/id6615080691" target="_blank" rel="noopener">🍏 App Store</a>
+          <a class="minibtn" href="https://play.google.com/store/apps/details?id=com.swapcard.apps.android.sahara" target="_blank" rel="noopener">🤖 Google Play</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTS ============ -->
+  <section class="kb-section" id="contacts">
+    <div class="sec-head"><span class="emoji">📨</span><h2>Contacts &amp; Routing</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Who to forward each type of request to. Click the copy icon to grab an email or number.</p>
+    <div class="grid cols-2">
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📞</span><b>Customer Service (Organiser)</b><span class="badge">Hotline</span></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:saharacustomerservice@informa.com">saharacustomerservice@informa.com</a></span>
+          <button class="copy" data-copy="saharacustomerservice@informa.com">⧉</button></div>
+        <div class="contact"><span class="who">Landline</span>
+          <span class="chip"><a href="tel:+20223226904">(+20) 2 2322 6904</a></span>
+          <button class="copy" data-copy="+20223226904">⧉</button></div>
+        <div class="contact"><span class="who">WhatsApp</span>
+          <span class="chip"><a href="https://wa.me/20223226982" target="_blank" rel="noopener">+20 22 322 6982</a></span>
+          <button class="copy" data-copy="+20223226982">⧉</button></div>
+        <div class="note-inline">🕘 Available <b>9 AM – 5 PM, Sunday–Thursday</b> (Egypt time).</div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🛠️</span><b>Technical Dept — Space Only Plan Approvals</b></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:techsahara@informa.com">techsahara@informa.com</a></span>
+          <button class="copy" data-copy="techsahara@informa.com">⧉</button></div>
+        <div class="note-inline">Contractor details deadline: <b>16 Jul 2026</b> · Stand design deadline: <b>9 Aug 2026</b>.</div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🛂</span><b>Visa / Participation Letter Requests</b></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Handled by the Informa Markets Customer Service team.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:saharacustomerservice@informa.com">saharacustomerservice@informa.com</a></span>
+          <button class="copy" data-copy="saharacustomerservice@informa.com">⧉</button></div>
+        <div class="contact"><span class="who">WhatsApp</span>
+          <span class="chip"><a href="https://wa.me/20223226982" target="_blank" rel="noopener">+20 22 322 6982</a></span>
+          <button class="copy" data-copy="+20223226982">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">💼</span><b>Sales Team — Stand Booking</b><span class="badge">Sales</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Forward stand / space booking requests to the sales team.</p>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:christine.hanna.eg@ind-group.com">christine.hanna.eg@ind-group.com</a></span>
+          <button class="copy" data-copy="christine.hanna.eg@ind-group.com">⧉</button></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:samar.mohamed@ind-group.com">samar.mohamed@ind-group.com</a></span>
+          <button class="copy" data-copy="samar.mohamed@ind-group.com">⧉</button></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:rania.salaheldin@ind-group.com">rania.salaheldin@ind-group.com</a></span>
+          <button class="copy" data-copy="rania.salaheldin@ind-group.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">⭐</span><b>Sponsorship Opportunities</b><span class="badge">Sales</span></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:rania.salaheldin@ind-group.com">rania.salaheldin@ind-group.com</a></span>
+          <button class="copy" data-copy="rania.salaheldin@ind-group.com">⧉</button></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:adham.ibrahim@ind-group.com">adham.ibrahim@ind-group.com</a></span>
+          <button class="copy" data-copy="adham.ibrahim@ind-group.com">⧉</button></div>
+        <div class="note-inline">Also forward to Informa: <b>Gina.Nassif@informa.com</b> · <b>Mohamed.Sherif@informa.com</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📰</span><b>Media Partnerships</b></div>
+        <div class="contact"><span class="who">Email</span>
+          <span class="chip"><a href="mailto:mario.milad@ind-group.com">mario.milad@ind-group.com</a></span>
+          <button class="copy" data-copy="mario.milad@ind-group.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🎤</span><b>Speaker Requests</b></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0">No dedicated inbox in the brief — coordinate speaker requests via the
+          <a href="https://www.saharaexpo.com/visit/conference/agenda1/" target="_blank" rel="noopener">Conference Agenda</a> team or the sales contacts above.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ VISITORS ============ -->
+  <section class="kb-section" id="visitors">
+    <div class="sec-head"><span class="emoji">🧑‍🤝‍🧑</span><h2>Visitors</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Registration, invitations, visa and value proposition for visitors.</p>
+    <div class="grid cols-2">
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/3km5ruyqo85qj?formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">
+        <span class="lead">📝</span><h3>Visitor Registration Form</h3><p>Main visitor registration (VisitCloud).</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/166kkcudjhvnn/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">
+        <span class="lead">✉️</span><h3>Visitor Invitation Letters</h3><p>Generate an invitation letter for a visitor.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/why-visit/" target="_blank" rel="noopener">
+        <span class="lead">❓</span><h3>Why Visit Sahara</h3><p>Value proposition page for prospective visitors.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/hosted-buyer-programme/" target="_blank" rel="noopener">
+        <span class="lead">🤝</span><h3>Hosted Buyer Programme</h3><p>Overview of the hosted buyer programme.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/hosted-buyer-programme/registration/" target="_blank" rel="noopener">
+        <span class="lead">🎫</span><h3>Hosted Buyer — Registration</h3><p>Hosted buyer application / registration form.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://visa2egypt.gov.eg/eVisa/Home" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Egypt Visa Requirements</h3><p>Official Egypt e-Visa portal.</p><span class="go">Open ↗</span></a>
+
+    </div>
+  </section>
+
+  <!-- ============ PROGRAMME & FEATURES ============ -->
+  <section class="kb-section" id="programme">
+    <div class="sec-head"><span class="emoji">🌱</span><h2>Programme &amp; Features</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Conference, seminars and the special agri-features of Sahara Expo.</p>
+    <div class="grid cols-3">
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/conference/agenda1/" target="_blank" rel="noopener">
+        <span class="lead">🎓</span><h3>Conference Agenda</h3><p>Full Sahara Conference programme.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/workshop/" target="_blank" rel="noopener">
+        <span class="lead">🧪</span><h3>Sahara Seminar (powered by AHDO)</h3><p>Seminar &amp; workshop sessions.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/features/networking-event1/" target="_blank" rel="noopener">
+        <span class="lead">👩‍🌾</span><h3>Women in Agri — Networking</h3><p>The Women in Agri networking event.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/consultancy-service/" target="_blank" rel="noopener">
+        <span class="lead">💡</span><h3>Agricultural Consultancy</h3><p>Free agricultural consultancy service.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/features/agrigen-lab/" target="_blank" rel="noopener">
+        <span class="lead">🔬</span><h3>AgriGen Lab</h3><p>Empowering the next generation of agri-innovators.</p><span class="go">Open ↗</span></a>
+
+    </div>
+  </section>
+
+  <!-- ============ EXHIBITORS ============ -->
+  <section class="kb-section" id="exhibitors">
+    <div class="sec-head"><span class="emoji">🏢</span><h2>Exhibitors</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Registration through the Customer Centre Portal, badges, visa and manuals.</p>
+
+    <div class="card searchable" style="margin-bottom:14px">
+      <h3>🖥️ Exhibitor Registration — Customer Centre Portal</h3>
+      <p style="margin-bottom:12px">Exhibitors register their team through the <b>Customer Centre Portal</b>. Guide them through these steps:</p>
+      <div class="steps">
+        <div class="step"><div>Log in to the <b>Customer Centre Portal</b> and open the <b>Badges / QR Codes</b> tab.</div></div>
+        <div class="step"><div>Check <b>General Booth Information</b> — booth number, size and total <b>badge allotments</b>.</div></div>
+        <div class="step"><div>Under <b>Registered Badges</b>, select the booth from the dropdown.</div></div>
+        <div class="step"><div>Use <b>Register Single Member</b> or <b>Register Multiple Members</b> to add the team.</div></div>
+        <div class="step"><div>Use <b>Export Badges</b> to download, or <b>Request Extra Badges</b> if more are needed.</div></div>
+      </div>
+    </div>
+
+    <div class="grid cols-2">
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/exhibit/book-stand/" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Stand Booking Form</h3><p>Stand / space enquiry for new exhibitors.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/166kkcudjhvnn?translation=35ukisnsib2ee&visitor-contact=#contact_code#" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Exhibitor Visa Link</h3><p>Visa invitation request for exhibitors.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/visit/exhibitor-list/" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Confirmed exhibitors list.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">📚</span><h3>Sahara Manuals</h3>
+        <p>Official supplier &amp; contact details are in the <a href="#onsite">Onsite &amp; Suppliers</a> section.
+        The <b>Show Timetable</b> and <b>Space Only Information</b> manuals are <b>internal documents</b> shared by the CS team
+        (Informa SharePoint — needs login).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ONSITE & SUPPLIERS ============ -->
+  <section class="kb-section" id="onsite">
+    <div class="sec-head"><span class="emoji">🧰</span><h2>Onsite &amp; Official Suppliers</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Official / preferred suppliers for exhibitors — orders, contacts and deadlines. Source: SAHARA 26 Contact Information.</p>
+    <div class="grid cols-3">
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">💡</span><b>Electrical &amp; Lighting</b><span class="badge">Expo Tech</span></div>
+        <div class="contact"><span class="who">Mohamed Samir</span><span class="chip"><a href="tel:+201153957541">+20 115 395 7541</a></span>
+          <button class="copy" data-copy="+201153957541">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:M.samir@expotech-eg.com">M.samir@expotech-eg.com</a></span>
+          <button class="copy" data-copy="M.samir@expotech-eg.com">⧉</button></div>
+        <div class="contact"><span class="who">Sara Samir</span><span class="chip"><a href="tel:+201110868988">+20 111 086 8988</a></span>
+          <button class="copy" data-copy="+201110868988">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Sara@expotech-eg.com">Sara@expotech-eg.com</a></span>
+          <button class="copy" data-copy="Sara@expotech-eg.com">⧉</button></div>
+        <div class="note-inline">Deadline: <b>8 Sep 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🌸</span><b>Floral Hire</b><span class="badge">Expo Tech</span></div>
+        <div class="contact"><span class="who">Amr Mahmoud</span><span class="chip"><a href="tel:+201554071189">+20 155 407 1189</a></span>
+          <button class="copy" data-copy="+201554071189">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:amr@expotech-eg.com">amr@expotech-eg.com</a></span>
+          <button class="copy" data-copy="amr@expotech-eg.com">⧉</button></div>
+        <div class="note-inline">Deadline: <b>8 Sep 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🚢</span><b>Freight, Shipping, Customs &amp; Lifting</b><span class="badge">DSV</span></div>
+        <div class="contact"><span class="who">Cairo · Ramy</span><span class="chip"><a href="tel:+201097197089">+20 109 719 7089</a></span>
+          <button class="copy" data-copy="+201097197089">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:ramy.kassem@dsv.com">ramy.kassem@dsv.com</a></span>
+          <button class="copy" data-copy="ramy.kassem@dsv.com">⧉</button></div>
+        <div class="contact"><span class="who">Dubai · Jihad</span><span class="chip"><a href="tel:+97148131487">+971 4 813 1487</a></span>
+          <button class="copy" data-copy="+97148131487">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:jihad.khoury@dsv.com">jihad.khoury@dsv.com</a></span>
+          <button class="copy" data-copy="jihad.khoury@dsv.com">⧉</button></div>
+        <div class="note-inline">Freight &amp; onsite handling deadline: <b>15 Jul 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🪵</span><b>Wooden Stands — General Contractor</b><span class="badge">Cubes</span></div>
+        <div class="contact"><span class="who">Mazen Elsayed</span><span class="chip"><a href="tel:+201014763593">+20 10 1476 3593</a></span>
+          <button class="copy" data-copy="+201014763593">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:mazen.elsayed@cubes-eg.net">mazen.elsayed@cubes-eg.net</a></span>
+          <button class="copy" data-copy="mazen.elsayed@cubes-eg.net">⧉</button></div>
+        <div class="note-inline">Deadline for extras: <b>29 Aug 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🧱</span><b>Shell Scheme, Furniture, AV &amp; Graphics</b><span class="badge">United Group</span></div>
+        <div class="contact"><span class="who">Ali Mohamed</span><span class="chip"><a href="tel:+201114567957">+20 111 456 7957</a></span>
+          <button class="copy" data-copy="+201114567957">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:ayassin@ug-expo.com">ayassin@ug-expo.com</a></span>
+          <button class="copy" data-copy="ayassin@ug-expo.com">⧉</button></div>
+        <div class="contact"><span class="who">Youssef Hisham</span><span class="chip"><a href="tel:+201228006634">+20 122 800 6634</a></span>
+          <button class="copy" data-copy="+201228006634">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:yhesham@ug-expo.com">yhesham@ug-expo.com</a></span>
+          <button class="copy" data-copy="yhesham@ug-expo.com">⧉</button></div>
+        <div class="note-inline">Deadline for extras: <b>12 Sep 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">✅</span><b>Health &amp; Safety — Stand Plan Approvals</b><span class="badge">Informa Technical</span></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:techsahara@informa.com">techsahara@informa.com</a></span>
+          <button class="copy" data-copy="techsahara@informa.com">⧉</button></div>
+        <div class="note-inline">Contractor details: <b>16 Jul 2026</b> · Stand design: <b>9 Aug 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🍽️</span><b>Stand Catering</b></div>
+        <div class="contact"><span class="who">Holiday Inn · Christine</span><span class="chip"><a href="tel:+201200330091">+20 120 033 0091</a></span>
+          <button class="copy" data-copy="+201200330091">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Christine.Fanous@ihg.com">Christine.Fanous@ihg.com</a></span>
+          <button class="copy" data-copy="Christine.Fanous@ihg.com">⧉</button></div>
+        <div class="contact"><span class="who">TBS · Menna</span><span class="chip"><a href="tel:+201119087878">+20 111 908 7878</a></span>
+          <button class="copy" data-copy="+201119087878">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:menna.hussien@tbsegypt.com">menna.hussien@tbsegypt.com</a></span>
+          <button class="copy" data-copy="menna.hussien@tbsegypt.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🧹</span><b>Stand Cleaning</b><span class="badge">Expo Tech</span></div>
+        <div class="contact"><span class="who">Amr Mahmoud</span><span class="chip"><a href="tel:+201111662345">+20 111 166 2345</a></span>
+          <button class="copy" data-copy="+201111662345">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Amr@expotech-eg.com">Amr@expotech-eg.com</a></span>
+          <button class="copy" data-copy="Amr@expotech-eg.com">⧉</button></div>
+        <div class="note-inline">Deadline: <b>8 Sep 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🧑‍💼</span><b>Temporary Stand Staff</b><span class="badge">Expo Tech</span></div>
+        <div class="contact"><span class="who">Amr Mahmoud</span><span class="chip"><a href="tel:+201111662345">+20 111 166 2345</a></span>
+          <button class="copy" data-copy="+201111662345">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Amr@expotech-eg.com">Amr@expotech-eg.com</a></span>
+          <button class="copy" data-copy="Amr@expotech-eg.com">⧉</button></div>
+        <div class="note-inline">Deadline: <b>8 Sep 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📶</span><b>Wifi / Telephone / Data</b><span class="badge">NCIEC</span></div>
+        <div class="contact"><span class="who">Tel</span><span class="chip"><a href="tel:+20224025048">+20 2 2402 5048</a></span>
+          <button class="copy" data-copy="+20224025048">⧉</button></div>
+        <div class="contact"><span class="who">Mobile</span><span class="chip"><a href="tel:+201226284352">+20 122 628 4352</a></span>
+          <button class="copy" data-copy="+201226284352">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:reservation@nc-iec.com">reservation@nc-iec.com</a></span>
+          <button class="copy" data-copy="reservation@nc-iec.com">⧉</button></div>
+        <div class="note-inline">Deadline: <b>Sun, 30 Aug 2026</b></div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📐</span><b>Certified Consultant Engineering</b><span class="badge">Image CEB</span></div>
+        <div class="contact"><span class="who">Dr. Alaa Abu Elezz</span><span class="chip"><a href="tel:+201001999547">+20 100 199 9547</a></span>
+          <button class="copy" data-copy="+201001999547">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:image_ezz@yahoo.com">image_ezz@yahoo.com</a></span>
+          <button class="copy" data-copy="image_ezz@yahoo.com">⧉</button></div>
+        <div class="note-inline">12 Aloboor – Salah Salem – New Egypt – Office 76</div>
+      </div>
+
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/travel/discounted-hotels/" target="_blank" rel="noopener">
+        <span class="lead">🏨</span><h3>Accommodation / Hotels</h3><p>Official supplier: HotelMap — book discounted hotels.</p><span class="go">Open ↗</span></a>
+
+    </div>
+  </section>
+
+  <!-- ============ TIMETABLES ============ -->
+  <section class="kb-section" id="timetables">
+    <div class="sec-head"><span class="emoji">🕒</span><h2>Timetables</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Show opening hours. Build-up, registration &amp; dismantle timings are in the internal manual.</p>
+
+    <div class="searchable">
+      <h3 style="margin:0 0 10px">🚪 Show Opening Timings</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Show Day</th><th>Show Hours</th></tr></thead>
+        <tbody>
+          <tr><td class="day">Tue, 22 Sep 2026</td><td>10:00 – 19:00</td></tr>
+          <tr><td class="day">Wed, 23 Sep 2026</td><td>10:00 – 19:00</td></tr>
+          <tr><td class="day">Thu, 24 Sep 2026</td><td>10:00 – 19:00</td></tr>
+        </tbody>
+      </table></div>
+      <div class="notice"><b>ℹ️ Note</b>
+        <ul>
+          <li><b>Build-up, registration desk and dismantling timings</b> are listed in the internal
+            <b>“SAHARA 26 — Show Timetable”</b> manual, shared by the CS team (not a public link).</li>
+          <li>Badges must be worn at all times on the exhibition floor; present a <b>valid ID</b> at the EIEC when needed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRAVEL ============ -->
+  <section class="kb-section" id="travel">
+    <div class="sec-head"><span class="emoji">✈️</span><h2>Travel &amp; Stay</h2><span class="cnt"></span></div>
+    <p class="sec-desc">Accommodation, visa and the event app.</p>
+    <div class="grid cols-3">
+      <a class="card linkcard searchable" href="https://www.saharaexpo.com/travel/discounted-hotels/" target="_blank" rel="noopener">
+        <span class="lead">🏨</span><h3>Discounted Hotels</h3><p>Book accommodation at Sahara Expo rates.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://visa2egypt.gov.eg/eVisa/Home" target="_blank" rel="noopener">
+        <span class="lead">🛂</span><h3>Egypt Visa Requirements</h3><p>Official Egypt e-Visa portal.</p><span class="go">Open ↗</span></a>
+
+      <div class="card searchable">
+        <span class="lead">📱</span><h3>Event App — Sahara Expo</h3>
+        <p>Exhibitor list, agenda, networking &amp; your schedule:</p>
+        <div class="applinks">
+          <a class="minibtn" href="https://apps.apple.com/us/app/sahara-expo/id6615080691" target="_blank" rel="noopener">🍏 App Store</a>
+          <a class="minibtn" href="https://play.google.com/store/apps/details?id=com.swapcard.apps.android.sahara" target="_blank" rel="noopener">🤖 Google Play</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Sahara Expo 2026 · Customer Service Knowledge Base · Informa Markets &nbsp;·&nbsp; <span style="opacity:.7">Information Classification: General</span>
+</footer>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var clr = document.getElementById('clr');
+  var noresults = document.getElementById('noresults');
+  var qecho = document.getElementById('qecho');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.kb-section'));
+
+  function totalCounts(){
+    sections.forEach(function(sec){
+      var badge = sec.querySelector('.cnt');
+      if(!badge) return;
+      badge.dataset.total = sec.querySelectorAll('.searchable').length;
+    });
+  }
+  totalCounts();
+
+  function runSearch(){
+    var term = q.value.trim().toLowerCase();
+    clr.classList.toggle('on', term.length>0);
+    var anyGlobal = false;
+    sections.forEach(function(sec){
+      var cards = Array.prototype.slice.call(sec.querySelectorAll('.searchable'));
+      var visible = 0;
+      cards.forEach(function(c){
+        var hit = !term || c.textContent.toLowerCase().indexOf(term) !== -1;
+        c.classList.toggle('hidden', !hit);
+        if(hit) visible++;
+      });
+      sec.classList.toggle('hidden', term && visible===0);
+      if(visible>0) anyGlobal = true;
+      var badge = sec.querySelector('.cnt');
+      if(badge){ badge.textContent = term ? (visible + ' / ' + badge.dataset.total) : (badge.dataset.total + ' items'); }
+    });
+    noresults.classList.toggle('hidden', anyGlobal);
+    qecho.textContent = term;
+  }
+  q.addEventListener('input', runSearch);
+  clr.addEventListener('click', function(){ q.value=''; runSearch(); q.focus(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }
+    if(e.key==='Escape' && document.activeElement===q){ q.value=''; runSearch(); }
+  });
+  runSearch();
+
+  var themeBtn = document.getElementById('theme');
+  var saved = null;
+  try { saved = localStorage.getItem('phc-theme'); } catch(e){}
+  if(saved){ document.documentElement.setAttribute('data-theme', saved); }
+  function syncIcon(){ themeBtn.textContent = document.documentElement.getAttribute('data-theme')==='dark' ? '☀️' : '🌙'; }
+  syncIcon();
+  themeBtn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('phc-theme', next); } catch(e){}
+    syncIcon();
+  });
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.copy');
+    if(!btn) return;
+    var val = btn.getAttribute('data-copy');
+    var done = function(){ var t=btn.textContent; btn.textContent='✓'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent=t; btn.classList.remove('done'); }, 1200); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(val).then(done, function(){ fallback(val); done(); });
+    } else { fallback(val); done(); }
+  });
+  function fallback(text){
+    var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+  }
+
+  var pills = Array.prototype.slice.call(document.querySelectorAll('#navpills a'));
+  var map = {};
+  pills.forEach(function(p){ map[p.getAttribute('href').slice(1)] = p; });
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          pills.forEach(function(p){ p.classList.remove('active'); });
+          var a = map[en.target.id]; if(a) a.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informa — Response Templates</title>
+<style>
+  :root{
+    --brand:#0094c8; --brand-2:#00b4d8; --brand-deep:#0b2a3a;
+    --bg:#eef3f7; --bg-2:#e3ebf1; --card:#ffffff; --card-2:#f7fafc;
+    --text:#16303d; --muted:#5f7688; --line:#dce6ee;
+    --ok:#1a9e6a; --warn:#c67c00;
+    --en:#0094c8; --ar:#1a9e6a;
+    --shadow:0 6px 18px -12px rgba(16,48,66,.28);
+    --shadow-lg:0 18px 40px -20px rgba(11,42,58,.4);
+    --radius:16px;
+  }
+  :root[data-theme="dark"]{
+    --brand:#25b6e6; --brand-2:#38d0ff; --brand-deep:#04121a;
+    --bg:#0b1620; --bg-2:#0e1b26; --card:#132433; --card-2:#0f1e2b;
+    --text:#e8f1f7; --muted:#8fa7b8; --line:#22384a;
+    --ok:#3ddc97; --warn:#ffcb6b;
+    --en:#38d0ff; --ar:#3ddc97;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
+    --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--brand);text-decoration:none}
+
+  /* header */
+  .top{color:#eaf7fd;padding:26px clamp(16px,4vw,48px) 22px;
+    background:radial-gradient(900px 400px at 90% -20%,rgba(0,180,216,.5),transparent 60%),
+      linear-gradient(135deg,#06202e,#0b3350 60%,#0a4a63)}
+  .top .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .diamond{width:26px;height:26px;flex:none;transform:rotate(45deg);border-radius:6px;
+    background:linear-gradient(135deg,#12c2e9,#0094c8);box-shadow:0 6px 16px rgba(0,148,200,.6)}
+  .top h1{margin:0;font-size:clamp(20px,3vw,30px);font-weight:800;letter-spacing:-.3px}
+  .top .sub{color:#a9d8ec;font-size:13px;margin-top:4px;width:100%}
+  .top .nav{margin-left:auto;display:flex;gap:8px}
+  .top .nav a{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#eaf7fd;
+    padding:8px 15px;border-radius:10px;font-weight:700;font-size:13px}
+  .top .nav a:hover{background:rgba(255,255,255,.2)}
+
+  /* toolbar */
+  .toolbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);
+    padding:12px clamp(14px,4vw,40px);box-shadow:0 6px 20px -18px rgba(0,0,0,.5)}
+  .tb-row{display:flex;gap:10px;align-items:center;max-width:1400px;margin:0 auto;flex-wrap:wrap}
+  .search{position:relative;flex:1;min-width:220px}
+  .search input{width:100%;padding:12px 16px 12px 42px;border-radius:12px;border:1px solid var(--line);
+    background:var(--card);color:var(--text);font-size:15px;outline:none;box-shadow:var(--shadow)}
+  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(0,148,200,.15)}
+  .search .mag{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.5}
+  .tb-btn{flex:none;padding:11px 14px;border-radius:11px;border:1px solid var(--line);background:var(--card);
+    color:var(--text);font-size:13px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+  .tb-btn:hover{border-color:var(--brand);color:var(--brand)}
+  .tb-btn.danger:hover{border-color:#e05656;color:#e05656}
+  .tb-btn.icon{width:46px;font-size:18px}
+
+  /* stats */
+  .stats{display:flex;flex-wrap:wrap;gap:10px;max-width:1400px;margin:18px auto 0;padding:0 clamp(14px,4vw,40px)}
+  .stat{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 18px;box-shadow:var(--shadow)}
+  .stat b{font-size:26px;font-weight:800;color:var(--brand);display:block;line-height:1}
+  .stat span{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+
+  main{max-width:1400px;margin:0 auto;padding:22px clamp(14px,4vw,40px) 80px}
+  .cols{display:flex;gap:28px;flex-wrap:wrap}
+  .col{flex:1;min-width:340px}
+  .col-head{padding:14px;border-radius:14px;text-align:center;color:#fff;margin-bottom:16px;font-weight:800}
+  .col-head.en{background:linear-gradient(135deg,#0094c8,#0b3350)}
+  .col-head.ar{background:linear-gradient(135deg,#1a9e6a,#0b3350)}
+  .col-head h2{margin:0;font-size:20px;display:flex;align-items:center;justify-content:center;gap:10px}
+  .col-head .cnt{font-size:12.5px;opacity:.9;margin-top:4px;font-weight:600}
+
+  .category{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;
+    overflow:hidden;box-shadow:var(--shadow)}
+  .category-header{padding:13px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+    gap:10px;border-left:4px solid var(--en);transition:background .2s}
+  .arabic-cat .category-header{border-left:none;border-right:4px solid var(--ar);flex-direction:row-reverse}
+  .category-header:hover{background:var(--card-2)}
+  .category-header h3{margin:0;font-size:15px;font-weight:700}
+  .category-toggle{color:var(--muted);font-size:13px;transition:transform .25s;flex:none}
+  .category.collapsed .category-toggle{transform:rotate(-90deg)}
+  .category-content{max-height:6000px;transition:max-height .3s ease,padding .3s;padding:6px 14px 14px}
+  .category.collapsed .category-content{max-height:0;padding-top:0;padding-bottom:0;overflow:hidden}
+  .cat-count{font-size:11px;font-weight:700;color:var(--muted);background:var(--card-2);border:1px solid var(--line);
+    padding:2px 8px;border-radius:999px;margin:0 8px}
+
+  .template-grid{display:grid;gap:10px}
+  .template-card{background:var(--card-2);border:1px solid var(--line);border-radius:12px;padding:13px 14px}
+  .template-card.arabic-card{direction:rtl;text-align:right}
+  .template-label{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;
+    background:color-mix(in srgb,var(--en) 15%,transparent);color:var(--en);margin-bottom:8px}
+  .arabic-card .template-label{background:color-mix(in srgb,var(--ar) 15%,transparent);color:var(--ar)}
+  .template-text{font-size:14px;white-space:pre-wrap;color:var(--text);margin-bottom:10px}
+  .arabic-text{font-size:15px;line-height:1.7}
+  .editable-field{background:color-mix(in srgb,var(--brand) 16%,transparent);color:var(--brand);
+    border-bottom:1px dashed var(--brand);padding:0 3px;border-radius:4px;cursor:text;font-weight:700;outline:none}
+  .editable-field:focus{background:color-mix(in srgb,var(--brand) 26%,transparent)}
+  .copy-btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;
+    padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:.15s}
+  .copy-btn:hover{border-color:var(--brand);color:var(--brand)}
+  .copy-btn.copied{background:var(--ok);color:#fff;border-color:var(--ok)}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);color:#fff;padding:11px 20px;
+    border-radius:12px;font-size:14px;font-weight:600;z-index:200;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+  .scroll-top{position:fixed;bottom:24px;right:24px;width:46px;height:46px;border-radius:50%;border:none;
+    background:var(--brand);color:#fff;font-size:20px;cursor:pointer;opacity:0;pointer-events:none;
+    transition:.25s;z-index:100;box-shadow:var(--shadow-lg)}
+  .scroll-top.visible{opacity:1;pointer-events:auto}
+  .hidden{display:none !important}
+  .noresults{text-align:center;padding:50px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.8}
+  footer b{color:var(--text)}
+  @media(max-width:760px){.top .nav{margin-left:0;width:100%}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="row">
+    <span class="diamond"></span>
+    <div>
+      <h1>Response Templates</h1>
+    </div>
+    <div class="nav">
+      <a href="index.html">← Home</a>
+    </div>
+    <div class="sub">Helpful English &amp; Arabic (Egyptian) customer-service responses · Informa Markets · Pharmaconex 2026</div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="tb-row">
+    <div class="search">
+      <span class="mag">🔍</span>
+      <input id="q" type="text" placeholder="Search templates in English or Arabic…" autocomplete="off">
+    </div>
+    <button class="tb-btn" onclick="expandAll()">▾ Expand all</button>
+    <button class="tb-btn" onclick="collapseAll()">▸ Collapse all</button>
+    <button class="tb-btn danger" onclick="resetSavedValues()">⟲ Reset fields</button>
+    <button class="tb-btn icon" id="theme" title="Toggle theme">🌙</button>
+  </div>
+</div>
+
+<div class="stats" id="statsBar"></div>
+
+<main>
+  <div id="noresults" class="noresults hidden">No templates match “<span id="qecho"></span>”.</div>
+  <div class="cols">
+    <div class="col">
+      <div class="col-head en"><h2>🇬🇧 English Templates</h2><div class="cnt" id="englishCount"></div></div>
+      <div id="englishCategories"></div>
+    </div>
+    <div class="col">
+      <div class="col-head ar"><h2>🇪🇬 القوالب العربية</h2><div class="cnt" id="arabicCount"></div></div>
+      <div id="arabicCategories" style="direction:rtl"></div>
+    </div>
+  </div>
+</main>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <b>Informa Markets — Pharmaconex 2026</b> · Customer Service Response Templates<br>
+  Content by the CS &amp; Quality team · Templates powered by Salma Hany &amp; Abeer Tarek
+</footer>
+
+<script>
+// ===================== ENGLISH TEMPLATES =====================
+const englishCategories = [
+  { name:"👋 Greetings", label:"label-greeting", templates:[
+    "Welcome to Informa, this is [AGENT_NAME_ENG], how may I help you today?",
+    "Welcome to Informa, this is [AGENT_NAME_ENG], it's my pleasure to assist you today.",
+    "May I have your good name please?",
+    "Hello, it's my pleasure to assist you, and I hope you're having a fantastic day.",
+    "I can see that you chose [EVENT_NAME], correct?",
+    "Please let me know how may I help you today?",
+    "Can you please provide me with the registered email and the name of the exhibiting company to check from my end?",
+    "Can you please provide me with your email address to check from my end?"
+  ]},
+  { name:"⏳ Hold & Wait", label:"label-hold", templates:[
+    "May I put the chat on hold for 3 minutes maximum to check the required information and get back to you, please?",
+    "Bear with me for 3 minutes maximum please while I check",
+    "Please note that the last message is not visible for me, please feel free to resend it in a different way",
+    "Thank you for waiting",
+    "Apologies for the delay and thank you for waiting",
+    "Thank you for holding & sorry for the delay."
+  ]},
+  { name:"💬 Assistance & Follow-up", label:"label-assistance", templates:[
+    "Is there anything else I can help you with?",
+    "Apart from this, is there anything else you would like me to assist you with?",
+    "I hope I assisted you well, please if there's any other inquiries let me know and I would be more than happy to assist you further",
+    "Are you still there? please let me know if you would like me to help you with something",
+    "I'm afraid this might not be available from our side; however, we can do [ALTERNATIVE_SOLUTION]",
+    "Thank you, please note that we will forward this to the relevant team to update and it will reflect within a couple of hours, and we will send you a confirmation email once this is done",
+    "I hope the information provided was clear and assists you in planning smoothly.",
+    "I hope this information assists you in planning smoothly."
+  ]},
+  { name:"🔇 Inactivity / Silence", label:"label-silence", templates:[
+    "Are we still connected?",
+    "Kindly note that due to inactivity, this chat will close in 1 minute, please contact us back if you still need any assistance and we will be more than happy to assist you further.",
+    "Please don't hesitate to reach us back if you still need any assistance and we will be glad to help you and we look forward to seeing you at the venue!",
+    "Please note that I can't see the last message, please try sharing the information another way"
+  ]},
+  { name:"🏁 Closing & Farewell", label:"label-closing", templates:[
+    "Thank you for contacting Informa and have a joyful day",
+    "My pleasure, I hope I assisted you well.",
+    "Thank you for contacting Informa and have a nice day",
+    "We look forward to welcoming you at the venue soon!",
+    "Always happy to help, thank you for contacting Informa and have a great day, see you soon!"
+  ]},
+  { name:"📧 Email & Formal Responses", label:"label-email", templates:[
+    "Thank you for waiting, please note that we will check internally with the relevant team regarding your query and we will get back to you as soon as possible on your email with the feedback",
+    "Can you please provide me with the email address that you would like to update from visitor to exhibitor and your company name to forward it to the relevant team to proceed?",
+    "You can always reach our customer service team via:\nEmail: [EMAIL_PLACEHOLDER]\nWhatsApp: [WHATSAPP_NUMBER]\nCustomer Service Hotline: [HOTLINE_NUMBER]\n\nAnd of course, you're welcome to reach our onsite team who can help you at info hub and help desk at [LOCATION_DETAILS]",
+    "Thank you for reaching out and checking with us.",
+    "Thank you for reaching out.",
+    "Thank you for sharing this with us.",
+    "Thank you for clarifying.",
+    "For your reference, these emails will be sent from '[SENDER_EMAIL]', so please make sure to check your inbox, including your spam or junk folder, and whitelist our email if needed."
+  ]},
+  { name:"😊 Apology & Appreciation", label:"label-apology", templates:[
+    "Thank you for reaching out, and apologies for any delay or inconvenience this may have caused.",
+    "Apologies for any delay or inconvenience this may have caused.",
+    "Thank you for your patience and understanding. We appreciate it greatly and we are looking forward to welcoming you at the venue!",
+    "We appreciate your patience and understanding during the process."
+  ]},
+  { name:"ℹ️ Informational Responses", label:"label-info", templates:[
+    "Additionally, please find attached a file outlining your startup pod inclusions for your reference.",
+    "For your ease, please feel free to check the attached file for guidance.",
+    "Furthermore, kindly note that you may reach out to our official supplier, [SUPPLIER_NAME], for any booth-related queries. They are the relevant team and will be able to assist you effectively.",
+    "Please make sure to check your inbox, junk, spam, and deleted emails, as our messages might have landed there.",
+    "We look forward to welcoming you to the venue and hope you enjoy the event!",
+    "We are looking forward to welcoming you at the venue.",
+    "Thank you once again for checking with us and we are looking forward to welcoming you at the venue.",
+    "If you encounter any difficulties, please do not hesitate to reply back, and I will be happy to assist you further.",
+    "We are looking forward to seeing you soon!",
+    "Kindly note that we will forward your request to the relevant team for their review and we will get back to you as soon as we receive their feedback.",
+    "Wishing you a smooth and successful event experience and we look forward to seeing you soon!",
+    "Thank you for your enthusiasm and interest in [EVENT_NAME]",
+    "Kindly provide us with more clarification regarding your query, and we will be more than happy to assist you accordingly.",
+    "In the meantime, please let us know if there is anything else you require assistance with. We will be more than happy to support you further."
+  ]},
+  { name:"💛 Empathy - Acknowledging the Customer's Situation", label:"label-empathy", templates:[
+    "Thank you for bringing this to our attention. We appreciate you taking the time to contact us.",
+    "I understand your concern, and thank you for sharing this with us.",
+    "Thank you for outlining the situation so clearly.",
+    "We acknowledge your request and the importance of this matter to you."
+  ]},
+  { name:"💛 Empathy - Showing Understanding (Formal Tone)", label:"label-empathy", templates:[
+    "I completely understand how this may be concerning.",
+    "I appreciate that this situation may be frustrating.",
+    "I understand the impact this may have and appreciate your patience.",
+    "We recognize the importance of resolving this for you.",
+    "Thank you for your understanding as we review this matter."
+  ]},
+  { name:"💛 Empathy - Reassuring the Customer", label:"label-empathy", templates:[
+    "Please be assured that we are looking into this carefully.",
+    "We will do our best to assist you with this request.",
+    "Rest assured that your enquiry is being reviewed by the relevant team.",
+    "We are committed to supporting you throughout this process.",
+    "We will ensure this is handled as efficiently as possible."
+  ]},
+  { name:"💛 Empathy - When Action Has Been Taken", label:"label-empathy", templates:[
+    "We have now forwarded your request to the relevant team.",
+    "Your request has been received and is currently under review.",
+    "The appropriate department has been notified accordingly.",
+    "Necessary steps have been taken to address this matter.",
+    "We are currently coordinating internally to ensure accuracy."
+  ]},
+  { name:"💛 Empathy - When More Time Is Needed", label:"label-empathy", templates:[
+    "We kindly ask for your patience while this is being reviewed.",
+    "This matter requires further verification, and we appreciate your understanding.",
+    "We will share an update as soon as further information becomes available.",
+    "Thank you for your continued patience during this process."
+  ]},
+  { name:"💛 Empathy - Offering Further Help", label:"label-empathy", templates:[
+    "Please let us know if there is anything further we can assist you with.",
+    "Should you have any additional questions, we are happy to help.",
+    "Do not hesitate to contact us if you require further clarification.",
+    "We remain at your disposal for any additional support."
+  ]},
+  { name:"💛 Empathy - Closing Politely & Professionally", label:"label-empathy", templates:[
+    "Thank you for your cooperation. We appreciate your understanding.",
+    "Thank you for your patience and consideration.",
+    "We value your cooperation and understanding.",
+    "Thank you for contacting us."
+  ]},
+  { name:"💛 Empathy - Phone-Specific Phrases", label:"label-empathy", templates:[
+    "Thank you for explaining that; I understand your concern.",
+    "I appreciate you taking the time to discuss this with me.",
+    "I understand where you're coming from.",
+    "Let me ensure I have understood this correctly.",
+    "I will be happy to guide you through the next steps."
+  ]},
+  { name:"💛 Empathy - Chat-Friendly (Still Formal)", label:"label-empathy", templates:[
+    "Thank you for your message. I completely understand your request.",
+    "Allow me to check this for you. I appreciate your patience.",
+    "I'm happy to assist you further.",
+    "Please don't worry about it. I'll take care of this for you.",
+    "I understand how you feel. I'm here to help resolve this for you."
+  ]}
+];
+
+// ===================== ARABIC TEMPLATES (Egyptian colloquial) =====================
+const arabicCategories = [
+  { name:"👋 الترحيب / Greetings", label:"label-greeting", templates:[
+    "أهلاً بيك في Informa، معاك [AGENT_NAME]، أقدر أساعدك بإيه النهاردة؟",
+    "أهلاً بيك في Informa، معاك [AGENT_NAME]",
+    "ممكن أعرف اسم حضرتك عشان أرحّب بيك؟",
+    "أهلاً بيك، يسعدني إني أساعدك، وأتمنى إن حضرتك بخير النهاردة",
+    "يسعدني إني أساعدك في استفسارك",
+    "أقدر أساعدك بإيه النهاردة؟",
+    "ممكن الإيميل بتاع حضرتك عشان أتأكد؟",
+    "ممكن تديني الإيميل المسجّل واسم الشركة العارضة عشان أراجع من عندي؟",
+    "ممكن توضّحلي استفسارك أكتر عشان أقدر أساعدك؟",
+    "شايف إن حضرتك اخترت معرض [EVENT_NAME]، صح كده؟",
+    "شكراً للتأكيد، أقدر أساعدك بإيه النهاردة؟"
+  ]},
+  { name:"⏳ الانتظار / Hold & Wait", label:"label-hold", templates:[
+    "ممكن أخلّي المحادثة على الانتظار لمدة 3 دقايق بحد أقصى لحد ما أراجع المعلومة وأرجعلك؟",
+    "شكراً لانتظارك، ممكن أخلّي المحادثة على الانتظار دقيقتين كمان بحد أقصى عشان أراجع أكتر؟",
+    "شكراً ليك، لحظات بس لو سمحت",
+    "شكراً لانتظارك",
+    "شكراً لانتظارك، وأنا آسف على التأخير",
+    "شكراً لتواصلك معانا عشان نتأكد من الموضوع ده"
+  ]},
+  { name:"💬 المساعدة / Assistance", label:"label-assistance", templates:[
+    "في حاجة تانية أقدر أساعدك فيها؟",
+    "غير كده، في أي حاجة تانية أقدر أساعدك فيها النهاردة؟",
+    "أتمنى أكون ساعدتك صح، ولو عندك أي استفسارات تانية قوللي وأنا هيسعدني أساعدك",
+    "حابب أقولك إن الفريق المختص عندنا هيساعدك في الموضوع ده، وتقدر تتواصل معاهم على التفاصيل دي",
+    "حابب أقولك إنه اتبعتلك إيميل تأكيد فيه لينك تحميل الباركود",
+    "وعشان أسهّلها عليك هبعتلك الباركود بتاعك هنا",
+    "للأسف ده ممكن ميكونش متاح من عندنا، بس ممكن بدل كده [ALTERNATIVE_SOLUTION]",
+    "أتمنى أكون ساعدتك بالشكل المطلوب",
+    "أتمنى إن المعلومات دي تساعدك تنظّم الأمور بسهولة، ومستنينك عندنا في المعرض"
+  ]},
+  { name:"🔇 الصمت / Inactivity", label:"label-silence", templates:[
+    "أهلاً، لسه معايا؟",
+    "إحنا لسه متواصلين؟",
+    "حابب أقولك إنه بسبب عدم الرد، المحادثة هتتقفل خلال دقيقة. تواصل معانا تاني في أي وقت لو لسه محتاج مساعدة وهنكون سعداء نساعدك"
+  ]},
+  { name:"🏁 الإغلاق / Closing", label:"label-closing", templates:[
+    "العفو، بكل سرور",
+    "ولا يهمك خالص، إحنا هنا عشان نساعدك",
+    "متترددش تتواصل معانا في أي وقت لو عندك أي استفسارات تانية",
+    "تقدر توصلنا في أي وقت على:\nالإيميل: [EMAIL_PLACEHOLDER]\nواتساب: [WHATSAPP_NUMBER]\nالخط الساخن لخدمة العملاء: [HOTLINE_NUMBER]",
+    "مستنينك قريب!",
+    "شكراً لتواصلك مع Informa، ونتمنالك يوم سعيد"
+  ]},
+  { name:"📧 البريد الإلكتروني والردود الرسمية", label:"label-email", templates:[
+    "شكراً لصبرك، حابين نقولك إننا هنراجع الموضوع داخلياً مع الفريق المختص، وهنرد عليك في أقرب وقت على الإيميل بتاعك بالرد على استفسارك",
+    "ممكن تديني الإيميل اللي حابب تحدّثه من ”زائر“ لـ”عارض“ واسم شركتك، عشان أبعته للفريق المختص يتابع الموضوع؟",
+    "تقدر توصل لفريق خدمة العملاء بتاعنا في أي وقت على:\nالإيميل: [EMAIL_PLACEHOLDER]\nواتساب: [WHATSAPP_NUMBER]\nالخط الساخن لخدمة العملاء: [HOTLINE_NUMBER]\n\nوطبعاً أهلاً بيك عند فريقنا في المعرض اللي هيساعدك في مركز المعلومات ومكتب المساعدة في [LOCATION_DETAILS]",
+    "شكراً لتواصلك معانا وإنك اتأكدت من الموضوع معانا.",
+    "شكراً لتواصلك معانا.",
+    "شكراً إنك شاركتنا ده.",
+    "شكراً على التوضيح.",
+    "للعلم، الرسايل دي هتوصلك من الإيميل ”[SENDER_EMAIL]“، فياريت تتأكد من صندوق الوارد بتاعك، وكمان الـSpam أو Junk، وتضيف إيميلنا لقائمة العناوين المسموح بيها لو احتجت."
+  ]},
+  { name:"😊 الاعتذار / Apology", label:"label-apology", templates:[
+    "شكراً لتفهمك، ونعتذرلك تاني عن أي تأخير أو إزعاج، ومستنينك في معارضنا الجاية وإن شاء الله تقضي وقت حلو وتجربة جميلة معانا",
+    "وتقدر كمان تتواصل مع فريقنا في مكتب المساعدة في [LOCATION_DETAILS] عشان يساعدك بمعلومات أكتر",
+    "حابب أقولك إن الطلب فعلاً تحت المراجعة من فريق التسجيلات، وهنتواصل معاك أول ما تخلص المراجعة",
+    "حابب أقولك إن اهتمامك بحضور الورشة اتسجّل، وهتقدر تحضر الورش اللي تهمّك، بس خد بالك إنها غالباً بتكون بأسبقية الحضور (اللي يجي الأول)",
+    "حابب أقولك إن البادج بتاعك هيتسلّم لك في المعرض على طول، وتقدر كمان تدخل على تطبيق المعرض بالإيميل المسجّل بتاعك",
+    "لو مكتوب في وصف الورشة إنها بتدّي شهادة، فأيوه؛ لكن لو مش مكتوب، يبقى موضوع الشهادة لسه مش مؤكد",
+    "حابب أقولك إني مش قادر أشوف الملف اللي حضرتك بعتّه دلوقتي، ياريت تبعته كصورة أو تكتبه عشان أقدر أشوفه"
+  ]},
+  { name:"ℹ️ معلومات إضافية / Informational", label:"label-info", templates:[
+    "شكراً لانتظارك، حابين نقولك إننا هنراجع المعلومة ونتواصل معاك تاني على الإيميل بتاعك",
+    "شكراً لتواصلك معانا عشان نتأكد من الموضوع ده"
+  ]},
+  { name:"💛 التعاطف - الاعتراف بموقف العميل", label:"label-empathy", templates:[
+    "شكراً إنك بلّغتنا بالموضوع ده، وبنقدّر تواصلك معانا.",
+    "أنا فاهم قلقك، وشكراً إنك شاركتنا الموضوع ده.",
+    "شكراً إنك وضّحت الموقف بالتفصيل ده.",
+    "إحنا فاهمين طلبك وقد إيه الموضوع ده مهم بالنسبالك."
+  ]},
+  { name:"💛 التعاطف - إظهار التفهم", label:"label-empathy", templates:[
+    "أنا فاهم تماماً قد إيه الموضوع ده بيقلقك.",
+    "أنا حاسس إن الموقف ده ممكن يكون مضايق.",
+    "أنا فاهم تأثير الموضوع ده عليك، وبقدّر صبرك.",
+    "إحنا فاهمين قد إيه حل الموضوع ده مهم بالنسبالك.",
+    "شكراً لتفهمك وإحنا بنراجع الموضوع."
+  ]},
+  { name:"💛 التعاطف - طمأنة العميل", label:"label-empathy", templates:[
+    "اطمن، إحنا بنراجع الموضوع بعناية.",
+    "هنعمل كل اللي نقدر عليه عشان نساعدك في الطلب ده.",
+    "اطمن، استفسارك تحت المراجعة من الفريق المختص.",
+    "إحنا معاك وهندعمك طول الموضوع ده.",
+    "هنحرص إننا نتعامل مع الموضوع ده بأسرع وأحسن شكل."
+  ]},
+  { name:"💛 التعاطف - عند اتخاذ إجراء", label:"label-empathy", templates:[
+    "بعتنا طلبك للفريق المختص.",
+    "طلبك وصلنا ودلوقتي تحت المراجعة.",
+    "القسم المختص اتبلّغ بالموضوع.",
+    "اتاخدت الخطوات اللازمة عشان نحل الموضوع ده.",
+    "إحنا دلوقتي بننسّق داخلياً عشان نتأكد إن كله مظبوط."
+  ]},
+  { name:"💛 التعاطف - عند الحاجة لوقت أكتر", label:"label-empathy", templates:[
+    "ياريت تصبر علينا شوية لحد ما نراجع الموضوع ده.",
+    "الموضوع ده محتاج مراجعة أكتر، وبنقدّر تفهمك.",
+    "هنعلمك بأي جديد أول ما توصلنا معلومات إضافية.",
+    "شكراً لصبرك معانا طول الموضوع ده."
+  ]},
+  { name:"💛 التعاطف - تقديم مساعدة إضافية", label:"label-empathy", templates:[
+    "قوللنا لو نقدر نساعدك في أي حاجة تانية.",
+    "لو عندك أي أسئلة تانية، هيسعدنا نساعدك.",
+    "متترددش تتواصل معانا لو محتاج أي توضيح أكتر.",
+    "إحنا تحت أمرك في أي مساعدة إضافية."
+  ]},
+  { name:"💛 التعاطف - الختام باحترافية", label:"label-empathy", templates:[
+    "شكراً لتعاونك، وبنقدّر تفهمك.",
+    "شكراً لصبرك واهتمامك.",
+    "بنقدّر تعاونك وتفهمك.",
+    "شكراً لتواصلك معانا."
+  ]},
+  { name:"💛 التعاطف - مخصص للمكالمات", label:"label-empathy", templates:[
+    "شكراً إنك وضّحتلي، أنا فاهم قلقك.",
+    "بقدّرلك وقتك في إنك تناقش الموضوع ده معايا.",
+    "أنا فاهم قصدك.",
+    "خليني أتأكد إني فهمت الموضوع صح.",
+    "هيسعدني أساعدك في الخطوات الجاية."
+  ]},
+  { name:"💛 التعاطف - ملائم للدردشة", label:"label-empathy", templates:[
+    "شكراً لرسالتك، أنا فاهم طلبك تماماً.",
+    "خليني أراجعلك ده، وبقدّر صبرك.",
+    "هيسعدني أساعدك أكتر.",
+    "متقلقش، أنا هتولّى الموضوع ده.",
+    "أنا حاسس بيك، وأنا هنا عشان أساعدك تحل ده."
+  ]}
+];
+
+// ===================== placeholder editing (localStorage) =====================
+function loadSavedValues(){ try{ return JSON.parse(localStorage.getItem('phc_field_values')||'{}'); }catch(e){ return {}; } }
+function saveValue(ph,val){ const v=loadSavedValues(); v[ph]=val; localStorage.setItem('phc_field_values',JSON.stringify(v)); }
+function escapeHtml(t){ const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+function makeFieldsEditable(text){
+  const saved=loadSavedValues();
+  return text.replace(/\[([^\]]+)\]/g,function(m,ph){
+    const esc=ph.replace(/"/g,'&quot;');
+    const cur=(saved[ph]!==undefined&&saved[ph]!==ph)?saved[ph].replace(/</g,'&lt;').replace(/>/g,'&gt;'):ph;
+    return '[<span contenteditable="true" class="editable-field" data-placeholder="'+esc+'">'+cur+'</span>]';
+  });
+}
+function getFinalText(el){
+  const clone=el.cloneNode(true);
+  clone.querySelectorAll('.editable-field').forEach(function(span){
+    const val=span.textContent||span.getAttribute('data-placeholder');
+    span.parentNode.replaceChild(document.createTextNode(val),span);
+  });
+  return clone.textContent.replace(/\[\]/g,'').replace(/\[([^\]]*)\]/g,'$1');
+}
+
+// ===================== render =====================
+function renderCategories(containerId, categories, isArabic){
+  const container=document.getElementById(containerId); container.innerHTML=''; let total=0;
+  categories.forEach(function(category,index){
+    const catDiv=document.createElement('div');
+    catDiv.className='category collapsed '+(isArabic?'arabic-cat':'');
+    const header=document.createElement('div'); header.className='category-header';
+    header.onclick=function(){ catDiv.classList.toggle('collapsed'); };
+    header.innerHTML='<h3>'+category.name+'</h3><span class="cat-count">'+category.templates.length+'</span><span class="category-toggle">▾</span>';
+    const content=document.createElement('div'); content.className='category-content';
+    const grid=document.createElement('div'); grid.className='template-grid';
+    category.templates.forEach(function(template){
+      const card=document.createElement('div'); card.className='template-card '+(isArabic?'arabic-card':'');
+      card.dataset.text=template.toLowerCase();
+      const label=document.createElement('span'); label.className='template-label'; label.textContent=category.name.split('/')[0].trim();
+      const textDiv=document.createElement('div'); textDiv.className='template-text '+(isArabic?'arabic-text':'');
+      textDiv.innerHTML=makeFieldsEditable(escapeHtml(template));
+      textDiv.addEventListener('keydown',function(e){ if(e.key==='Enter'&&e.target.classList.contains('editable-field')) e.preventDefault(); });
+      textDiv.addEventListener('focusout',function(e){
+        if(e.target.classList.contains('editable-field')){
+          const ph=e.target.getAttribute('data-placeholder'); const val=e.target.textContent.trim();
+          if(ph){ saveValue(ph,val||ph);
+            document.querySelectorAll('.editable-field[data-placeholder="'+ph+'"]').forEach(function(o){ if(o!==e.target) o.textContent=val||ph; });
+            showToast('✔ "'+ph+'" saved for this session'); }
+        }
+      });
+      const btn=document.createElement('button'); btn.className='copy-btn'; btn.innerHTML='📋 Copy';
+      btn.onclick=function(){ copyToClipboard(getFinalText(textDiv),btn); };
+      card.appendChild(label); card.appendChild(textDiv); card.appendChild(btn); grid.appendChild(card); total++;
+    });
+    content.appendChild(grid); catDiv.appendChild(header); catDiv.appendChild(content); container.appendChild(catDiv);
+  });
+  return total;
+}
+
+function expandAll(){ document.querySelectorAll('.category').forEach(function(c){ c.classList.remove('collapsed'); }); }
+function collapseAll(){ document.querySelectorAll('.category').forEach(function(c){ c.classList.add('collapsed'); }); }
+
+function copyToClipboard(text,button){
+  const done=function(){ const o=button.innerHTML; button.innerHTML='✅ Copied!'; button.classList.add('copied'); showToast('Template copied to clipboard!');
+    setTimeout(function(){ button.innerHTML=o; button.classList.remove('copied'); },1800); };
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done,function(){ fb(text); done(); }); }
+  else { fb(text); done(); }
+}
+function fb(text){ const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); }
+
+function showToast(msg){
+  const t=document.createElement('div'); t.className='toast'; t.style.background=getComputedStyle(document.documentElement).getPropertyValue('--ok')||'#1a9e6a';
+  t.textContent=msg; document.body.appendChild(t); setTimeout(function(){ t.remove(); },2600);
+}
+function resetSavedValues(){
+  if(confirm('Reset all saved field values (AGENT_NAME, EVENT_NAME, etc.) back to placeholders?')){
+    localStorage.removeItem('phc_field_values');
+    document.querySelectorAll('.editable-field').forEach(function(s){ s.textContent=s.getAttribute('data-placeholder'); });
+    showToast('All fields reset to defaults');
+  }
+}
+
+// ===================== search =====================
+function runSearch(){
+  const term=(document.getElementById('q').value||'').trim().toLowerCase();
+  let anyGlobal=false;
+  document.querySelectorAll('.template-card').forEach(function(card){
+    const hit=!term||card.dataset.text.indexOf(term)!==-1;
+    card.classList.toggle('hidden',!hit);
+  });
+  document.querySelectorAll('.category').forEach(function(cat){
+    const visible=cat.querySelectorAll('.template-card:not(.hidden)').length;
+    cat.classList.toggle('hidden',term&&visible===0);
+    if(term&&visible>0){ cat.classList.remove('collapsed'); anyGlobal=true; }
+    if(!term){ anyGlobal=true; }
+  });
+  document.getElementById('noresults').classList.toggle('hidden',anyGlobal);
+  document.getElementById('qecho').textContent=term;
+}
+
+// ===================== scroll-top & theme =====================
+window.addEventListener('scroll',function(){
+  document.getElementById('scrollTop').classList.toggle('visible',window.scrollY>300);
+});
+(function(){
+  var themeBtn=document.getElementById('theme'), saved=null;
+  try{ saved=localStorage.getItem('phc-theme'); }catch(e){}
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+  function icon(){ themeBtn.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙'; }
+  icon();
+  themeBtn.addEventListener('click',function(){
+    var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{ localStorage.setItem('phc-theme',next); }catch(e){} icon();
+  });
+})();
+
+// ===================== init =====================
+const englishTotal=renderCategories('englishCategories',englishCategories,false);
+const arabicTotal=renderCategories('arabicCategories',arabicCategories,true);
+document.getElementById('englishCount').textContent=englishTotal+' templates';
+document.getElementById('arabicCount').textContent=arabicTotal+' قالب';
+document.getElementById('statsBar').innerHTML=
+  '<div class="stat"><b>'+(englishTotal+arabicTotal)+'</b><span>Total templates</span></div>'+
+  '<div class="stat"><b>'+(englishCategories.length+arabicCategories.length)+'</b><span>Categories</span></div>'+
+  '<div class="stat"><b>'+englishTotal+'</b><span>English</span></div>'+
+  '<div class="stat"><b>'+arabicTotal+'</b><span>Arabic (عامية)</span></div>';
+document.getElementById('q').addEventListener('input',runSearch);
+document.addEventListener('keydown',function(e){ if(e.key==='/'&&document.activeElement.id!=='q'){ e.preventDefault(); document.getElementById('q').focus(); } });
+</script>
+</body>
+</html>
