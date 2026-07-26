@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Egypt Energy &amp; Firex 2026 — Knowledge Base</title>
+<title>Cityscape Egypt 2026 — Knowledge Base</title>
 <style>
   :root{
-    --brand:#d81b74; --brand-2:#f7941d; --brand-deep:#4a1e33;
-    --bg:#fdf4f7; --bg-2:#f9e9f0; --card:#ffffff; --card-2:#fff6fa;
-    --text:#2c1420; --muted:#7d5c69; --line:#f0dbe4;
+    --brand:#e07800; --brand-2:#f5a623; --brand-deep:#22262f;
+    --bg:#f4f5f7; --bg-2:#eceef2; --card:#ffffff; --card-2:#f7f8fa;
+    --text:#1c2128; --muted:#5f6b7a; --line:#dfe3ea;
     --ok:#1a9e6a; --ok-bg:#e5f6ee; --warn:#c67c00; --warn-bg:#fff5e2;
-    --shadow:0 6px 18px -12px rgba(44,20,32,.28);
-    --shadow-lg:0 18px 40px -20px rgba(74,30,51,.4);
+    --shadow:0 6px 18px -12px rgba(28,33,40,.28);
+    --shadow-lg:0 18px 40px -20px rgba(20,24,30,.42);
     --radius:16px;
   }
   :root[data-theme="dark"]{
-    --brand:#ff6fae; --brand-2:#ffa04d; --brand-deep:#180a11;
-    --bg:#150c11; --bg-2:#1a0f16; --card:#22141c; --card-2:#1c1017;
-    --text:#f7e9ef; --muted:#c1a2ae; --line:#3a2430;
+    --brand:#ffa53d; --brand-2:#ffc46b; --brand-deep:#0c0e12;
+    --bg:#101318; --bg-2:#141821; --card:#1a1f27; --card-2:#151a21;
+    --text:#e8ecf2; --muted:#9aa6b6; --line:#2a313c;
     --ok:#3ddc97; --ok-bg:#0f2c22; --warn:#ffcb6b; --warn-bg:#2c2413;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
     --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
@@ -33,17 +33,17 @@
 
   /* ---------- Hero ---------- */
   .hero{
-    position:relative; overflow:hidden; color:#fff0f7;
+    position:relative; overflow:hidden; color:#fff4e8;
     background:
-      linear-gradient(100deg, #2a0f1c 0%, rgba(48,14,32,.94) 30%, rgba(140,26,86,.55) 66%, rgba(247,148,29,.22) 100%),
-      url('assets/egyptenergy-banner.png') center right / cover no-repeat,
-      linear-gradient(135deg, #2a0f1c 0%, #8c1a56 55%, #c2185b 100%);
+      linear-gradient(100deg, #12151c 0%, rgba(18,21,28,.94) 30%, rgba(40,46,58,.58) 66%, rgba(224,120,0,.28) 100%),
+      url('assets/cityscape-banner.png') center right / cover no-repeat,
+      linear-gradient(135deg, #12151c 0%, #2b3242 55%, #a8620a 100%);
     padding:34px clamp(18px,5vw,64px) 30px;
   }
   @media(max-width:720px){
     .hero{ background:
-      linear-gradient(180deg, rgba(48,14,32,.82) 0%, rgba(48,14,32,.94) 100%),
-      url('assets/egyptenergy-banner.png') center / cover no-repeat, #2a0f1c; }
+      linear-gradient(180deg, rgba(18,21,28,.82) 0%, rgba(18,21,28,.94) 100%),
+      url('assets/cityscape-banner.png') center / cover no-repeat, #12151c; }
   }
 
   /* Informa Markets logo watermark (from the official letterhead) */
@@ -58,29 +58,29 @@
 
   .hero .brandline{display:flex; align-items:center; gap:12px; margin-bottom:22px; flex-wrap:wrap}
   .diamond{width:30px;height:30px;flex:none;transform:rotate(45deg);border-radius:7px;
-    background:linear-gradient(135deg,#ffa04d,#d81b74);box-shadow:0 6px 16px rgba(216,27,116,.55)}
+    background:linear-gradient(135deg,#ffc46b,#e07800);box-shadow:0 6px 16px rgba(224,120,0,.55)}
   .brandline b{font-size:20px;letter-spacing:.3px}
-  .brandline .by{color:#f5c3da;font-size:13px;opacity:.9}
+  .brandline .by{color:#f2c48c;font-size:13px;opacity:.9}
   .eventswitch{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap}
-  .eventswitch .es-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#f5c3da;margin-right:2px}
-  .eventswitch a{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;color:#ffe9f3;
+  .eventswitch .es-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#f2c48c;margin-right:2px}
+  .eventswitch a{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;color:#ffeede;
     background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
   .eventswitch a:hover{background:rgba(255,255,255,.18);text-decoration:none}
-  .eventswitch a.active{background:linear-gradient(135deg,#ffa04d,#d81b74);color:#33101f;border-color:transparent}
+  .eventswitch a.active{background:linear-gradient(135deg,#ffc46b,#e07800);color:#2a1a05;border-color:transparent}
   .hero h1{margin:0 0 6px;font-size:clamp(30px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-.5px}
-  .hero .tag{color:#f8d6e6;font-size:clamp(15px,2vw,18px);max-width:640px}
+  .hero .tag{color:#ffe3c2;font-size:clamp(15px,2vw,18px);max-width:640px}
   .facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
   .fact{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.09);
     border:1px solid rgba(255,255,255,.16);padding:10px 15px;border-radius:12px}
   .fact .ic{font-size:18px}
-  .fact .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#f0aecd;display:block}
+  .fact .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#f0b978;display:block}
   .fact .v{font-weight:700;font-size:14px}
   .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;
     font-weight:700;font-size:14px;cursor:pointer;border:1px solid transparent;transition:.15s}
-  .btn.primary{background:linear-gradient(135deg,#ffa04d,#d81b74);color:#33101f;box-shadow:0 8px 20px -6px rgba(247,148,29,.55)}
+  .btn.primary{background:linear-gradient(135deg,#ffc46b,#e07800);color:#2a1a05;box-shadow:0 8px 20px -6px rgba(245,166,35,.55)}
   .btn.primary:hover{transform:translateY(-2px);text-decoration:none}
-  .btn.ghost{background:rgba(255,255,255,.09);color:#fff0f7;border-color:rgba(255,255,255,.22)}
+  .btn.ghost{background:rgba(255,255,255,.09);color:#fff4e8;border-color:rgba(255,255,255,.22)}
   .btn.ghost:hover{background:rgba(255,255,255,.18);text-decoration:none}
 
   /* ---------- Sticky search / nav ---------- */
@@ -91,7 +91,7 @@
   .search{position:relative;flex:1}
   .search input{width:100%;padding:13px 44px 13px 44px;border-radius:12px;border:1px solid var(--line);
     background:var(--card);color:var(--text);font-size:15px;outline:none;transition:.15s;box-shadow:var(--shadow)}
-  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(216,27,116,.15)}
+  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(224,120,0,.18)}
   .search .mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.5;font-size:17px}
   .search .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;
     border:none;background:var(--bg-2);color:var(--muted);width:26px;height:26px;border-radius:50%;
@@ -105,7 +105,7 @@
     color:var(--muted);background:var(--card);border:1px solid var(--line)}
   .navpills a:hover{color:var(--brand);text-decoration:none}
   .navpills a.active{background:var(--brand);border-color:var(--brand);color:#fff}
-  :root[data-theme="dark"] .navpills a.active{color:#33101f}
+  :root[data-theme="dark"] .navpills a.active{color:#2a1a05}
 
   /* ---------- Layout ---------- */
   main{max-width:1180px;margin:0 auto;padding:26px clamp(14px,4vw,40px) 80px}
@@ -151,9 +151,9 @@
 
   .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
   table{border-collapse:collapse;width:100%;min-width:420px;background:var(--card);font-size:13.5px}
-  thead th{background:linear-gradient(135deg,var(--brand-deep),#c2185b);color:#fff0f7;text-align:left;
+  thead th{background:linear-gradient(135deg,var(--brand-deep),#a8620a);color:#fff4e8;text-align:left;
     padding:12px 14px;font-size:12px;letter-spacing:.5px;text-transform:uppercase;font-weight:700}
-  :root[data-theme="dark"] thead th{background:linear-gradient(135deg,#4a1e33,#7a2049)}
+  :root[data-theme="dark"] thead th{background:linear-gradient(135deg,#22262f,#5a3c12)}
   tbody td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
   tbody tr:nth-child(even){background:var(--card-2)}
   td .day{font-weight:700}
@@ -168,7 +168,7 @@
     border-radius:12px;padding:12px 14px}
   .step::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;
     background:var(--brand);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
-  :root[data-theme="dark"] .step::before{color:#33101f}
+  :root[data-theme="dark"] .step::before{color:#2a1a05}
   .step div{font-size:13.5px}
 
   .note-inline{background:var(--card-2);border-left:3px solid var(--brand);border-radius:8px;
@@ -229,15 +229,18 @@
   details.case[open] .case-chev{transform:rotate(180deg);color:var(--brand)}
   .case-body{padding:2px 16px 16px;border-top:1px solid var(--line)}.case-body .cs-lead-txt:first-child{margin-top:12px}
 
-  /* ---------- Egypt Energy additions ---------- */
+  /* ---------- Cityscape additions ---------- */
   .subhead{font-size:13px;font-weight:800;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;
     margin:26px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
-  .sponsors{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-  .sponsor{display:flex;flex-direction:column;gap:2px;background:var(--card-2);border:1px solid var(--line);
-    border-radius:11px;padding:10px 14px;min-width:150px}
-  .sponsor .tier{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--brand-2)}
-  .sponsor .nm{font-weight:800;font-size:14px}
-  .routecard .top .badge{background:color-mix(in srgb,var(--brand) 13%,transparent);color:var(--brand)}
+  .routecard .top .badge{background:color-mix(in srgb,var(--brand) 14%,transparent);color:var(--brand)}
+  .feature{background:linear-gradient(135deg,color-mix(in srgb,var(--brand) 10%,var(--card)),var(--card));
+    border:1px solid color-mix(in srgb,var(--brand) 30%,var(--line))}
+  .feature .meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+  .feature .meta span{font-size:12.5px;font-weight:700;background:var(--card-2);border:1px solid var(--line);
+    border-radius:9px;padding:5px 10px}
+  .fee{display:flex;flex-direction:column;gap:1px}
+  .fee b{font-size:23px;color:var(--brand);line-height:1.15;letter-spacing:-.3px}
+  .fee span{font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -246,35 +249,35 @@
 <header class="hero">
   <div class="brandline">
     <span class="diamond"></span>
-    <b>Egypt&nbsp;Energy&nbsp;&amp;&nbsp;Firex&nbsp;2026</b>
+    <b>Cityscape&nbsp;Egypt&nbsp;2026</b>
     <span class="by">· Customer Service Knowledge Base · by Informa Markets</span>
     <nav class="eventswitch">
       <span class="es-label">Event</span>
       <a href="index.html">Pharmaconex 2026</a>
       <a href="sahara.html">Sahara Expo 2026</a>
       <a href="autotech.html">Autotech 2026</a>
-      <a href="egyptenergy.html" class="active">Egypt Energy &amp; Firex 2026</a>
-      <a href="cityscape.html">Cityscape Egypt 2026</a>
+      <a href="egyptenergy.html">Egypt Energy &amp; Firex 2026</a>
+      <a href="cityscape.html" class="active">Cityscape Egypt 2026</a>
       <a href="whx.html">WHX Johannesburg 2026</a>
       <a href="nairobi.html">WHX Nairobi 2026</a>
       <a href="nigeria.html">Nigeria Energy 2026</a>
     </nav>
   </div>
   <h1>Everything the CS team needs — in one place.</h1>
-  <p class="tag">Quick answers, links, contacts, suppliers and timings for Egypt Energy &amp; Firex 2026 — Egypt's energy and fire-safety exhibition, co-located at the EIEC. Search it, copy it, done.</p>
+  <p class="tag">Quick answers, links, contacts, suppliers and timings for Cityscape Egypt 2026 — the region's real-estate and property investment show, celebrating 25 years. Search it, copy it, done.</p>
 
   <div class="facts">
-    <div class="fact"><span class="ic">📅</span><span><span class="k">Dates</span><span class="v">12 – 14 October 2026</span></span></div>
-    <div class="fact"><span class="ic">🕒</span><span><span class="k">Opening hours</span><span class="v">10:00 – 19:00 (Mon &amp; Tue) · 10:00 – 18:00 (Wed)</span></span></div>
-    <div class="fact"><span class="ic">📍</span><span><span class="k">Venue</span><span class="v">Egypt International Exhibition Center (EIEC)</span></span></div>
+    <div class="fact"><span class="ic">📅</span><span><span class="k">Dates</span><span class="v">30 September – 3 October 2026</span></span></div>
+    <div class="fact"><span class="ic">🕒</span><span><span class="k">Opening hours</span><span class="v">12:00 – 22:00 (14:00 – 22:00 on Fri 2 Oct)</span></span></div>
+    <div class="fact"><span class="ic">📍</span><span><span class="k">Venue</span><span class="v">Egypt International Exhibition Center (EIEC), Nasr City</span></span></div>
   </div>
 
   <div class="hero-actions">
     <a class="btn primary" href="templates.html">🗂️ Response Templates</a>
-    <a class="btn ghost" href="https://www.egypt-energy.com/en/home.html" target="_blank" rel="noopener">🌐 Event Website</a>
-    <a class="btn ghost" href="https://www.expocad.com/host/fx/informa/26EGEN/exfx.html#floorplan" target="_blank" rel="noopener">🗺️ Floorplan</a>
-    <a class="btn ghost" href="https://register.visitcloud.com/survey/0o9axqqe3yahc?actioncode=WEB1" target="_blank" rel="noopener">📝 Visitor Registration</a>
-    <a class="btn ghost" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144816,31.381825,2450m" target="_blank" rel="noopener">🧭 Location</a>
+    <a class="btn ghost" href="https://www.cityscape-events.com/egypt/" target="_blank" rel="noopener">🌐 Event Website</a>
+    <a class="btn ghost" href="https://cityscape-egypt.invisual.app/?mapId=bmLBgB97GqoKr" target="_blank" rel="noopener">🗺️ Venue Map</a>
+    <a class="btn ghost" href="https://register.visitcloud.com/survey/37n7u2ke4tuh0?formName=Visitor_Registration_Form&amp;formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">📝 Visitor Registration</a>
+    <a class="btn ghost" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144915,31.3849682,17z" target="_blank" rel="noopener">🧭 Location</a>
   </div>
 </header>
 
@@ -294,7 +297,7 @@
     <a href="#links" class="active">Quick Links</a>
     <a href="#contacts">Contacts &amp; Routing</a>
     <a href="#visitors">Visitors</a>
-    <a href="#conference">Conference</a>
+    <a href="#programme">Summit, Talks &amp; Features</a>
     <a href="#exhibitors">Exhibitors</a>
     <a href="#onsite">Onsite &amp; Suppliers</a>
     <a href="#timetables">Timetables</a>
@@ -313,44 +316,44 @@
     <div class="sec-head"><span class="emoji">🔗</span><h2>Quick Links &amp; Resources</h2><span class="cnt"></span></div>
     <p class="sec-desc">The most-used external pages. All open in a new tab.</p>
     <div class="grid cols-3">
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/home.html" target="_blank" rel="noopener">
-        <span class="lead">🌐</span><h3>Event Website</h3><p>Official Egypt Energy &amp; Firex 2026 homepage.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/" target="_blank" rel="noopener">
+        <span class="lead">🌐</span><h3>Event Website</h3><p>Official Cityscape Egypt 2026 homepage.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.expocad.com/host/fx/informa/26EGEN/exfx.html#floorplan" target="_blank" rel="noopener">
-        <span class="lead">🗺️</span><h3>Interactive Floorplan</h3><p>Live hall &amp; stand floorplan (ExpoCAD).</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://cityscape-egypt.invisual.app/?mapId=bmLBgB97GqoKr" target="_blank" rel="noopener">
+        <span class="lead">🗺️</span><h3>Cityscape Egypt Venue Map</h3><p>Interactive hall &amp; stand map (Invisual).</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/stand-enquiry.html" target="_blank" rel="noopener">
-        <span class="lead">🏗️</span><h3>Stand Booking Form</h3><p>Stand / space enquiry — then forward to sales.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/exhibitor-enquiry/" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Stand Enquiry Form</h3><p>Exhibitor enquiry — then forward to sales.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/sales-brochure.html" target="_blank" rel="noopener">
-        <span class="lead">📄</span><h3>Sales Brochure Enquiry</h3><p>Benefits of exhibiting — brochure request form.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/exhibitor-directory/" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor Directory</h3><p>Cityscape Egypt exhibitor list.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/exhibit/why-exhibit.html" target="_blank" rel="noopener">
-        <span class="lead">❓</span><h3>Why Exhibit</h3><p>Value proposition for prospective exhibitors.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/sales-brochure/" target="_blank" rel="noopener">
+        <span class="lead">📄</span><h3>Sales Brochure</h3><p>Download the latest sales brochure.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/sponsorship-enquiry.html" target="_blank" rel="noopener">
-        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Become a sponsor of Egypt Energy 2026.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/why-exhibit/" target="_blank" rel="noopener">
+        <span class="lead">❓</span><h3>Why Exhibit</h3><p>Value proposition for exhibitors.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/exhibit/product-sectors.html" target="_blank" rel="noopener">
-        <span class="lead">🔋</span><h3>Product Sectors</h3><p>The 6 product sectors at Egypt Energy.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/sponsorship/sponsorship-enquiry/" target="_blank" rel="noopener">
+        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Enquire about sponsorship options.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/exhibitor-directory.html" target="_blank" rel="noopener">
-        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Egypt Energy &amp; Firex 2026 exhibitor directory.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/0o9axqqe3yahc?actioncode=WEB1" target="_blank" rel="noopener">
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/37n7u2ke4tuh0?formName=Visitor_Registration_Form&amp;formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">
         <span class="lead">📝</span><h3>Visitor Registration</h3><p>Free visitor registration (VisitCloud).</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">
-        <span class="lead">🗓️</span><h3>Conference Agenda</h3><p>Full Egypt Energy conference programme.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/content-and-features/cityscape-talks-agenda/cityscape-talks-agenda-day-1/" target="_blank" rel="noopener">
+        <span class="lead">🎙️</span><h3>Cityscape Talks Agenda</h3><p>Day-by-day Cityscape Talks programme.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.hotelmap.com/MMWWM" target="_blank" rel="noopener">
-        <span class="lead">🏨</span><h3>Discounted Hotels</h3><p>HotelMap — official hotel partner.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/content-and-features/proptech-challenge/" target="_blank" rel="noopener">
+        <span class="lead">🚀</span><h3>Egypt PropTech Challenge</h3><p>Registration link is published on this page.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144816,31.381825,2450m" target="_blank" rel="noopener">
-        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>Egypt International Exhibition Center (EIEC).</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://hotelmap.com/MB0LW" target="_blank" rel="noopener">
+        <span class="lead">🏨</span><h3>Book Your Hotel</h3><p>HotelMap — official hotels partner.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/contact-us.html" target="_blank" rel="noopener">
-        <span class="lead">📇</span><h3>Contact Us — Show Team</h3><p>Full show team contact details on the website.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/about/press/" target="_blank" rel="noopener">
+        <span class="lead">📰</span><h3>Press &amp; Media</h3><p>Media enquiries, partnerships &amp; press registration.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144915,31.3849682,17z" target="_blank" rel="noopener">
+        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>EIEC — El-Moshir Tantawy Axis, Nasr City.</p><span class="go">Open ↗</span></a>
 
     </div>
   </section>
@@ -363,68 +366,65 @@
 
       <div class="card routecard searchable">
         <div class="top"><span class="emoji">📞</span><b>Customer Service (Organiser)</b><span class="badge">Hotline</span></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Egyptenergyandfirexcs@informa.com">Egyptenergyandfirexcs@informa.com</a></span>
-          <button class="copy" data-copy="Egyptenergyandfirexcs@informa.com">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:cityscapeegyptcs@informa.com">cityscapeegyptcs@informa.com</a></span>
+          <button class="copy" data-copy="cityscapeegyptcs@informa.com">⧉</button></div>
         <div class="contact"><span class="who">Landline</span><span class="chip"><a href="tel:+20223226904">+20 2 2322 6904</a></span>
           <button class="copy" data-copy="+20223226904">⧉</button></div>
-        <div class="contact"><span class="who">WhatsApp</span><span class="chip"><a href="https://wa.me/20223226982" target="_blank" rel="noopener">+20 22 322 6982</a></span>
+        <div class="contact"><span class="who">WhatsApp</span><span class="chip"><a href="https://wa.me/20223226982" target="_blank" rel="noopener">+20 2 2322 6982</a></span>
           <button class="copy" data-copy="+20223226982">⧉</button></div>
-        <div class="note-inline">🕘 Available <b>9 AM – 5 PM, Sunday–Thursday</b> (Egypt time).<br>Informa Markets · Building 12B03/B, 1st Floor, Cairo Festival City, New Cairo.</div>
+        <div class="note-inline">🕘 Available <b>9 AM – 5 PM, Sunday–Thursday</b> (Egypt time).<br>Informa Markets · Building 12B03/B, 1st Floor, Cairo Festival City, New Cairo.<br>The supplier table also lists WhatsApp <b>+20 2 2322 6900</b> — try the 6982 line first.</div>
       </div>
 
       <div class="card routecard searchable">
         <div class="top"><span class="emoji">🛠️</span><b>Technical Department — Space Only Plan Approvals</b></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:techegyptenergy@informa.com">techegyptenergy@informa.com</a></span>
-          <button class="copy" data-copy="techegyptenergy@informa.com">⧉</button></div>
-        <div class="note-inline">Space-only stand plans, rigging and health &amp; safety approvals.</div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:techcse@informa.com">techcse@informa.com</a></span>
+          <button class="copy" data-copy="techcse@informa.com">⧉</button></div>
+        <div class="note-inline">Also the inbox for <b>early access</b> requests during build-up.</div>
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🛂</span><b>Visa / Invitation Letter Requests</b></div>
-        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Visitors and exhibitors issue their own letter through the automated visa link — see the Visitors section.</p>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Egyptenergyandfirexcs@informa.com">Egyptenergyandfirexcs@informa.com</a></span>
-          <button class="copy" data-copy="Egyptenergyandfirexcs@informa.com">⧉</button></div>
-        <div class="contact"><span class="who">WhatsApp</span><span class="chip"><a href="https://wa.me/20223226982" target="_blank" rel="noopener">+20 22 322 6982</a></span>
-          <button class="copy" data-copy="+20223226982">⧉</button></div>
+        <div class="top"><span class="emoji">🛂</span><b>Visa / Participation Letter Requests</b></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">No automated visa link for Cityscape — the CS team issues the letter from the passport details + registration key.</p>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:cityscapeegyptcs@informa.com">cityscapeegyptcs@informa.com</a></span>
+          <button class="copy" data-copy="cityscapeegyptcs@informa.com">⧉</button></div>
       </div>
 
       <div class="card routecard searchable">
         <div class="top"><span class="emoji">💼</span><b>Sales Team — Stand Booking</b><span class="badge">Sales</span></div>
-        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Stand enquiries are submitted on the stand booking form, then forwarded to:</p>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:medhat.shawky@ind-group.com">medhat.shawky@ind-group.com</a></span>
-          <button class="copy" data-copy="medhat.shawky@ind-group.com">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:menna.elkassas@ind-group.com">menna.elkassas@ind-group.com</a></span>
-          <button class="copy" data-copy="menna.elkassas@ind-group.com">⧉</button></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Stand enquiries are submitted on the enquiry form, then forwarded to:</p>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:george.hany@ind-group.com">george.hany@ind-group.com</a></span>
+          <button class="copy" data-copy="george.hany@ind-group.com">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:robier.danial@ind-group.com">robier.danial@ind-group.com</a></span>
+          <button class="copy" data-copy="robier.danial@ind-group.com">⧉</button></div>
       </div>
 
       <div class="card routecard searchable">
         <div class="top"><span class="emoji">⭐</span><b>Sponsorship Opportunities</b><span class="badge">Sales</span></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:medhat.shawky@ind-group.com">medhat.shawky@ind-group.com</a></span>
-          <button class="copy" data-copy="medhat.shawky@ind-group.com">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:menna.elkassas@ind-group.com">menna.elkassas@ind-group.com</a></span>
-          <button class="copy" data-copy="menna.elkassas@ind-group.com">⧉</button></div>
-        <div class="note-inline">Customer submits the <a href="https://www.egypt-energy.com/en/forms/sponsorship-enquiry.html" target="_blank" rel="noopener">Sponsorship Enquiry form ↗</a> first.</div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:george.hany@ind-group.com">george.hany@ind-group.com</a></span>
+          <button class="copy" data-copy="george.hany@ind-group.com">⧉</button></div>
+        <div class="note-inline">Customer submits the <a href="https://www.cityscape-events.com/egypt/exhibit/sponsorship/sponsorship-enquiry/" target="_blank" rel="noopener">Sponsorship Enquiry form ↗</a> first; summit sponsorship has its <a href="https://www.cityscape-events.com/egypt-cityscape-summit/content-and-features/summit-sponsorship-enquiry/" target="_blank" rel="noopener">own form ↗</a>.</div>
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">📰</span><b>Media Partnerships</b></div>
-        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Handled by the marketing team — route through the website contact form.</p>
-        <div class="note-inline"><a href="https://www.egypt-energy.com/en/contact-us.html" target="_blank" rel="noopener">Egypt Energy · Contact Us ↗</a></div>
+        <div class="top"><span class="emoji">📰</span><b>Media, Partnership &amp; Press Registration</b></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Press badges, media partnerships and press enquiries all start on the press page.</p>
+        <div class="note-inline"><a href="https://www.cityscape-events.com/egypt/about/press/" target="_blank" rel="noopener">Cityscape Egypt · Press ↗</a></div>
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🎤</span><b>Speaker Requests</b></div>
-        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Speakers apply through the speaker enquiry form; the content team follows up.</p>
-        <div class="note-inline"><a href="https://www.egypt-energy.com/en/forms/speaker-enquiry.html" target="_blank" rel="noopener">Speaker Enquiry form ↗</a></div>
+        <div class="top"><span class="emoji">📒</span><b>Exhibitors Directory</b><span class="badge">Informa</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Listings, profiles and corrections in the exhibitor directory.</p>
+        <div class="contact"><span class="who">Mariam Emara</span><span class="chip"><a href="tel:+201080222628">+20 108 022 2628</a></span>
+          <button class="copy" data-copy="+201080222628">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:mariam.emara@informa.com">mariam.emara@informa.com</a></span>
+          <button class="copy" data-copy="mariam.emara@informa.com">⧉</button></div>
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🏨</span><b>Travel &amp; Accommodation</b><span class="badge">Atelier</span></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Cozmotravel@informa.com">Cozmotravel@informa.com</a></span>
-          <button class="copy" data-copy="Cozmotravel@informa.com">⧉</button></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+20225876304">+20 2 2587 6304</a></span>
-          <button class="copy" data-copy="+20225876304">⧉</button></div>
-        <div class="note-inline">Or book directly on <a href="https://www.hotelmap.com/MMWWM" target="_blank" rel="noopener">HotelMap ↗</a>.</div>
+        <div class="top"><span class="emoji">🛡️</span><b>Security</b><span class="badge">Informa</span></div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Onsite security questions go to the Customer Service inbox.</p>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:cityscapeegyptcs@informa.com">cityscapeegyptcs@informa.com</a></span>
+          <button class="copy" data-copy="cityscapeegyptcs@informa.com">⧉</button></div>
       </div>
 
     </div>
@@ -433,109 +433,107 @@
   <!-- ============ VISITORS ============ -->
   <section class="kb-section" id="visitors">
     <div class="sec-head"><span class="emoji">🧑‍🤝‍🧑</span><h2>Visitors</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Registration, visa letters and what is on for visitors. Entry is free with a completed registration.</p>
+    <p class="sec-desc">Registration, badges and what visitors need on the day.</p>
     <div class="grid cols-2">
 
-      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/0o9axqqe3yahc?actioncode=WEB1" target="_blank" rel="noopener">
+      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/37n7u2ke4tuh0?formName=Visitor_Registration_Form&amp;formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">
         <span class="lead">📝</span><h3>Visitor Registration Form</h3><p>Main visitor registration (VisitCloud).</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/10sncklrd4n0w/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">
-        <span class="lead">🛂</span><h3>Visa Initiation Letter</h3><p>Automated visa invitation letter — needs the registration key.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/content-and-features/cityscape-talks-agenda/cityscape-talks-agenda-day-1/" target="_blank" rel="noopener">
+        <span class="lead">🎙️</span><h3>Cityscape Talks Agenda</h3><p>What is on across the show days.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/visit/who-attends.html" target="_blank" rel="noopener">
-        <span class="lead">👥</span><h3>Who Attends Egypt Energy?</h3><p>200+ exhibitors · 6 product sectors · 3 days · 1 event.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/visit/egypt-energy-experiences-.html" target="_blank" rel="noopener">
-        <span class="lead">✨</span><h3>Egypt Energy Experiences</h3><p>Show features, zones and onsite experiences.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/exhibitor-directory.html" target="_blank" rel="noopener">
-        <span class="lead">📋</span><h3>Exhibitor Directory</h3><p>Who is exhibiting in 2026.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/content-and-features/proptech-challenge/" target="_blank" rel="noopener">
+        <span class="lead">🚀</span><h3>Egypt PropTech Challenge</h3><p>Registration link coming on this page.</p><span class="go">Open ↗</span></a>
 
       <a class="card linkcard searchable" href="https://visa2egypt.gov.eg/eVisa/Home" target="_blank" rel="noopener">
         <span class="lead">🌍</span><h3>Egypt Visa Requirements</h3><p>Official Egypt e-Visa portal.</p><span class="go">Open ↗</span></a>
 
       <div class="card searchable">
-        <span class="lead">🎟️</span><h3>Onsite Registration</h3>
-        <p>Pre-registration is on the Customer Center. Onsite registration is in <b>lobby Hall 3 for FIREX</b> and
-        <b>lobby Hall 4 for Egypt Energy</b>, during the registration hours in the Timetables section.
-        Everyone must show a <b>valid ID</b> (driving licence, CPR or passport) on arrival at the EIEC.</p>
+        <span class="lead">🎟️</span><h3>Onsite Registration &amp; Badges</h3>
+        <p>Online pre-registration is on the Customer Center. Onsite registration is at the <b>Hall 1 &amp; 4 Lobby</b>
+        during the registration hours. <b>All visitors, exhibitors and contractors must register</b>, badges must be worn
+        at all times on the exhibition floor, and everyone must show a <b>valid ID</b> (driving licence, CPR or passport)
+        on arrival at the EIEC.</p>
+      </div>
+
+      <div class="card searchable">
+        <span class="lead">✅</span><h3>After Registering</h3>
+        <p>Every visitor receives a <b>confirmation email containing the visitor badge</b> right after a successful
+        registration. If they cannot find it, ask them to check Junk / Spam before resending it from the CS inbox.</p>
       </div>
 
     </div>
   </section>
 
-  <!-- ============ CONFERENCE ============ -->
-  <section class="kb-section" id="conference">
-    <div class="sec-head"><span class="emoji">🎓</span><h2>Conference &amp; Features</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Agenda, speakers and the show features — plus the 2026 sponsors.</p>
-    <div class="grid cols-3">
+  <!-- ============ SUMMIT, TALKS & FEATURES ============ -->
+  <section class="kb-section" id="programme">
+    <div class="sec-head"><span class="emoji">🎤</span><h2>Summit, Talks &amp; Features</h2><span class="cnt"></span></div>
+    <p class="sec-desc">The Cityscape Summit runs three weeks before the show; Talks and the PropTech Challenge run onsite.</p>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">
-        <span class="lead">🗓️</span><h3>The Agenda</h3><p>Full conference agenda for 2026.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/conference/speakers.html" target="_blank" rel="noopener">
-        <span class="lead">🎙️</span><h3>Speakers for 2026</h3><p>Confirmed conference speakers.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/speaker-enquiry.html" target="_blank" rel="noopener">
-        <span class="lead">🎤</span><h3>Speaker Enquiry Form</h3><p>Apply to speak at the conference.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/download-the-egypt-energy-conference-agenda.html" target="_blank" rel="noopener">
-        <span class="lead">📘</span><h3>Conference Brochure</h3><p>Download the Egypt Energy conference agenda.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/visit/egypt-energy-experiences-.html" target="_blank" rel="noopener">
-        <span class="lead">✨</span><h3>Egypt Energy Experiences</h3><p>Onsite features and experiences.</p><span class="go">Open ↗</span></a>
-
+    <div class="card feature searchable" style="margin-bottom:14px">
+      <h3>🏙️ Cityscape Summit — where investors meet, ideas flow &amp; deals take shape</h3>
+      <div class="meta">
+        <span>📅 Monday, 7 September 2026</span>
+        <span>🕔 5 PM – 9 PM</span>
+        <span>📍 St. Regis, New Capital, Cairo</span>
+      </div>
+      <div class="applinks">
+        <a class="minibtn" href="https://collardapp.com/events/019ecf85-1cf3-726d-892a-1861c1e4f388" target="_blank" rel="noopener">🎫 Get your ticket</a>
+        <a class="minibtn" href="https://www.cityscape-events.com/egypt-cityscape-summit/summit-agenda/" target="_blank" rel="noopener">🗓️ Summit agenda</a>
+        <a class="minibtn" href="https://www.cityscape-events.com/egypt-cityscape-summit/content-and-features/summit-sponsorship-enquiry/" target="_blank" rel="noopener">⭐ Sponsor the summit</a>
+      </div>
+      <div class="note-inline">The summit is a separate evening event from the exhibition — tickets are booked on Collard, not through visitor registration.</div>
     </div>
 
-    <div class="card searchable" style="margin-top:14px">
-      <h3>🏅 2026 Sponsors</h3>
-      <p>Named sponsors of Egypt Energy 2026 — useful when a customer asks who is backing the show.</p>
-      <div class="sponsors">
-        <div class="sponsor"><span class="tier">Diamond</span><span class="nm">ONA Electric Industries</span></div>
-        <div class="sponsor"><span class="tier">Platinum</span><span class="nm">EPS Electric</span></div>
-        <div class="sponsor"><span class="tier">Bronze</span><span class="nm">Star Trans</span></div>
-      </div>
+    <div class="grid cols-2">
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/content-and-features/cityscape-talks-agenda/cityscape-talks-agenda-day-1/" target="_blank" rel="noopener">
+        <span class="lead">🎙️</span><h3>Cityscape Talks Agenda</h3><p>Day-by-day conference programme at the show.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/content-and-features/proptech-challenge/" target="_blank" rel="noopener">
+        <span class="lead">🚀</span><h3>Egypt PropTech Challenge</h3><p>The registration link will be published on this page — tell customers to keep an eye on it.</p><span class="go">Open ↗</span></a>
     </div>
   </section>
 
   <!-- ============ EXHIBITORS ============ -->
   <section class="kb-section" id="exhibitors">
     <div class="sec-head"><span class="emoji">🏢</span><h2>Exhibitors</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Booking, the Customer Centre Portal, badges and visa letters.</p>
+    <p class="sec-desc">Booking, the Customer Centre Portal, badges and directory listings.</p>
 
     <div class="card searchable" style="margin-bottom:14px">
-      <h3>🖥️ Exhibitor Registration — Customer Centre Portal</h3>
-      <p style="margin-bottom:12px">Exhibitors register their team through the <b>Customer Centre Portal</b>. Guide them through these steps:</p>
+      <h3>🖥️ Exhibitor Badge Registration — Customer Centre Portal</h3>
+      <p style="margin-bottom:12px">The Operations Contact registers the team from the Customer Centre after logging in:</p>
       <div class="steps">
-        <div class="step"><div>Log in to the <b>Customer Centre Portal</b> and open the <b>Badges / QR Codes</b> tab.</div></div>
-        <div class="step"><div>Check <b>General Booth Information</b> — booth number, size and total <b>badge allotments</b>.</div></div>
-        <div class="step"><div>Under <b>Registered Badges</b>, select the booth from the dropdown.</div></div>
-        <div class="step"><div>Use <b>Register Single Member</b> or <b>Register Multiple Members</b> to add the team.</div></div>
-        <div class="step"><div>Use <b>Export Badges</b> to download, or <b>Request Extra Badges</b> if more are needed.</div></div>
+        <div class="step"><div>Open the <b>Badges / QR Codes</b> tab in the Customer Centre.</div></div>
+        <div class="step"><div>Check <b>General Booth Information</b> — booth number, size (SQM) and <b>badge allotments</b>, created and remaining badges.</div></div>
+        <div class="step"><div>Under <b>Registered Badges</b>, pick the booth from the <b>--Select booth--</b> dropdown.</div></div>
+        <div class="step"><div>Use <b>Register Single Member</b> or <b>Register Multiple Members</b>; <b>Export Badges</b> to download, <b>Request Extra badges</b> if the allotment runs out.</div></div>
+        <div class="step"><div>Exhibitors can also <b>extend a free visitor invitation</b> to their clients from the same area.</div></div>
       </div>
-      <div class="note-inline">Stand enquiries submitted on the booking form are forwarded to
-        <b>medhat.shawky@ind-group.com</b> and <b>menna.elkassas@ind-group.com</b>.</div>
+      <p class="cs-catlabel">Customer Centre — Badges / QR Codes tab:</p>
+      <a class="catimg-link" href="assets/cityscape-badges-portal.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cityscape-badges-portal.png" alt="Customer Centre badges tab" loading="lazy"></a>
+      <div class="note-inline">Badge registration problems → <b>cityscapeegyptcs@informa.com</b>. Stand enquiries submitted on the form are forwarded to
+        <b>george.hany@ind-group.com</b> and <b>robier.danial@ind-group.com</b>.</div>
     </div>
 
     <div class="grid cols-2">
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/stand-enquiry.html" target="_blank" rel="noopener">
-        <span class="lead">🏗️</span><h3>Stand Booking Form</h3><p>Stand / space enquiry for new exhibitors.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/exhibitor-enquiry/" target="_blank" rel="noopener">
+        <span class="lead">🏗️</span><h3>Stand Enquiry Form</h3><p>Exhibitor / stand enquiry for new exhibitors.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/exhibit/why-exhibit.html" target="_blank" rel="noopener">
-        <span class="lead">❓</span><h3>Why Exhibit</h3><p>Brand awareness &amp; new business opportunities.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/why-exhibit/" target="_blank" rel="noopener">
+        <span class="lead">❓</span><h3>Why Exhibit</h3><p>Why brands exhibit at Cityscape Egypt.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/exhibit/product-sectors.html" target="_blank" rel="noopener">
-        <span class="lead">🔋</span><h3>Product Sectors</h3><p>Where the exhibitor's products fit.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/sales-brochure/" target="_blank" rel="noopener">
+        <span class="lead">📄</span><h3>Sales Brochure</h3><p>Latest sales brochure download.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/sales-brochure.html" target="_blank" rel="noopener">
-        <span class="lead">📄</span><h3>Sales Brochure Enquiry</h3><p>Send the exhibitor the sales brochure.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/sponsorship/sponsorship-enquiry/" target="_blank" rel="noopener">
+        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Sponsorship packages &amp; options.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.egypt-energy.com/en/forms/sponsorship-enquiry.html" target="_blank" rel="noopener">
-        <span class="lead">⭐</span><h3>Sponsorship Enquiry</h3><p>Sponsorship packages &amp; opportunities.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.cityscape-events.com/egypt/exhibit/exhibitor-directory/" target="_blank" rel="noopener">
+        <span class="lead">📋</span><h3>Exhibitor Directory</h3><p>Confirmed exhibitors list.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/10sncklrd4n0w/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">
-        <span class="lead">🛂</span><h3>Exhibitor Visa Letter</h3><p>Automated visa invitation letter (registration key required).</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://cityscape-egypt.invisual.app/?mapId=bmLBgB97GqoKr" target="_blank" rel="noopener">
+        <span class="lead">🗺️</span><h3>Venue Map</h3><p>Find the stand on the interactive map.</p><span class="go">Open ↗</span></a>
 
     </div>
   </section>
@@ -543,7 +541,26 @@
   <!-- ============ ONSITE & SUPPLIERS ============ -->
   <section class="kb-section" id="onsite">
     <div class="sec-head"><span class="emoji">🧰</span><h2>Onsite &amp; Official Suppliers</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Official / preferred suppliers for exhibitors — orders, contacts and deadlines. Source: Egypt Energy &amp; Firex 2026 contact information.</p>
+    <p class="sec-desc">Official / preferred suppliers for exhibitors — orders, contacts and deadlines. Source: Cityscape Egypt 2026 contact information.</p>
+
+    <div class="card searchable" style="margin-bottom:16px">
+      <h3>💰 Onsite Fees for Space-Only Stands</h3>
+      <div class="grid cols-2" style="margin-top:10px">
+        <div class="card" style="box-shadow:none">
+          <div class="fee"><b>100 EGP / SQM</b><span>decoration fee → <b>High Speed</b></span></div>
+          <p style="margin-top:8px">High Speed is the appointed contractor coordinating the entry of space-only contractors during build-up and
+          dismantling. They collect the decoration fee and issue the <b>bracelets</b> that let workers in and out of the hall, and they contact
+          each contractor before build-up.</p>
+        </div>
+        <div class="card" style="box-shadow:none">
+          <div class="fee"><b>50 EGP / SQM</b><span>workers fee → <b>Expo Tech</b></span></div>
+          <p style="margin-top:8px">A new venue fee, collected by Expo Tech on the <b>first day of build-up</b> from their office in the EIEC,
+          between <b>halls 2 &amp; 3</b>.</p>
+        </div>
+      </div>
+      <div class="note-inline">⚠️ If another supplier claims to be an official supplier, ask to see their <b>official Informa Markets stamp of approval</b>.</div>
+    </div>
+
     <div class="grid cols-3">
 
       <div class="card routecard searchable">
@@ -556,28 +573,15 @@
           <button class="copy" data-copy="+201110868988">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Sara@expotech-eg.com">Sara@expotech-eg.com</a></span>
           <button class="copy" data-copy="Sara@expotech-eg.com">⧉</button></div>
-        <div class="note-inline">24hr power must be ordered here — standard power is on 30 min before, off 30 min after show hours.</div>
+        <div class="note-inline">24hr power must be ordered here — standard power is on 30 min before and off 30 min after show hours.</div>
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🧱</span><b>Shell Scheme, Furniture, AV &amp; Graphics</b><span class="badge">United Group</span></div>
+        <div class="top"><span class="emoji">🧱</span><b>General Service Contractor — Furniture, Electricals, AV &amp; Graphics</b><span class="badge">United Group</span></div>
         <div class="contact"><span class="who">Ali Mohamed</span><span class="chip"><a href="tel:+201114567957">+20 111 456 7957</a></span>
           <button class="copy" data-copy="+201114567957">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:ayassin@ug-expo.com">ayassin@ug-expo.com</a></span>
           <button class="copy" data-copy="ayassin@ug-expo.com">⧉</button></div>
-        <div class="contact"><span class="who">Youssef Hisham</span><span class="chip"><a href="tel:+201228006634">+20 122 800 6634</a></span>
-          <button class="copy" data-copy="+201228006634">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:yhesham@ug-expo.com">yhesham@ug-expo.com</a></span>
-          <button class="copy" data-copy="yhesham@ug-expo.com">⧉</button></div>
-        <div class="note-inline">General Service Contractor — shell scheme, extra stand fitting furniture, shell scheme electricals, AV and graphics.</div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🪵</span><b>Wooden Stands — General Service Contractor</b><span class="badge">Cubes</span></div>
-        <div class="contact"><span class="who">Mazen El-sayed</span><span class="chip"><a href="tel:+201014763593">+20 101 476 3593</a></span>
-          <button class="copy" data-copy="+201014763593">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:mazen.elsayed@cubes-eg.net">mazen.elsayed@cubes-eg.net</a></span>
-          <button class="copy" data-copy="mazen.elsayed@cubes-eg.net">⧉</button></div>
       </div>
 
       <div class="card routecard searchable">
@@ -595,22 +599,9 @@
 
       <div class="card routecard searchable">
         <div class="top"><span class="emoji">✅</span><b>Health &amp; Safety — Stand Plan Approvals</b><span class="badge">Informa Tech</span></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:techegyptenergy@informa.com">techegyptenergy@informa.com</a></span>
-          <button class="copy" data-copy="techegyptenergy@informa.com">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:techcse@informa.com">techcse@informa.com</a></span>
+          <button class="copy" data-copy="techcse@informa.com">⧉</button></div>
         <div class="note-inline">Informa Markets · Building 12B03/B, 1st Floor, Cairo Festival City, New Cairo.</div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">📶</span><b>Wifi / Telephone / Data</b><span class="badge">NCIEC</span></div>
-        <div class="contact"><span class="who">Tel</span><span class="chip"><a href="tel:+20224025048">+20 2 2402 5048</a></span>
-          <button class="copy" data-copy="+20224025048">⧉</button></div>
-        <div class="contact"><span class="who">Mobile</span><span class="chip"><a href="tel:+201226284352">+20 122 628 4352</a></span>
-          <button class="copy" data-copy="+201226284352">⧉</button></div>
-        <div class="contact"><span class="who">Mobile</span><span class="chip"><a href="tel:+201002253113">+20 100 225 3113</a></span>
-          <button class="copy" data-copy="+201002253113">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:reservation@nc-iec.com">reservation@nc-iec.com</a></span>
-          <button class="copy" data-copy="reservation@nc-iec.com">⧉</button></div>
-        <div class="note-inline">Deadline: <b>Tuesday 1 September 2026</b> · Postal Code 11835, Cairo.</div>
       </div>
 
       <div class="card routecard searchable">
@@ -623,7 +614,7 @@
           <button class="copy" data-copy="+201119087878">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:menna.hussien@tbsegypt.com">menna.hussien@tbsegypt.com</a></span>
           <button class="copy" data-copy="menna.hussien@tbsegypt.com">⧉</button></div>
-        <div class="note-inline">Holiday Inn — InterContinental Cairo Citystars, Omar Ibn El Khattab St., Heliopolis · TBS — 18 Mahmoud Hamdy St., Sheraton, Cairo.</div>
+        <div class="note-inline">Holiday Inn — InterContinental Cairo Citystars, Heliopolis · TBS — 18 Mahmoud Hamdy St., Sheraton, Cairo.</div>
       </div>
 
       <div class="card routecard searchable">
@@ -655,22 +646,46 @@
       </div>
 
       <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📶</span><b>Internet / Wifi / Telephone / Data</b><span class="badge">NCIEC</span></div>
+        <div class="contact"><span class="who">Tel</span><span class="chip"><a href="tel:+20224025048">+20 2 2402 5048</a></span>
+          <button class="copy" data-copy="+20224025048">⧉</button></div>
+        <div class="contact"><span class="who">Mobile</span><span class="chip"><a href="tel:+201226284352">+20 122 628 4352</a></span>
+          <button class="copy" data-copy="+201226284352">⧉</button></div>
+        <div class="contact"><span class="who">Mobile</span><span class="chip"><a href="tel:+201002253113">+20 100 225 3113</a></span>
+          <button class="copy" data-copy="+201002253113">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:reservation@nc-iec.com">reservation@nc-iec.com</a></span>
+          <button class="copy" data-copy="reservation@nc-iec.com">⧉</button></div>
+        <div class="note-inline">Deadline: <b>Thursday 10 September 2026</b> · Postal Code 11835, Cairo.</div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">📐</span><b>Certified Consultant Engineering Office</b><span class="badge">Image CEB</span></div>
+        <div class="contact"><span class="who">Dr. Alaa Abu Elezz</span><span class="chip"><a href="tel:+201001999547">+20 100 199 9547</a></span>
+          <button class="copy" data-copy="+201001999547">⧉</button></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:image_ezz@yahoo.com">image_ezz@yahoo.com</a></span>
+          <button class="copy" data-copy="image_ezz@yahoo.com">⧉</button></div>
+        <div class="note-inline">12 Aloboor – Salah Salem – New Egypt – Office 76.</div>
+      </div>
+
+      <div class="card routecard searchable">
+        <div class="top"><span class="emoji">🛂</span><b>Visa / Participation Letters</b><span class="badge">Informa CS</span></div>
+        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:cityscapeegyptcs@informa.com">cityscapeegyptcs@informa.com</a></span>
+          <button class="copy" data-copy="cityscapeegyptcs@informa.com">⧉</button></div>
+      </div>
+
+      <div class="card routecard searchable">
         <div class="top"><span class="emoji">🏨</span><b>Accommodation / Hotel Booking</b><span class="badge">HotelMap</span></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Cozmotravel@informa.com">Cozmotravel@informa.com</a></span>
-          <button class="copy" data-copy="Cozmotravel@informa.com">⧉</button></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+20225876304">+20 2 2587 6304</a></span>
-          <button class="copy" data-copy="+20225876304">⧉</button></div>
-        <div class="note-inline">Book directly on <a href="https://www.hotelmap.com/MMWWM" target="_blank" rel="noopener">HotelMap ↗</a> — the official hotels partner.</div>
+        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Official hotels partner — book on <a href="https://hotelmap.com/MB0LW" target="_blank" rel="noopener">HotelMap ↗</a> or through the event travel page.</p>
       </div>
 
     </div>
 
-    <div class="subhead">🏗️ Recommended stand contractors</div>
-    <p class="sec-desc">Not official suppliers — these are contractors the show recommends when an exhibitor asks for a stand builder.</p>
+    <div class="subhead">🏗️ Recommended stand build preferred partners</div>
+    <p class="sec-desc">Space-only stand builders recommended by the show — not the official general service contractor.</p>
     <div class="grid cols-3">
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🏗️</span><b>Cubes Advertising</b><span class="badge">Contractor</span></div>
+        <div class="top"><span class="emoji">🏗️</span><b>Cubes Advertising</b><span class="badge">Stand builder</span></div>
         <div class="contact"><span class="who">Ahmed Hashim</span><span class="chip"><a href="tel:+201050057535">+20 10 500 575 35</a></span>
           <button class="copy" data-copy="+201050057535">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:a.hashim@cubes-eg.net">a.hashim@cubes-eg.net</a></span>
@@ -678,7 +693,7 @@
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🏗️</span><b>Beyond</b><span class="badge">Contractor</span></div>
+        <div class="top"><span class="emoji">🏗️</span><b>Beyond</b><span class="badge">Stand builder</span></div>
         <div class="contact"><span class="who">Ahmed Aref</span><span class="chip"><a href="tel:+201028076666">+20 102 807 6666</a></span>
           <button class="copy" data-copy="+201028076666">⧉</button></div>
         <div class="contact"><span class="who">Mobile</span><span class="chip"><a href="tel:+201004040208">+20 100 404 0208</a></span>
@@ -688,7 +703,7 @@
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🏗️</span><b>Events Encore</b><span class="badge">Contractor</span></div>
+        <div class="top"><span class="emoji">🏗️</span><b>Events Encore</b><span class="badge">Stand builder</span></div>
         <div class="contact"><span class="who">Omar Helal</span><span class="chip"><a href="tel:+201002020720">+20 100 202 0720</a></span>
           <button class="copy" data-copy="+201002020720">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Omar.Helal@Events-encore.com">Omar.Helal@Events-encore.com</a></span>
@@ -696,7 +711,7 @@
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🏗️</span><b>The Bold</b><span class="badge">Contractor</span></div>
+        <div class="top"><span class="emoji">🏗️</span><b>The Bold</b><span class="badge">Stand builder</span></div>
         <div class="contact"><span class="who">Sarah Elhommosy</span><span class="chip"><a href="tel:+201116810888">+20 111 681 0888</a></span>
           <button class="copy" data-copy="+201116810888">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Sarah.Elhommosy@thebold-Agency.com">Sarah.Elhommosy@thebold-Agency.com</a></span>
@@ -704,7 +719,7 @@
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🏗️</span><b>United Group Egypt</b><span class="badge">Contractor</span></div>
+        <div class="top"><span class="emoji">🏗️</span><b>United Group Egypt</b><span class="badge">Stand builder</span></div>
         <div class="contact"><span class="who">Toqa Waleed</span><span class="chip"><a href="tel:+201555555095">+20 155 555 5095</a></span>
           <button class="copy" data-copy="+201555555095">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:twaleed@ug-expo.com">twaleed@ug-expo.com</a></span>
@@ -712,7 +727,7 @@
       </div>
 
       <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🏗️</span><b>LVRDJ</b><span class="badge">Contractor</span></div>
+        <div class="top"><span class="emoji">🏗️</span><b>LVRDJ</b><span class="badge">Stand builder</span></div>
         <div class="contact"><span class="who">Ahmed Hisham</span><span class="chip"><a href="tel:+201280991112">+20 128 099 1112</a></span>
           <button class="copy" data-copy="+201280991112">⧉</button></div>
         <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:A.hisham@lvrdj.com">A.hisham@lvrdj.com</a></span>
@@ -727,22 +742,23 @@
   <!-- ============ TIMETABLES ============ -->
   <section class="kb-section" id="timetables">
     <div class="sec-head"><span class="emoji">🕒</span><h2>Timetables</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Show hours, build-up, registration desk and dismantle — from the official show timetable.</p>
+    <p class="sec-desc">Show hours, build-up, registration desk and dismantle — from the official Cityscape Egypt 2026 timetable.</p>
 
     <div class="searchable">
       <h3 style="margin:0 0 10px">🚪 Show Opening Timings</h3>
       <div class="table-wrap"><table>
-        <thead><tr><th>Show Day</th><th>Show Hours</th><th>Exhibitor Access</th><th>Exhibitor Support Desk</th></tr></thead>
+        <thead><tr><th>Show Open Day</th><th>Show Open Hours</th><th>Exhibitor Access</th><th>Exhibitor Support Desk</th></tr></thead>
         <tbody>
-          <tr><td class="day">Mon, 12 Oct 2026</td><td>10:00 – 19:00</td><td>08:00 – 19:30</td><td>08:00 – 19:30</td></tr>
-          <tr><td class="day">Tue, 13 Oct 2026</td><td>10:00 – 19:00</td><td>09:00 – 19:30</td><td>09:00 – 19:30</td></tr>
-          <tr><td class="day">Wed, 14 Oct 2026</td><td>10:00 – 18:00</td><td>09:00 – 18:30</td><td>09:00 – 18:30</td></tr>
+          <tr><td class="day">Wed, 30 Sep 2026</td><td>12:00 – 22:00</td><td>11:00 – 22:00</td><td>11:00 – 22:00</td></tr>
+          <tr><td class="day">Thu, 1 Oct 2026</td><td>12:00 – 22:00</td><td>11:00 – 22:00</td><td>11:00 – 22:00</td></tr>
+          <tr><td class="day">Fri, 2 Oct 2026</td><td>14:00 – 22:00</td><td>13:00 – 22:00</td><td>13:00 – 22:00</td></tr>
+          <tr><td class="day">Sat, 3 Oct 2026</td><td>12:00 – 22:00</td><td>11:00 – 22:00</td><td>11:00 – 22:00</td></tr>
         </tbody>
       </table></div>
       <div class="notice"><b>⚡ Power</b>
         <ul>
           <li>Power to <b>all stands is switched on 30 minutes before the show opens</b> and <b>off 30 minutes after it closes</b> every day.</li>
-          <li>If power is needed beyond that, <b>24hr power must be ordered from the official contractor</b> (Expo Tech).</li>
+          <li>If power is required beyond that, <b>24hr power must be ordered from the official contractor</b> (Expo Tech).</li>
         </ul>
       </div>
     </div>
@@ -752,20 +768,19 @@
       <div class="table-wrap"><table>
         <thead><tr><th>Build-Up Day</th><th>Timings</th><th>Access</th></tr></thead>
         <tbody>
-          <tr><td class="day">Fri, 9 Oct 2026</td><td>10:00 – 23:59</td><td>All contractors &amp; exhibitors</td></tr>
-          <tr><td class="day">Fri, 9 Oct 2026</td><td>18:00 – 20:00</td><td>Exhibitor Support Desk</td></tr>
-          <tr><td class="day">Sat, 10 Oct 2026</td><td>00:00 – 23:59</td><td>All contractors &amp; exhibitors</td></tr>
-          <tr><td class="day">Sat, 10 Oct 2026</td><td>11:00 – 20:00</td><td>Exhibitor Support Desk</td></tr>
-          <tr><td class="day">Sun, 11 Oct 2026</td><td>00:00 – 22:00</td><td>All exhibitors and contractors</td></tr>
-          <tr><td class="day">Sun, 11 Oct 2026</td><td>11:00 – 22:00</td><td>Exhibitor Support Desk</td></tr>
+          <tr><td class="day">Sat, 26 Sep 2026</td><td>08:00 – 23:59</td><td>Space only contractors · Exhibitor Support Desk</td></tr>
+          <tr><td class="day">Sun, 27 Sep 2026</td><td>00:01 – 23:59</td><td>Space only contractors · Exhibitor Support Desk</td></tr>
+          <tr><td class="day">Mon, 28 Sep 2026</td><td>00:01 – 23:59</td><td>Space only contractors · Exhibitor Support Desk &amp; all exhibitors</td></tr>
+          <tr><td class="day">Tue, 29 Sep 2026</td><td>00:01 – 22:00</td><td>Space only contractors · Exhibitor Support Desk &amp; all exhibitors</td></tr>
         </tbody>
       </table></div>
       <div class="notice"><b>⚠️ Important notice</b>
         <ul>
-          <li>All stand construction must be completed by <b>19:00 on Sunday 11 October 2026</b>, including removal of all stand material out of the halls and loading bays.</li>
-          <li>Stand dressing and exhibit set-up must be completed by <b>22:00 on Sunday 11 October 2026</b>.</li>
-          <li>Stands not completed by 19:00 on Sunday 11 October 2026 are charged a <b>late working fee of 2,000 EGP per extra hour</b>.</li>
-          <li>All contractors and exhibitors must design their stand so it can be built and dismantled within the published times.</li>
+          <li>All stand construction must be completed by <b>19:00 on Tuesday 29 September 2026</b>, including removal of all stand material out of the halls and loading bays.</li>
+          <li>Stand dressing and exhibit set-up must be completed by <b>22:00 on Tuesday 29 September 2026</b>.</li>
+          <li>Stands not completed by 19:00 on Tuesday 29 September 2026 are charged a <b>late working fee of 2,000 EGP per extra hour</b>.</li>
+          <li><b>No car access to the venue on the last day of build-up after 18:00</b>, even with a car pass — use the outside car park instead.</li>
+          <li>Early access requests go to <b>techcse@informa.com</b>.</li>
         </ul>
       </div>
     </div>
@@ -775,17 +790,18 @@
       <div class="table-wrap"><table>
         <thead><tr><th>Registration Date</th><th>Exhibitor Timings</th></tr></thead>
         <tbody>
-          <tr><td class="day">Sun, 11 Oct 2026</td><td>12:00 – 20:00</td></tr>
-          <tr><td class="day">Mon, 12 Oct 2026</td><td>08:00 – 18:00</td></tr>
-          <tr><td class="day">Tue, 13 Oct 2026</td><td>09:00 – 18:00</td></tr>
-          <tr><td class="day">Wed, 14 Oct 2026</td><td>09:00 – 17:00</td></tr>
+          <tr><td class="day">Tue, 29 Sep 2026</td><td>14:00 – 22:00</td></tr>
+          <tr><td class="day">Wed, 30 Sep 2026</td><td>11:00 – 22:00</td></tr>
+          <tr><td class="day">Thu, 1 Oct 2026</td><td>11:00 – 22:00</td></tr>
+          <tr><td class="day">Fri, 2 Oct 2026</td><td>13:00 – 22:00</td></tr>
+          <tr><td class="day">Sat, 3 Oct 2026</td><td>11:00 – 22:00</td></tr>
         </tbody>
       </table></div>
-      <div class="notice"><b>ℹ️ Notes</b>
+      <div class="notice"><b>ℹ️ Registration notice</b>
         <ul>
-          <li>Onsite registration is in <b>lobby Hall 3 for FIREX</b> and <b>lobby Hall 4 for Egypt Energy</b>; online pre-registration is on the Customer Center.</li>
-          <li>All visitors, exhibitors and contractors must show a <b>valid ID</b> (driving licence, CPR or passport) on arrival at the EIEC.</li>
-          <li>The source timetable labels these rows Sunday / Tuesday / Wednesday / Thursday — the <b>dates</b> above are the reference (12 Oct 2026 is a Monday).</li>
+          <li>For security purposes <b>all visitors, exhibitors and contractors must register</b>, and badges must be worn at all times on the exhibition floor.</li>
+          <li>Online pre-registration is on the Customer Center; onsite registration is at the <b>Hall 1 &amp; 4 Lobby</b> during the registration hours.</li>
+          <li>On arrival at the EIEC everyone must present a <b>valid ID</b> (driving licence, CPR or passport).</li>
         </ul>
       </div>
     </div>
@@ -795,9 +811,9 @@
       <div class="table-wrap"><table>
         <thead><tr><th>Stand Dismantle Day</th><th>Timings</th><th>Access</th></tr></thead>
         <tbody>
-          <tr><td class="day">Wed, 14 Oct 2026</td><td>17:00 – 23:59</td><td>Shell scheme &amp; wooden stands</td></tr>
-          <tr><td class="day">Wed, 14 Oct 2026</td><td>20:30 – 23:59</td><td>Space only contractors</td></tr>
-          <tr><td class="day">Thu, 15 Oct 2026</td><td>00:01 – 08:00</td><td>Space only contractors</td></tr>
+          <tr><td class="day">Sat, 3 Oct 2026</td><td>20:00 – 23:59</td><td>All exhibitors</td></tr>
+          <tr><td class="day">Sat, 3 Oct 2026</td><td>23:00 – 23:59</td><td>Space only contractors</td></tr>
+          <tr><td class="day">Sun, 4 Oct 2026</td><td>00:01 – 10:00</td><td>Space only contractors</td></tr>
         </tbody>
       </table></div>
       <div class="notice"><b>⚠️ Important notice</b>
@@ -807,7 +823,7 @@
           <li>Access for space-only contractors is approximate — they are held at the marshalling gate until venue rigging services, aisle carpet removal and empty boxes / crates have been delivered to stands.</li>
           <li>Exhibitors are advised not to leave their stand unattended at any time during dismantle.</li>
           <li>It is the exhibitor's responsibility to remove all stand materials, carpet tape, packaging and waste — <b>charges are levied for the removal of discarded items</b>.</li>
-          <li>The organisers and the venue are <b>not responsible for anything left in the halls or loading bays overnight or beyond 17:00 on Wednesday 14 October 2026</b>.</li>
+          <li>The organisers and the venue are <b>not responsible for any items left in the halls or loading bays overnight or beyond 23:59 on Saturday 3 October 2026</b>.</li>
         </ul>
       </div>
     </div>
@@ -818,22 +834,17 @@
     <div class="sec-head"><span class="emoji">✈️</span><h2>Travel &amp; Stay</h2><span class="cnt"></span></div>
     <p class="sec-desc">Accommodation, visas and getting to the venue.</p>
     <div class="grid cols-3">
-      <a class="card linkcard searchable" href="https://www.hotelmap.com/MMWWM" target="_blank" rel="noopener">
-        <span class="lead">🏨</span><h3>Near &amp; Discounted Hotels</h3><p>HotelMap — the official hotels partner.</p><span class="go">Open ↗</span></a>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🧳</span><b>Atelier by Informa — Hotel Booking</b></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Cozmotravel@informa.com">Cozmotravel@informa.com</a></span>
-          <button class="copy" data-copy="Cozmotravel@informa.com">⧉</button></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+20225876304">+20 2 2587 6304</a></span>
-          <button class="copy" data-copy="+20225876304">⧉</button></div>
-      </div>
+      <a class="card linkcard searchable" href="https://hotelmap.com/MB0LW" target="_blank" rel="noopener">
+        <span class="lead">🏨</span><h3>Book Your Hotel</h3><p>HotelMap — the official hotels partner.</p><span class="go">Open ↗</span></a>
 
       <a class="card linkcard searchable" href="https://visa2egypt.gov.eg/eVisa/Home" target="_blank" rel="noopener">
         <span class="lead">🛂</span><h3>Egypt Visa Requirements</h3><p>Official Egypt e-Visa portal.</p><span class="go">Open ↗</span></a>
 
-      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144816,31.381825,2450m" target="_blank" rel="noopener">
-        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>Egypt International Exhibition Center, New Cairo.</p><span class="go">Open ↗</span></a>
+      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144915,31.3849682,17z" target="_blank" rel="noopener">
+        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>EIEC — El-Moshir Tantawy Axis, Al Hay Al Asher, Nasr City, Cairo.</p><span class="go">Open ↗</span></a>
+
+      <a class="card linkcard searchable" href="https://cityscape-egypt.invisual.app/?mapId=bmLBgB97GqoKr" target="_blank" rel="noopener">
+        <span class="lead">🗺️</span><h3>Cityscape Egypt Venue Map</h3><p>Interactive hall &amp; stand map.</p><span class="go">Open ↗</span></a>
     </div>
   </section>
 
@@ -849,15 +860,15 @@
     <div class="cases-wrap" id="casesWrap" data-cg="all">
       <div class="case-group" data-group="visitors">
         <div class="case-group-h">👤 Visitors</div>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎟️</span><span class="case-ttl">Visitor Participation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the visitor gets their tickets from:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/0o9axqqe3yahc?actioncode=WEB1" target="_blank" rel="noopener">Visitor Registration Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/registration.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/registration.png" alt="registration categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visitor Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎟️</span><span class="case-ttl">Visitor Participation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the visitor gets their tickets from:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/37n7u2ke4tuh0?formName=Visitor_Registration_Form&amp;formType=VISITOR_REGISTRATION" target="_blank" rel="noopener">Visitor Registration Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/registration.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/registration.png" alt="registration categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visitor Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
 
 Kindly note that you can register as a visitor through our official website using the registration form below:
-https://register.visitcloud.com/survey/0o9axqqe3yahc?actioncode=WEB1
+https://register.visitcloud.com/survey/37n7u2ke4tuh0?formName=Visitor_Registration_Form&amp;formType=VISITOR_REGISTRATION
 
 Once you have successfully completed your registration, you will receive a confirmation email containing your visitor badge.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Exhibiting — Stand Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the exhibitor submits their details on:</p><a class="cs-linkbtn" href="https://www.egypt-energy.com/en/forms/stand-enquiry.html" target="_blank" rel="noopener">Book a Stand ↗</a><p class="cs-lead-txt" style="margin-top:14px">Then forward the enquiry to the sales team: <b>medhat.shawky@ind-group.com</b> · <b>menna.elkassas@ind-group.com</b></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-booking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-booking.png" alt="stand-booking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Stand booking enquiry (to customer)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Exhibiting — Stand Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the exhibitor submits their details on:</p><a class="cs-linkbtn" href="https://www.cityscape-events.com/egypt/exhibit/exhibitor-enquiry/" target="_blank" rel="noopener">Book a Stand ↗</a><p class="cs-lead-txt" style="margin-top:14px">Then forward the enquiry to the sales team: <b>george.hany@ind-group.com</b> · <b>robier.danial@ind-group.com</b></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-booking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-booking.png" alt="stand-booking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Stand booking enquiry (to customer)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
 
-Thank you for your enquiry and for your interest in participating in Egypt Energy &amp; Firex 2026.
+Thank you for your enquiry and for your interest in participating in Cityscape Egypt 2026.
 
 Kindly note that your request has been forwarded to the relevant team. They will get back to you at the earliest opportunity with further details regarding available stand spaces, pricing, and participation options.</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Forward to the sales team (internal)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Hi Team,
 
@@ -870,18 +881,23 @@ Email Address: [Email Address]
 Phone Number: [Phone Number]
 
 Thank you in advance for your support.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa Invitation (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The visitor issues their visa invitation letter through the automated link:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/10sncklrd4n0w/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">Visitor Visa Invitation Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa Invitation Letter for Visitors</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa Invitation (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Cityscape Egypt has <b>no automated visa link</b> — visa / participation letters are issued by the Informa Markets Customer Service team. Ask the visitor to register first, then collect their full name (as in the passport), passport number, nationality and registration key and request the letter from <b>cityscapeegyptcs@informa.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa Invitation Letter for Visitors</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
 
-Kindly note that you can issue your visa invitation letter as a visitor using the automated link below:
-https://register.visitcloud.com/survey/10sncklrd4n0w/start?visitor-contact=#contact_code#
+Thank you for registering to attend Cityscape Egypt 2026.
 
-The form will require your registration key, provided in your registration confirmation email. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
+Kindly note that visa / participation letters are issued by our Customer Service team. To proceed, please reply with the following details exactly as they appear in your passport:
 
-For your convenience, your registration key is:
-[Insert Registration Key]</pre></div></details></div></details>
+Full Name:
+Passport Number:
+Nationality:
+Date of Birth:
+Company Name &amp; Job Title:
+Registration Key:
+
+Once we receive these details, we will issue your participation letter and send it to you by email.</pre></div></details></div></details>
         <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✅</span><span class="case-ttl">Visitor Registration Confirmation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Confirm the visitor is registered and resend the confirmation email with the badge.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/confirmation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/confirmation.png" alt="confirmation categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Attendee / Visitor Registration Confirmation</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
 
-Kindly note that, after checking our records, we can confirm that you have been successfully registered as a visitor for Egypt Energy &amp; Firex 2026.
+Kindly note that, after checking our records, we can confirm that you have been successfully registered as a visitor for Cityscape Egypt 2026.
 
 We have resent your registration confirmation email, which contains your visitor badge. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
 
@@ -893,20 +909,20 @@ Kindly note that, in order to change the Operations Contact in our system, we fi
 Once we receive this confirmation, we will forward your request to the relevant team for processing.
 
 Could you please provide the details of the new Operations Contact (Full Name, Email Address, Job Title, Phone Number) so that we can proceed?</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📋</span><span class="case-ttl">Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share this link: <a href="https://www.egypt-energy.com/en/exhibitor-directory.html" target="_blank" rel="noopener">Exhibitor List ↗</a> — also available in the app.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-list.png" alt="exhibitor-list categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📰</span><span class="case-ttl">Press &amp; Media</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">1) Media partnership → marketing team via the <a href="https://www.egypt-energy.com/en/contact-us.html" target="_blank" rel="noopener">Contact Us page ↗</a>.<br>2) Full-event media badge → treat as registration / registration help.<br>3) Booth-only coverage → register as exhibitor + submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/media-partner.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/media-partner.png" alt="media-partner categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎤</span><span class="case-ttl">Speaker</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Speaking requests go through the <a href="https://www.egypt-energy.com/en/forms/speaker-enquiry.html" target="_blank" rel="noopener">Speaker Enquiry form ↗</a>; the content team picks them up. Copy <b>Egyptenergyandfirexcs@informa.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/speaking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/speaking.png" alt="speaking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Speaking request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in speaking at Egypt Energy &amp; Firex 2026. Please review the link below to access the Speaker Form. Kindly complete the form to connect with our content team and be considered for a speaking opportunity at Egypt Energy &amp; Firex 2026.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎓</span><span class="case-ttl">CME Hours / Competition</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">No CME hours for Egypt Energy. Point customers to <a href="https://www.egypt-energy.com/en/visit/egypt-energy-experiences-.html" target="_blank" rel="noopener">Egypt Energy Experiences ↗</a> for the show features.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/cme.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/cme.png" alt="cme categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📋</span><span class="case-ttl">Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share this link: <a href="https://www.cityscape-events.com/egypt/exhibit/exhibitor-directory/" target="_blank" rel="noopener">Exhibitor Directory ↗</a>. Directory listings are managed by <b>Mariam Emara</b> — <b>mariam.emara@informa.com</b>, +20 108 022 2628.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-list.png" alt="exhibitor-list categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📰</span><span class="case-ttl">Press &amp; Media</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">1) Media enquiries, partnerships and press registration all go through the <a href="https://www.cityscape-events.com/egypt/about/press/" target="_blank" rel="noopener">Press page ↗</a>.<br>2) Full-event media badge → treat as registration / registration help.<br>3) Booth-only coverage → register as exhibitor + submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/media-partner.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/media-partner.png" alt="media-partner categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎤</span><span class="case-ttl">Speaker</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">No public speaker form is published for 2026 — send speaking requests to <b>cityscapeegyptcs@informa.com</b> and they are passed to the content team. Share the <a href="https://www.cityscape-events.com/egypt/content-and-features/cityscape-talks-agenda/cityscape-talks-agenda-day-1/" target="_blank" rel="noopener">Cityscape Talks agenda ↗</a> in the meantime.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/speaking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/speaking.png" alt="speaking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Speaking request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in speaking at Cityscape Egypt 2026. Please review the link below to access the Speaker Form. Kindly complete the form to connect with our content team and be considered for a speaking opportunity at Cityscape Egypt 2026.</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎓</span><span class="case-ttl">CME Hours / Competition</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">No CME hours at Cityscape Egypt. The startup / innovation feature is the <a href="https://www.cityscape-events.com/egypt/content-and-features/proptech-challenge/" target="_blank" rel="noopener">Egypt PropTech Challenge ↗</a> — the registration link is published on that page, so ask the customer to keep an eye on it.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/cme.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/cme.png" alt="cme categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✏️</span><span class="case-ttl">Correcting Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor amends their profile from the app (instant). If the app is not live, put the case on hold and forward to the request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/updating-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/updating-list.png" alt="updating-list categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">⭐</span><span class="case-ttl">Sponsorship</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Form: <a href="https://www.egypt-energy.com/en/forms/sponsorship-enquiry.html" target="_blank" rel="noopener">Sponsorship Opportunities ↗</a>. Sponsor team: <b>medhat.shawky@ind-group.com</b> · <b>menna.elkassas@ind-group.com</b>. Brochure: <a href="https://www.egypt-energy.com/en/forms/sales-brochure.html" target="_blank" rel="noopener">Download ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sponsorship.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sponsorship.png" alt="sponsorship categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Sponsorship request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in sponsoring Egypt Energy &amp; Firex 2026. Please find the link below to access our Sponsorship Form. Kindly complete the form, and a member of our relevant team will be in touch with you. I have attached the sponsorship brochure for your review. We look forward to your participation in the event!</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🗓️</span><span class="case-ttl">Agenda Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share the <a href="https://www.egypt-energy.com/en/conference/agenda.html" target="_blank" rel="noopener">Conference Agenda ↗</a>, or the <a href="https://www.egypt-energy.com/en/forms/download-the-egypt-energy-conference-agenda.html" target="_blank" rel="noopener">downloadable conference brochure ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/agenda.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/agenda.png" alt="agenda categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🧾</span><span class="case-ttl">Invoice Request (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Put the case on hold and forward the invoice request internally to the account manager / finance; visitor entry is free, so confirm what the invoice is for first.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/invoice.png" alt="invoice categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Meeting / Agreement Room Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Refer them to the sales team — <b>medhat.shawky@ind-group.com</b> · <b>menna.elkassas@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/meeting-room.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/meeting-room.png" alt="meeting-room categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">⭐</span><span class="case-ttl">Sponsorship</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Form: <a href="https://www.cityscape-events.com/egypt/exhibit/sponsorship/sponsorship-enquiry/" target="_blank" rel="noopener">Sponsorship Opportunities ↗</a>. Sponsor team: <b>george.hany@ind-group.com</b> · <b>robier.danial@ind-group.com</b>. Brochure: <a href="https://www.cityscape-events.com/egypt/exhibit/sales-brochure/" target="_blank" rel="noopener">Download ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sponsorship.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sponsorship.png" alt="sponsorship categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Sponsorship request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in sponsoring Cityscape Egypt 2026. Please find the link below to access our Sponsorship Form. Kindly complete the form, and a member of our relevant team will be in touch with you. I have attached the sponsorship brochure for your review. We look forward to your participation in the event!</pre></div></details></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🗓️</span><span class="case-ttl">Agenda Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share the <a href="https://www.cityscape-events.com/egypt/content-and-features/cityscape-talks-agenda/cityscape-talks-agenda-day-1/" target="_blank" rel="noopener">Cityscape Talks agenda ↗</a>, or the <a href="https://www.cityscape-events.com/egypt-cityscape-summit/summit-agenda/" target="_blank" rel="noopener">Cityscape Summit agenda ↗</a> for the 7 September summit.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/agenda.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/agenda.png" alt="agenda categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🧾</span><span class="case-ttl">Invoice Request (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Visitor entry is free — confirm first what the invoice is for, then put the case on hold and forward it internally to the account manager / finance.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/invoice.png" alt="invoice categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Meeting / Agreement Room Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Refer them to the sales team — <b>george.hany@ind-group.com</b> · <b>robier.danial@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/meeting-room.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/meeting-room.png" alt="meeting-room categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">👥</span><span class="case-ttl">Additional Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">One operation contact by default. To add one: collect (email, name, phone), put the case on hold, then forward internally to the sales-ops team / request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/additional-contact.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/additional-contact.png" alt="additional-contact categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💬</span><span class="case-ttl">Conference Content</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">If the enquiry is about conference content / sessions, check the info and inform the customer.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/conference-content.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/conference-content.png" alt="conference-content categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛠️</span><span class="case-ttl">Registration Tech Issue</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Forward badge/registration technical issues to the CS inbox <b>Egyptenergyandfirexcs@informa.com</b> with the registered email + registration key; put the case on hold until resolved.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/reg-tech-issue.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/reg-tech-issue.png" alt="reg-tech-issue categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛠️</span><span class="case-ttl">Registration Tech Issue</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Forward badge/registration technical issues to <b>cityscapeegyptcs@informa.com</b> with the registered email + registration key; put the case on hold until resolved. The Customer Centre badge screen shows the same inbox for badge problems.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/reg-tech-issue.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/reg-tech-issue.png" alt="reg-tech-issue categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💼</span><span class="case-ttl">Job Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Direct them to the Informa careers site and recommend the recruiting platform. <span class="tbd">⟪TBD⟫</span> careers link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Partnership</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Request: nature of service, official documents (CR, VAT, National Address), contact info, online presence. Then forward internally to <b>medhat.shawky@ind-group.com</b> · <b>menna.elkassas@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Partnership</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Request: nature of service, official documents (CR, VAT, National Address), contact info, online presence. Then forward internally to <b>george.hany@ind-group.com</b> · <b>robier.danial@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
       </div>
       <div class="case-group" data-group="exhibitors">
         <div class="case-group-h">🏢 Exhibitors</div>
@@ -918,7 +934,7 @@ The Operations Contact can register exhibitors by following the steps below:
 Home → Exhibitor Badge Registration → Register Single Member / Multiple Members
 
 Once your registration has been completed, each registered exhibitor will receive a Pending Email, then a Confirmation Email containing the exhibitor badge.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa for Exhibitor</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The exhibitor issues their visa invitation letter via the automated link, using the registration key from their confirmation email: <a href="https://register.visitcloud.com/survey/10sncklrd4n0w/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">Visa Initiation Letter ↗</a></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="general-1 categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa invitation letter for exhibitor (automated link)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa for Exhibitor</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor visa / participation letters are issued by the Customer Service team — collect the passport details and registration key, then request the letter from <b>cityscapeegyptcs@informa.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="general-1 categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa invitation letter for exhibitor (automated link)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
 
 Kindly note that you can issue your visa invitation letter as an exhibitor through the link below:
 [Insert Visa Invitation Letter Link]
@@ -939,7 +955,7 @@ For your convenience, your registration key is:
 Additionally, we have attached the supporting documents that can assist you with your visa application. These should be submitted together with your visa invitation letter as part of your visa application process.</pre></div></details></div></details>
         <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📱</span><span class="case-ttl">Event App</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">When the app is live, exhibitors log in with their registered email to update their company profile. App link: <span class="tbd">⟪TBD⟫</span></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Event App</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
 
-We are delighted to inform you that the Egypt Energy &amp; Firex 2026 event application is now live.
+We are delighted to inform you that the Cityscape Egypt 2026 event application is now live.
 
 You can log in using your registered exhibitor email address and update your company profile. Completing your profile increases your visibility with exhibitors, buyers, and visitors.
 
@@ -960,17 +976,17 @@ After you submit the contractor details, they will be forwarded to the Technical
 Kindly note that a welcome email has been sent to you, as you are the Operations Contact. The email contains a link to access the Customer Centre Portal, along with your login credentials.
 
 Please check your inbox for this email. If you cannot locate it, we kindly recommend checking your Junk or Spam folder as well.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍽️</span><span class="case-ttl">Catering Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Official stand catering suppliers: <b>Holiday Inn</b> — Christine Fanous, <b>Christine.Fanous@ihg.com</b>, +20 120 033 0091 · <b>The Bakery Shop (TBS)</b> — Menna Hussien, <b>menna.hussien@tbsegypt.com</b>, +20 111 908 7878.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/catering-order.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/catering-order.png" alt="catering-order categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍴</span><span class="case-ttl">External Catering</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official catering suppliers (Holiday Inn / TBS) to coordinate with, copy the technical team <b>techegyptenergy@informa.com</b>, and submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/external-catering.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/external-catering.png" alt="external-catering categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍽️</span><span class="case-ttl">Catering Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Official stand catering: <b>Holiday Inn</b> — Christine Fanous, <b>Christine.Fanous@ihg.com</b>, +20 120 033 0091 · <b>The Bakery Shop (TBS)</b> — Menna Hussien, <b>menna.hussien@tbsegypt.com</b>, +20 111 908 7878.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/catering-order.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/catering-order.png" alt="catering-order categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍴</span><span class="case-ttl">External Catering</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official catering suppliers (Holiday Inn / TBS) to coordinate with, copy the technical team <b>techcse@informa.com</b>, and submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/external-catering.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/external-catering.png" alt="external-catering categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏷️</span><span class="case-ttl">Display / Company Name</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor amends their profile from the app; if not live, put on hold and forward to the relevant team (senior approval for any sales-ops email).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/display-name.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/display-name.png" alt="display-name categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Rigging Query</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Rigging = hanging a banner/board above the stand. Regulations are in the manuals (send the PDF). Technical team: <b>techegyptenergy@informa.com</b>. Rigging is handled onsite by <b>DSV — Fairs &amp; Events</b> (ramy.kassem@dsv.com).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/rigging.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/rigging.png" alt="rigging categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📐</span><span class="case-ttl">Stand-Design (Space-Only)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Submit the design to the technical team <b>techegyptenergy@informa.com</b> or via the contractor portal for approval.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-design.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-design.png" alt="stand-design categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📺</span><span class="case-ttl">Audio-Visual Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Official AV supplier: <b>United Group Egypt</b> — Ali Mohamed, <b>ayassin@ug-expo.com</b>, +20 111 456 7957.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/audio-visual.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/audio-visual.png" alt="audio-visual categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔌</span><span class="case-ttl">Electricity Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Electrical &amp; lighting orders go to <b>Expo Tech</b> — Mohamed Samir, <b>M.samir@expotech-eg.com</b>, +20 115 395 7541. Shell scheme / start-up stands include electricity but can order more. Power is switched on 30 min before show open and off 30 min after close — 24hr power must be ordered from the official contractor.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/electricity.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/electricity.png" alt="electricity categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖼️</span><span class="case-ttl">Graphic Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Graphics are supplied by <b>United Group Egypt</b> — <b>ayassin@ug-expo.com</b> / <b>yhesham@ug-expo.com</b> (shell scheme &amp; extra stand fitting).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/graphics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/graphics.png" alt="graphics categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Rigging Query</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Rigging = hanging a banner/board above the stand. Regulations are in the manuals (send the PDF). Technical team: <b>techcse@informa.com</b>. Venue rigging and onsite lifting are handled by <b>DSV — Fairs &amp; Events</b> (ramy.kassem@dsv.com).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/rigging.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/rigging.png" alt="rigging categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📐</span><span class="case-ttl">Stand-Design (Space-Only)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only stand plans go to the Informa Technical Team <b>techcse@informa.com</b> for health &amp; safety approval, or through the contractor portal.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-design.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-design.png" alt="stand-design categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📺</span><span class="case-ttl">Audio-Visual Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">AV and graphics are supplied by <b>United Group Egypt</b> — Ali Mohamed, <b>ayassin@ug-expo.com</b>, +20 111 456 7957.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/audio-visual.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/audio-visual.png" alt="audio-visual categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔌</span><span class="case-ttl">Electricity Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Electrical &amp; lighting orders go to <b>Expo Tech</b> — Mohamed Samir, <b>M.samir@expotech-eg.com</b>, +20 115 395 7541. Power is switched on 30 min before show open and off 30 min after close — 24hr power must be ordered from the official contractor.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/electricity.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/electricity.png" alt="electricity categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖼️</span><span class="case-ttl">Graphic Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Graphics and extra stand fitting come from <b>United Group Egypt</b> — <b>ayassin@ug-expo.com</b>, +20 111 456 7957.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/graphics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/graphics.png" alt="graphics categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🕒</span><span class="case-ttl">Timetable (Contractor-Exhibitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor show times differ from visitors — see the <a href="#timetables">Timetables</a> section (show hours, build-up, registration desk and dismantle). Set the first category by who asks.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/timetable.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/timetable.png" alt="timetable categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">➕</span><span class="case-ttl">Extra / Additional Badges</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Extend badge allotments after approval from the account manager, then add them from the Customer Centre.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/extra-badges.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/extra-badges.png" alt="extra-badges categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Badge</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Once the contractor is assigned (Customer Centre, or via the technical team <b>techegyptenergy@informa.com</b>), they receive a wrist band on the first build-up day — <b>Friday 9 October 2026</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-badge.png" alt="contractor-badge categories" loading="lazy"></a></div></details>
+        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Badge</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only contractors are coordinated by <b>High Speed</b>, who collect the <b>decoration fee (100 EGP/SQM)</b> and hand out the bracelets that let workers in and out of the hall. High Speed contacts each contractor before build-up. The <b>workers fee (50 EGP/SQM)</b> is collected by <b>Expo Tech</b> on the first build-up day, from their office between halls 2 &amp; 3.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-badge.png" alt="contractor-badge categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">❌</span><span class="case-ttl">Exhibitor Cancellation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Instruct the exhibitor to contact their account manager (found via the Salesforce customer centre by account name); provide the AM email.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-cancellation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-cancellation.png" alt="exhibitor-cancellation categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">💳</span><span class="case-ttl">Exhibitor Invoice</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Redirect the exhibitor to their account manager for booth invoices.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-invoice.png" alt="exhibitor-invoice categories" loading="lazy"></a></div></details>
         <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🎪</span><span class="case-ttl">On-Stand Activity</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors hosting an activity / bringing non-exhibit items submit the on-stand activity form. <span class="tbd">⟪TBD⟫</span> form link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
@@ -985,7 +1001,7 @@ Please check your inbox for this email. If you cannot locate it, we kindly recom
 </main>
 
 <footer>
-  Egypt Energy &amp; Firex 2026 · Customer Service Knowledge Base · Informa Markets &nbsp;·&nbsp; <span style="opacity:.7">Information Classification: General</span>
+  Cityscape Egypt 2026 · Customer Service Knowledge Base · Informa Markets &nbsp;·&nbsp; <span style="opacity:.7">Information Classification: General</span>
 </footer>
 
 <script>
