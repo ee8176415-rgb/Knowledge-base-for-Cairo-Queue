@@ -3,956 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pharmaconex 2026 — Knowledge Base</title>
+<title>Informa Egypt — CS Knowledge Base</title>
 <style>
   :root{
-    --brand:#0094c8; --brand-2:#00b4d8; --brand-deep:#0b2a3a;
-    --bg:#eef3f7; --bg-2:#e3ebf1; --card:#ffffff; --card-2:#f7fafc;
-    --text:#16303d; --muted:#5f7688; --line:#dce6ee;
-    --ok:#1a9e6a; --ok-bg:#e5f6ee; --warn:#c67c00; --warn-bg:#fff5e2;
-    --shadow:0 6px 18px -12px rgba(16,48,66,.28);
-    --shadow-lg:0 18px 40px -20px rgba(11,42,58,.4);
-    --radius:16px;
-  }
-  :root[data-theme="dark"]{
-    --brand:#25b6e6; --brand-2:#38d0ff; --brand-deep:#04121a;
-    --bg:#0b1620; --bg-2:#0e1b26; --card:#132433; --card-2:#0f1e2b;
-    --text:#e8f1f7; --muted:#8fa7b8; --line:#22384a;
-    --ok:#3ddc97; --ok-bg:#0f2c22; --warn:#ffcb6b; --warn-bg:#2c2413;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 30px -16px rgba(0,0,0,.7);
-    --shadow-lg:0 24px 60px -24px rgba(0,0,0,.8);
+    --brand:#12c2e9; --brand-2:#0094c8; --deep:#04121c;
+    --ink:#eaf7fd; --muted:#8fc7de;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html,body{height:100%}
   body{
-    margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased;
+    margin:0; overflow:hidden; background:var(--deep); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
   }
-  a{color:var(--brand); text-decoration:none}
-  a:hover{text-decoration:underline}
+  a{color:inherit;text-decoration:none}
 
-  /* ---------- Hero ---------- */
-  .hero{
-    position:relative; overflow:hidden; color:#eaf7fd;
-    background:
-      linear-gradient(100deg, #05192a 0%, rgba(6,32,46,.95) 30%, rgba(11,51,80,.60) 66%, rgba(10,74,99,.26) 100%),
-      url('assets/pharmaconex-banner.png') center right / cover no-repeat,
-      linear-gradient(135deg, #06202e 0%, #0b3350 55%, #0a4a63 100%);
-    padding:38px clamp(18px,5vw,64px) 30px;
-  }
-  @media(max-width:720px){
-    .hero{ background:
-      linear-gradient(180deg, rgba(6,32,46,.80) 0%, rgba(6,32,46,.93) 100%),
-      url('assets/pharmaconex-banner.png') center / cover no-repeat, #06202e; }
-  }
+  /* ---------- animated aurora background ---------- */
+  .aurora{position:fixed;inset:0;z-index:0;overflow:hidden;background:
+     radial-gradient(120% 90% at 50% 8%, #0a3a52 0%, #06202e 45%, #04121c 100%)}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;will-change:transform}
+  .b1{width:52vmax;height:52vmax;left:-14vmax;top:-16vmax;
+      background:radial-gradient(circle,#0094c8 0%,rgba(0,148,200,0) 70%);animation:drift1 26s ease-in-out infinite}
+  .b2{width:46vmax;height:46vmax;right:-12vmax;bottom:-14vmax;
+      background:radial-gradient(circle,#12c2e9 0%,rgba(18,194,233,0) 70%);animation:drift2 32s ease-in-out infinite}
+  .b3{width:38vmax;height:38vmax;left:52%;top:58%;
+      background:radial-gradient(circle,#1a9e6a 0%,rgba(26,158,106,0) 70%);opacity:.32;animation:drift3 38s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9vmax,6vmax) scale(1.15)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-8vmax,-7vmax) scale(1)}}
+  @keyframes drift3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-42%,-58%) scale(1.2)}}
+  .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);
+    background-size:34px 34px;mask-image:radial-gradient(75% 65% at 50% 45%,#000 0%,transparent 100%);
+    -webkit-mask-image:radial-gradient(75% 65% at 50% 45%,#000 0%,transparent 100%)}
 
-  /* Informa Markets logo watermark (from the official letterhead) */
-  .hero::after{
-    content:"";position:absolute;pointer-events:none;
-    right:clamp(18px,5vw,64px);bottom:20px;
-    width:clamp(120px,14vw,200px);aspect-ratio:1554/309;
-    background:url('assets/informa-markets-logo-white.png') right bottom / contain no-repeat;
-    opacity:.24;
-  }
-  @media(max-width:720px){ .hero::after{display:none} }
+  /* ---------- top brand line ---------- */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;gap:12px;
+    padding:20px clamp(16px,4vw,40px);animation:fadeDown .9s .15s both}
+  .diamond{width:26px;height:26px;flex:none;transform:rotate(45deg);border-radius:6px;
+    background:linear-gradient(135deg,#12c2e9,#0094c8);box-shadow:0 6px 18px rgba(0,148,200,.65)}
+  .topbar b{font-size:15px;letter-spacing:.3px}
+  .topbar .by{font-size:12px;color:var(--muted);opacity:.9}
+  .topbar .right{margin-left:auto;display:flex;gap:8px}
+  .tlink{font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:999px;color:#cdeaf7;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);transition:.18s;white-space:nowrap}
+  .tlink:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+  @media(max-width:640px){.topbar .by{display:none}.topbar b{font-size:13px}}
 
-  .hero .brandline{display:flex; align-items:center; gap:12px; margin-bottom:22px; flex-wrap:wrap}
-  .diamond{width:30px;height:30px;flex:none;transform:rotate(45deg);border-radius:7px;
-    background:linear-gradient(135deg,#12c2e9,#0094c8);box-shadow:0 6px 16px rgba(0,148,200,.6)}
-  .brandline b{font-size:20px;letter-spacing:.3px}
-  .brandline .by{color:#9fd6ec;font-size:13px;opacity:.9}
-  .eventswitch{display:flex;align-items:center;gap:6px;margin-left:auto;flex-wrap:wrap}
-  .eventswitch .es-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#8fc7de;margin-right:2px}
-  .eventswitch a{font-size:13px;font-weight:700;padding:6px 13px;border-radius:999px;color:#cdeaf7;
-    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2)}
-  .eventswitch a:hover{background:rgba(255,255,255,.18);text-decoration:none}
-  .eventswitch a.active{background:linear-gradient(135deg,#12c2e9,#0094c8);color:#04202c;border-color:transparent}
-  .hero h1{margin:0 0 6px;font-size:clamp(30px,5.4vw,54px);line-height:1.05;font-weight:800;letter-spacing:-.5px}
-  .hero .tag{color:#bfe6f5;font-size:clamp(15px,2vw,18px);max-width:640px}
-  .facts{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-  .fact{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.09);
-    border:1px solid rgba(255,255,255,.16);padding:10px 15px;border-radius:12px}
-  .fact .ic{font-size:18px}
-  .fact .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#8fc7de;display:block}
-  .fact .v{font-weight:700;font-size:14px}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;
-    font-weight:700;font-size:14px;cursor:pointer;border:1px solid transparent;transition:.15s}
-  .btn.primary{background:linear-gradient(135deg,#12c2e9,#0094c8);color:#04202c;box-shadow:0 8px 20px -6px rgba(0,180,216,.6)}
-  .btn.primary:hover{transform:translateY(-2px);text-decoration:none}
-  .btn.ghost{background:rgba(255,255,255,.09);color:#eaf7fd;border-color:rgba(255,255,255,.22)}
-  .btn.ghost:hover{background:rgba(255,255,255,.18);text-decoration:none}
+  /* ---------- stage ---------- */
+  .stage{position:relative;z-index:4;width:min(92vw,78vh,780px);aspect-ratio:1;
+    display:grid;place-items:center;animation:enter 1.2s cubic-bezier(.16,1,.3,1) both}
+  @keyframes enter{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  /* chips are positioned by JS every frame — fade them in with opacity only,
+     an animated transform here would override the orbit position */
+  @keyframes chipIn{from{opacity:0}to{opacity:1}}
 
-  /* ---------- Sticky search / nav ---------- */
-  .toolbar{position:sticky;top:0;z-index:50;background:var(--bg);
-    border-bottom:1px solid var(--line);padding:12px clamp(14px,4vw,40px);
-    box-shadow:0 6px 20px -18px rgba(0,0,0,.5)}
-  .toolbar-row{display:flex;gap:12px;align-items:center;max-width:1180px;margin:0 auto}
-  .search{position:relative;flex:1}
-  .search input{width:100%;padding:13px 44px 13px 44px;border-radius:12px;border:1px solid var(--line);
-    background:var(--card);color:var(--text);font-size:15px;outline:none;transition:.15s;box-shadow:var(--shadow)}
-  .search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(0,148,200,.15)}
-  .search .mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.5;font-size:17px}
-  .search .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;
-    border:none;background:var(--bg-2);color:var(--muted);width:26px;height:26px;border-radius:50%;
-    font-size:15px;display:none;align-items:center;justify-content:center}
-  .search .clr.on{display:flex}
-  .theme-btn{flex:none;width:46px;height:46px;border-radius:12px;border:1px solid var(--line);
-    background:var(--card);color:var(--text);font-size:19px;cursor:pointer;box-shadow:var(--shadow)}
-  .navpills{display:flex;gap:8px;overflow-x:auto;max-width:1180px;margin:10px auto 0;padding-bottom:2px;scrollbar-width:none}
-  .navpills::-webkit-scrollbar{display:none}
-  .navpills a{white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;
-    color:var(--muted);background:var(--card);border:1px solid var(--line)}
-  .navpills a:hover{color:var(--brand);text-decoration:none}
-  .navpills a.active{background:var(--brand);border-color:var(--brand);color:#fff}
-  :root[data-theme="dark"] .navpills a.active{color:#04202c}
+  .web{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  /* out of flow, otherwise it takes a grid row and pushes the core off centre */
+  #nodes{position:absolute;inset:0}
+  .web line{stroke:rgba(18,194,233,.28);stroke-width:1}
+  .web polygon{fill:rgba(18,194,233,.05);stroke:rgba(18,194,233,.18);stroke-width:1}
 
-  /* ---------- Layout ---------- */
-  main{max-width:1180px;margin:0 auto;padding:26px clamp(14px,4vw,40px) 80px}
-  .kb-section{margin-top:40px;scroll-margin-top:150px}
-  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-  .sec-head .emoji{font-size:24px}
-  .sec-head h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.3px}
-  .sec-head .cnt{margin-left:auto;font-size:12px;color:var(--muted);background:var(--card);
-    border:1px solid var(--line);padding:3px 10px;border-radius:999px}
-  .sec-desc{color:var(--muted);font-size:14px;margin:-8px 0 18px}
+  .ring{position:absolute;border-radius:50%;border:1px solid rgba(143,199,222,.16);will-change:transform}
+  .r1{width:44%;height:44%;border-style:dashed;border-color:rgba(18,194,233,.28)}
+  .r2{width:68%;height:68%}
+  .r3{width:94%;height:94%;border-style:dotted;border-color:rgba(143,199,222,.22)}
 
-  .grid{display:grid;gap:14px}
-  .grid.cols-2{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
-  .grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  /* ---------- orbiting event chips ---------- */
+  .node{position:absolute;left:50%;top:50%;display:flex;align-items:center;gap:7px;
+    padding:8px 14px;border-radius:999px;white-space:nowrap;cursor:pointer;
+    background:rgba(9,32,46,.72);border:1px solid rgba(143,199,222,.25);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    font-size:13px;font-weight:600;color:#dcf1fb;will-change:transform;
+    box-shadow:0 10px 26px -16px rgba(0,0,0,.9);
+    transition:background .2s,border-color .2s,box-shadow .2s,color .2s}
+  .node .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);flex:none;
+    box-shadow:0 0 10px var(--brand)}
+  .node:hover{background:linear-gradient(135deg,#12c2e9,#0094c8);color:#04202c;
+    border-color:transparent;box-shadow:0 14px 34px -12px rgba(18,194,233,.75)}
+  .node:hover .dot{background:#04202c;box-shadow:none}
+  @media(max-width:720px){.node{font-size:10.5px;padding:6px 10px;gap:5px}.node .dot{width:5px;height:5px}}
+  @media(max-width:560px){.node{font-size:9.5px;padding:5px 9px}}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-    padding:18px;box-shadow:var(--shadow);transition:.15s}
-  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}
-  .card h3{margin:0 0 6px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
-  .card p{margin:0;color:var(--muted);font-size:13.5px}
-  .card .lead{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
-    border-radius:10px;background:color-mix(in srgb,var(--brand) 14%,transparent);font-size:19px;margin-bottom:10px}
+  /* ---------- core button ---------- */
+  .core{position:relative;display:grid;place-items:center;gap:2px;cursor:pointer;
+    width:clamp(120px,30%,230px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(18,194,233,.45);
+    background:radial-gradient(circle at 50% 42%,rgba(18,194,233,.30),rgba(6,32,46,.90) 72%);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink);font:inherit;
+    box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 24px 60px -24px rgba(18,194,233,.6);
+    transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s}
+  .core:hover{transform:scale(1.07);box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 30px 80px -20px rgba(18,194,233,.95)}
+  .core .lbl{font-size:clamp(20px,3.4vmin,30px);font-weight:800;letter-spacing:2.5px}
+  .core .sub{font-size:clamp(9px,1.5vmin,11.5px);letter-spacing:1.6px;text-transform:uppercase;color:var(--muted)}
+  .core .arrow{margin-top:6px;font-size:15px;color:var(--brand);transition:transform .3s}
+  .core:hover .arrow{transform:translateY(3px)}
+  .halo{position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(18,194,233,.5);
+    animation:ping 3.4s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
+  .halo:nth-of-type(2){animation-delay:1.15s}
+  .halo:nth-of-type(3){animation-delay:2.3s}
+  @keyframes ping{0%{transform:scale(1);opacity:.65}75%,100%{transform:scale(1.85);opacity:0}}
 
-  /* link card */
-  .linkcard{display:flex;flex-direction:column;gap:6px}
-  .linkcard .go{margin-top:10px;font-weight:700;font-size:13px;color:var(--brand);display:inline-flex;gap:6px;align-items:center}
-  .linkcard:hover .go{gap:9px}
+  /* ---------- bottom line ---------- */
+  .foot{position:fixed;bottom:0;left:0;right:0;z-index:6;text-align:center;padding:0 20px 26px;
+    animation:fadeUp 1s .5s both}
+  .foot h1{margin:0 0 6px;font-size:clamp(15px,2.4vw,20px);font-weight:700;letter-spacing:-.2px}
+  .foot p{margin:0;font-size:12.5px;color:var(--muted)}
+  @media(max-height:620px){.foot h1{display:none}}
 
-  /* contact / routing rows */
-  .routecard{padding:16px 18px}
-  .routecard .top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-  .routecard .top .emoji{font-size:20px}
-  .routecard .top b{font-size:14.5px}
-  .routecard .top .badge{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;
-    background:var(--ok-bg);color:var(--ok)}
-  .contact{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 0;border-top:1px dashed var(--line)}
-  .contact:first-of-type{border-top:none}
-  .contact .who{font-size:13px;color:var(--muted);min-width:90px}
-  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--card-2);border:1px solid var(--line);
-    border-radius:9px;padding:5px 9px;font-size:12.5px;font-weight:600;max-width:100%}
-  .chip a{color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .copy{border:none;background:transparent;cursor:pointer;color:var(--muted);font-size:13px;padding:1px 3px;border-radius:5px;flex:none}
-  .copy:hover{color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,transparent)}
-  .copy.done{color:var(--ok)}
+  /* ---------- warp transition ---------- */
+  .warp{position:fixed;inset:0;z-index:20;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at 50% 50%,rgba(18,194,233,.95) 0%,rgba(4,18,28,1) 70%)}
+  body.leaving .warp{opacity:1;transition:opacity .5s ease}
+  body.leaving .stage{transform:scale(1.6);opacity:0;transition:transform .55s cubic-bezier(.6,0,.9,.3),opacity .5s}
+  body.leaving .topbar,body.leaving .foot{opacity:0;transition:opacity .3s}
 
-  /* tables */
-  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
-  table{border-collapse:collapse;width:100%;min-width:520px;background:var(--card);font-size:13.5px}
-  thead th{background:linear-gradient(135deg,var(--brand-deep),#0a4a63);color:#eaf7fd;text-align:left;
-    padding:12px 14px;font-size:12px;letter-spacing:.5px;text-transform:uppercase;font-weight:700}
-  :root[data-theme="dark"] thead th{background:linear-gradient(135deg,#0a3346,#0a4a63)}
-  tbody td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
-  tbody tr:nth-child(even){background:var(--card-2)}
-  td .day{font-weight:700}
-  .notice{margin-top:12px;background:var(--warn-bg);border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));
-    border-radius:12px;padding:13px 15px}
-  .notice b{color:var(--warn);display:flex;align-items:center;gap:7px;font-size:13px;margin-bottom:6px}
-  .notice ul{margin:0;padding-left:18px;font-size:13px;color:var(--text)}
-  .notice li{margin:4px 0}
-  .notice .hot{color:#d94848;font-weight:700}
-
-  /* steps */
-  .steps{counter-reset:s;display:grid;gap:10px;margin:0}
-  .step{display:flex;gap:12px;align-items:flex-start;background:var(--card-2);border:1px solid var(--line);
-    border-radius:12px;padding:12px 14px}
-  .step::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;
-    background:var(--brand);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
-  :root[data-theme="dark"] .step::before{color:#04202c}
-  .step div{font-size:13.5px}
-  .shot{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
-  .shot img{display:block;width:100%}
-  .shot .cap{font-size:12px;color:var(--muted);padding:8px 12px;background:var(--card-2)}
-
-  .pill-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;
-    background:color-mix(in srgb,var(--brand) 15%,transparent);color:var(--brand);margin-left:6px}
-  .note-inline{background:var(--card-2);border-left:3px solid var(--brand);border-radius:8px;
-    padding:10px 12px;font-size:13px;color:var(--muted);margin-top:10px}
-  .applinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-  .minibtn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;
-    font-size:13px;font-weight:700;background:var(--card-2);border:1px solid var(--line);color:var(--text)}
-  .minibtn:hover{border-color:var(--brand);color:var(--brand);text-decoration:none;transform:translateY(-1px)}
-
-  .hidden{display:none !important}
-  .noresults{text-align:center;padding:60px 20px;color:var(--muted)}
-  .noresults .big{font-size:40px;margin-bottom:10px}
-
-  footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:12.5px}
-
+  /* phones: keep the core label inside the smaller disk (declared after .core so it wins) */
   @media(max-width:560px){
-    .facts .fact{flex:1 1 100%}
-    .contact .who{min-width:auto;flex-basis:100%}
+    .core .lbl{font-size:16px;letter-spacing:1.6px}
+    .core .sub{font-size:8.5px;letter-spacing:1px}
+    .core .arrow{margin-top:2px;font-size:12px}
   }
-  /* ---------- CS cases + case browser ---------- */
-  .cs-card{max-width:660px}.cs-lead-txt{margin:0 0 12px;font-size:14.5px}
-  .cs-linkbtn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;font-weight:700;font-size:14px;background:linear-gradient(135deg,var(--brand-2),var(--brand));color:#fff;box-shadow:0 8px 20px -8px color-mix(in srgb,var(--brand) 70%,transparent)}
-  .cs-linkbtn:hover{transform:translateY(-2px);text-decoration:none}
-  .case-cat{margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card-2)}
-  .case-cat-head{display:flex;align-items:center;gap:8px;padding:11px 14px;font-weight:800;font-size:14px;background:color-mix(in srgb,var(--brand) 10%,transparent)}
-  .case-cat-row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--line)}
-  .cc-k{min-width:98px;color:var(--muted);font-size:13px}.cc-v{font-weight:700;font-size:14px}
-  .tbd{color:var(--brand);font-weight:800}.cs-badge{font-size:11px;font-weight:700;color:var(--muted)}
-  .cs-steps{background:var(--card-2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:13px;font-weight:700;margin:8px 0}
-  .cs-tmpl{margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card-2)}
-  .cs-tmpl summary{cursor:pointer;padding:9px 12px;font-size:13px;font-weight:700;list-style:none}
-  .cs-tmpl summary::-webkit-details-marker{display:none}.cs-tmpl summary:hover{color:var(--brand)}
-  .cs-tmpl[open] summary{border-bottom:1px solid var(--line)}.cs-tmpl-wrap{position:relative;padding:12px}
-  .cs-tmpl pre{white-space:pre-wrap;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12.5px;line-height:1.55;margin:0;color:var(--text)}
-  .copy-tmpl{position:absolute;top:8px;right:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:12px;font-weight:700;padding:4px 10px;border-radius:8px;cursor:pointer}
-  .copy-tmpl:hover{color:var(--brand);border-color:var(--brand)}
-  .cs-catlabel{font-size:13px;color:var(--muted);margin:14px 0 4px;font-weight:600}
-  .catimg{max-width:100%;border:1px solid var(--line);border-radius:10px;display:block;box-shadow:var(--shadow)}
-  .catimg-link:hover .catimg{border-color:var(--brand)}
-  .case-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:-6px 0 20px}
-  .case-tab{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;transition:.15s}
-  .case-tab b{font-weight:800;color:var(--text);background:var(--bg-2);padding:1px 8px;border-radius:999px;font-size:12px}
-  .case-tab:hover{border-color:var(--brand);color:var(--brand)}
-  .case-tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
-  .case-tab.active b{background:rgba(255,255,255,.25);color:#fff}
-  .case-group{margin-bottom:24px}
-  .case-group-h{font-size:12.5px;font-weight:800;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
-  .cases-wrap[data-cg="visitors"] .case-group[data-group="exhibitors"]{display:none}
-  .cases-wrap[data-cg="exhibitors"] .case-group[data-group="visitors"]{display:none}
-  details.case{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;box-shadow:var(--shadow);transition:.15s}
-  details.case[open]{border-color:color-mix(in srgb,var(--brand) 45%,var(--line));box-shadow:var(--shadow-lg)}
-  details.case:hover{border-color:color-mix(in srgb,var(--brand) 32%,var(--line))}
-  .case-sum{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;font-weight:700;font-size:14.5px}
-  .case-sum::-webkit-details-marker{display:none}
-  .case-ic{font-size:19px;flex:none;width:26px;text-align:center}.case-ttl{flex:1}
-  .case-chev{transition:transform .2s;color:var(--muted);font-size:20px;line-height:1}
-  details.case[open] .case-chev{transform:rotate(180deg);color:var(--brand)}
-  .case-body{padding:2px 16px 16px;border-top:1px solid var(--line)}.case-body .cs-lead-txt:first-child{margin-top:12px}
+
+  @media(prefers-reduced-motion:reduce){
+    .blob,.halo{animation:none}
+    .stage,.topbar,.foot{animation:none}
+    .core,.node{transition:none}
+  }
 </style>
 </head>
 <body>
 
-<!-- ================= HERO ================= -->
-<header class="hero">
-  <div class="brandline">
-    <span class="diamond"></span>
-    <b>Pharmaconex&nbsp;2026</b>
-    <span class="by">· Customer Service Knowledge Base · by Informa Markets</span>
-    <nav class="eventswitch">
-      <span class="es-label">Event</span>
-      <a href="home.html" title="All events">🏠 Home</a>
-      <a href="index.html" class="active">Pharmaconex 2026</a>
-      <a href="sahara.html">Sahara Expo 2026</a>
-      <a href="autotech.html">Autotech 2026</a>
-      <a href="egyptenergy.html">Egypt Energy &amp; Firex 2026</a>
-      <a href="cityscape.html">Cityscape Egypt 2026</a>
-      <a href="whx.html">WHX Johannesburg 2026</a>
-      <a href="nairobi.html">WHX Nairobi 2026</a>
-      <a href="nigeria.html">Nigeria Energy 2026</a>
-    </nav>
-  </div>
-  <h1>Everything the CS team needs — in one place.</h1>
-  <p class="tag">Quick answers, links, contacts, timetables and stand rules for Pharmaconex 2026. Search it, copy it, done.</p>
+<div class="aurora">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+</div>
+<div class="grain"></div>
 
-  <div class="facts">
-    <div class="fact"><span class="ic">📅</span><span><span class="k">Dates</span><span class="v">1 – 3 September 2026</span></span></div>
-    <div class="fact"><span class="ic">📍</span><span><span class="k">Venue</span><span class="v">Egypt International Exhibition Center (EIEC)</span></span></div>
-    <div class="fact"><span class="ic">🎟️</span><span><span class="k">Registration desk</span><span class="v">Hall 4 Lobby</span></span></div>
-  </div>
-
-  <div class="hero-actions">
-    <a class="btn primary" href="templates.html">🗂️ Response Templates</a>
-    <a class="btn ghost" href="https://www.pharmaconex-exhibition.com/" target="_blank" rel="noopener">🌐 Event Website</a>
-    <a class="btn ghost" href="https://www.expocad.com/host/fx/informa/26PHCO/exfx.html#floorplan" target="_blank" rel="noopener">🗺️ Floorplan</a>
-    <a class="btn ghost" href="https://apps.apple.com/us/app/pharmaconex-expo/id6566175025" target="_blank" rel="noopener">📱 Event App</a>
-    <a class="btn ghost" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144816,31.381825,2450m" target="_blank" rel="noopener">🧭 Location</a>
-  </div>
+<header class="topbar">
+  <span class="diamond"></span>
+  <b>Informa Egypt</b>
+  <span class="by">· Customer Service Knowledge Base</span>
+  <span class="right">
+    <a class="tlink" href="templates.html">🗂️ Templates</a>
+    <a class="tlink" href="events.html">All events</a>
+  </span>
 </header>
 
-<!-- ================= TOOLBAR ================= -->
-<div class="toolbar">
-  <div class="toolbar-row">
-    <div class="search">
-      <span class="mag">🔍</span>
-      <input id="q" type="text" placeholder="Search links, contacts, timings, stand rules…" autocomplete="off">
-      <button class="clr" id="clr" aria-label="clear">✕</button>
-    </div>
-    <button class="theme-btn" id="theme" title="Toggle theme">🌙</button>
-  </div>
-  <nav class="navpills" id="navpills">
-    <a href="#cases">🗂️ CS Case Handling</a>
-    <a href="templates.html" style="background:var(--brand);border-color:var(--brand);color:#fff">🗂️ Templates</a>
-    <a href="#links" class="active">Quick Links</a>
-    <a href="#contacts">Contacts &amp; Routing</a>
-    <a href="#visitors">Visitors</a>
-    <a href="#exhibitors">Exhibitors</a>
-    <a href="#timetables">Timetables</a>
-    <a href="#onsite">Onsite &amp; Stand Rules</a>
-    <a href="#invoicing">Invoicing</a>
-    <a href="#travel">Travel &amp; Stay</a>
-  </nav>
+<div class="stage" id="stage">
+  <svg class="web" id="web" aria-hidden="true"></svg>
+  <div class="ring r1" id="r1"></div>
+  <div class="ring r2" id="r2"></div>
+  <div class="ring r3" id="r3"></div>
+  <div id="nodes"></div>
+
+  <a class="core" id="core" href="events.html">
+    <span class="halo"></span><span class="halo"></span><span class="halo"></span>
+    <span class="lbl">EVENTS</span>
+    <span class="sub">8 shows · 2026</span>
+    <span class="arrow">▾</span>
+  </a>
 </div>
 
-<main>
-  <div id="noresults" class="noresults hidden">
-    <div class="big">🔍</div>
-    <div>No results for “<span id="qecho"></span>”. Try another keyword.</div>
-  </div>
-
-  <!-- ============ QUICK LINKS ============ -->
-  <section class="kb-section" id="links">
-    <div class="sec-head"><span class="emoji">🔗</span><h2>Quick Links &amp; Resources</h2><span class="cnt"></span></div>
-    <p class="sec-desc">The most-used external pages. All open in a new tab.</p>
-    <div class="grid cols-3">
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/" target="_blank" rel="noopener">
-        <span class="lead">🌐</span><h3>Event Website</h3><p>Official Pharmaconex 2026 homepage.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.expocad.com/host/fx/informa/26PHCO/exfx.html#floorplan" target="_blank" rel="noopener">
-        <span class="lead">🗺️</span><h3>Interactive Floorplan</h3><p>Live hall &amp; stand floorplan.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/exhibit/stand-enquiry/" target="_blank" rel="noopener">
-        <span class="lead">🏗️</span><h3>Stand Booking Form</h3><p>Stand / space enquiry form for exhibitors.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/salesbrochure/" target="_blank" rel="noopener">
-        <span class="lead">📄</span><h3>Sales Brochure 2026</h3><p>Request the exhibitor sales brochure.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/exhibit/sponsorship-brochure/" target="_blank" rel="noopener">
-        <span class="lead">⭐</span><h3>Sponsorship Brochure</h3><p>Sponsorship opportunities &amp; onsite form.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/visit/exhibitor-list1/" target="_blank" rel="noopener">
-        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Full list of confirmed exhibitors.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/visit/exhibitors-profiles/" target="_blank" rel="noopener">
-        <span class="lead">🏢</span><h3>Exhibitor Profiles</h3><p>Detailed exhibitor profile pages.</p><span class="go">Open ↗</span></a>
-
-      <div class="card searchable">
-        <span class="lead">📱</span><h3>Event App — Pharmaconex Expo</h3>
-        <p>Official networking &amp; agenda app. Get it on your phone:</p>
-        <div class="applinks">
-          <a class="minibtn" href="https://apps.apple.com/us/app/pharmaconex-expo/id6566175025" target="_blank" rel="noopener">🍏 App Store</a>
-          <a class="minibtn" href="https://play.google.com/store/apps/details?id=com.swapcard.apps.android.pharmaconex" target="_blank" rel="noopener">🤖 Google Play</a>
-          <a class="minibtn" href="https://visitor.pharmaconex-exhibition.com/c/pharmaconex" target="_blank" rel="noopener">🌐 Web App</a>
-        </div>
-      </div>
-
-      <a class="card linkcard searchable" href="https://www.google.com/maps/place/Egypt's+International+Exhibition+Center/@30.0144816,31.381825,2450m" target="_blank" rel="noopener">
-        <span class="lead">🧭</span><h3>Venue on Google Maps</h3><p>Egypt International Exhibition Center.</p><span class="go">Open ↗</span></a>
-    </div>
-  </section>
-
-  <!-- ============ CONTACTS ============ -->
-  <section class="kb-section" id="contacts">
-    <div class="sec-head"><span class="emoji">📨</span><h2>Contacts &amp; Routing</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Who to forward each type of request to. Click the copy icon to grab an email.</p>
-    <div class="grid cols-2">
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">💼</span><b>Sales Team — Stand Booking</b><span class="badge">Sales</span></div>
-        <div class="contact"><span class="who">Contact</span><span class="chip">Samar Awad</span></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:Ahmed.ElShazly@informa.com">Ahmed.ElShazly@informa.com</a></span>
-          <button class="copy" data-copy="Ahmed.ElShazly@informa.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🇮🇳</span><b>Indian Stand Booking Requests</b></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:shruti.save@informa.com">shruti.save@informa.com</a></span>
-          <button class="copy" data-copy="shruti.save@informa.com">⧉</button></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:Devendra.Bhosale@informa.com">Devendra.Bhosale@informa.com</a></span>
-          <button class="copy" data-copy="Devendra.Bhosale@informa.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🇨🇳</span><b>Chinese &amp; Korean Stand Booking</b></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:Jennie.Zhan@informa.com">Jennie.Zhan@informa.com</a></span>
-          <button class="copy" data-copy="Jennie.Zhan@informa.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">⭐</span><b>Sponsorship Opportunities</b><span class="badge">Sales</span></div>
-        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Forward to the sales team, then complete the form onsite.</p>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:samar.awad@ind-group.com">samar.awad@ind-group.com</a></span>
-          <button class="copy" data-copy="samar.awad@ind-group.com">⧉</button></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:Ahmed.ElShazly@informa.com">Ahmed.ElShazly@informa.com</a></span>
-          <button class="copy" data-copy="Ahmed.ElShazly@informa.com">⧉</button></div>
-        <div class="note-inline">Onsite form: <a href="https://www.pharmaconex-exhibition.com/exhibit/sponsorship-brochure/" target="_blank" rel="noopener">Sponsorship brochure form ↗</a></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">📰</span><b>Media Partnerships</b></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:christina.raafat@ind-group.com">christina.raafat@ind-group.com</a></span>
-          <button class="copy" data-copy="christina.raafat@ind-group.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🎤</span><b>Speaker Requests</b></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:yasmine.dawood@ind-group.com">yasmine.dawood@ind-group.com</a></span>
-          <button class="copy" data-copy="yasmine.dawood@ind-group.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🧾</span><b>Invoice Enquiries</b><span class="badge">Finance</span></div>
-        <div class="contact"><span class="who">Email</span>
-          <span class="chip"><a href="mailto:Mahmoud.Sayed@informa.com">Mahmoud.Sayed@informa.com</a></span>
-          <button class="copy" data-copy="Mahmoud.Sayed@informa.com">⧉</button></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ VISITORS ============ -->
-  <section class="kb-section" id="visitors">
-    <div class="sec-head"><span class="emoji">🧑‍🤝‍🧑</span><h2>Visitors</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Registration, programmes and agendas for visitors and delegates.</p>
-    <div class="grid cols-2">
-
-      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/0rkfnv627tvpd" target="_blank" rel="noopener">
-        <span class="lead">📝</span><h3>Visitor Registration Form</h3><p>Main visitor registration (VisitCloud).</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://register.visitcloud.com/survey/1u7c2kqwyvr5z/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">
-        <span class="lead">✉️</span><h3>Visitor Invitation Letters</h3><p>Generate an invitation letter for a visitor.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/visit/why-visit/" target="_blank" rel="noopener">
-        <span class="lead">❓</span><h3>Why Visit</h3><p>Value proposition page for prospective visitors.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/features1/confrences/pharmaconex-technical-conference/" target="_blank" rel="noopener">
-        <span class="lead">🎓</span><h3>Conference Agenda &amp; Speakers</h3><p>Pharmaconex Technical Conference programme.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/features1/agenda-women-in-phama/" target="_blank" rel="noopener">
-        <span class="lead">👩‍🔬</span><h3>Gathering of Women — Agenda</h3><p>Women in Pharma session agenda.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/agons-workshop/" target="_blank" rel="noopener">
-        <span class="lead">🛠️</span><h3>Workshop Agenda</h3><p>Hands-on workshop schedule.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/features1/vip-programme/" target="_blank" rel="noopener">
-        <span class="lead">👑</span><h3>VIP Programme</h3><p>VIP programme overview.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/features2/vip-programme/vip-programme-form/" target="_blank" rel="noopener">
-        <span class="lead">🎫</span><h3>VIP Programme — Registration</h3><p>VIP programme registration form.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/hosted-buyer-programme-form/" target="_blank" rel="noopener">
-        <span class="lead">🤝</span><h3>Hosted Buyer Programme</h3><p>Hosted buyer application form.</p><span class="go">Open ↗</span></a>
-
-      <div class="card searchable">
-        <span class="lead">🪪</span><h3>Delegate Registration</h3>
-        <p>There is <b>no delegate badge</b> for Pharmaconex. Delegates receive a normal <b>visitor badge</b>.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ EXHIBITORS ============ -->
-  <section class="kb-section" id="exhibitors">
-    <div class="sec-head"><span class="emoji">🏢</span><h2>Exhibitors</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Registration through the Customer Centre Portal, badges and manuals.</p>
-
-    <div class="card searchable" style="margin-bottom:14px">
-      <h3>🖥️ Exhibitor Registration — Customer Centre Portal</h3>
-      <p style="margin-bottom:12px">Exhibitors register their team through the Customer Centre Portal. Guide them through these steps:</p>
-      <div class="steps">
-        <div class="step"><div>Log in to the <b>Customer Centre Portal</b> and open the <b>Badges / QR Codes</b> tab.</div></div>
-        <div class="step"><div>Check <b>General Booth Information</b> — booth number, size and total <b>badge allotments</b> (e.g. 28 badges).</div></div>
-        <div class="step"><div>Under <b>Registered Badges</b>, select the booth from the dropdown.</div></div>
-        <div class="step"><div>Use <b>Register Single Member</b> or <b>Register Multiple Members</b> to add the team.</div></div>
-        <div class="step"><div>Use <b>Export Badges</b> to download, or <b>Request Extra Badges</b> if more are needed.</div></div>
-      </div>
-      <div class="shot">
-        <img src="assets/registration-portal.png" alt="Customer Centre Portal — Badges / QR Codes screen">
-        <div class="cap">Customer Centre Portal — Badges / QR Codes → Registered Badges</div>
-      </div>
-    </div>
-
-    <div class="grid cols-2">
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/exhibit/stand-enquiry/" target="_blank" rel="noopener">
-        <span class="lead">🏗️</span><h3>Stand Booking Form</h3><p>Stand / space enquiry for new exhibitors.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/visit/exhibitor-list1/" target="_blank" rel="noopener">
-        <span class="lead">📋</span><h3>Exhibitor List 2026</h3><p>Confirmed exhibitors list.</p><span class="go">Open ↗</span></a>
-
-      <div class="card searchable">
-        <span class="lead">📚</span><h3>Pharmaconex Manuals</h3>
-        <p>Exhibitor manuals &amp; the <b>Contact Information PDF</b> are shared directly by the CS team
-        (internal document — not a public link).</p>
-      </div>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/exhibit/sponsorship-brochure/" target="_blank" rel="noopener">
-        <span class="lead">⭐</span><h3>Sponsorship</h3><p>Sponsorship brochure &amp; onsite form.</p><span class="go">Open ↗</span></a>
-    </div>
-  </section>
-
-  <!-- ============ TIMETABLES ============ -->
-  <section class="kb-section" id="timetables">
-    <div class="sec-head"><span class="emoji">🕒</span><h2>Timetables</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Build-up, registration, show opening and dismantling schedules.</p>
-
-    <div class="grid" style="gap:22px">
-
-      <div class="searchable">
-        <h3 style="margin:0 0 10px">🏗️ Build-up Timings</h3>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Build-up Day</th><th>Timings</th><th>Access</th></tr></thead>
-          <tbody>
-            <tr><td class="day">Sat, 29 Aug 2026</td><td>10:00 – 23:59<br>18:00 – 20:00</td><td>All Contractors<br>Exhibitor Support Desk</td></tr>
-            <tr><td class="day">Sun, 30 Aug 2026</td><td>10:00 – 23:59<br>11:00 – 20:00</td><td>All Contractors<br>Exhibitor Support Desk</td></tr>
-            <tr><td class="day">Mon, 31 Aug 2026</td><td>10:00 – 22:00<br>11:00 – 22:00</td><td>All Exhibitors &amp; Contractors<br>Exhibitor Support Desk</td></tr>
-          </tbody>
-        </table></div>
-        <div class="notice"><b>⚠️ Important notice</b>
-          <ul>
-            <li>All <b>stand construction must be completed by <span class="hot">19:00 on Mon, 31 Aug 2026</span></b>, including removal of all stand material out of the halls and loading bays.</li>
-            <li>Stand dressing and exhibit set-up should be completed by <b>22:00 on Mon, 31 Aug 2026</b>.</li>
-            <li>Stands not completing construction by 19:00 on Mon, 31 Aug 2026 are subject to a <span class="hot">late working fee of 2000 EGP per extra hour</span>.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="searchable">
-        <h3 style="margin:0 0 10px">🎟️ Registration Desk Timings</h3>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Registration Date</th><th>Exhibitor Timings</th></tr></thead>
-          <tbody>
-            <tr><td class="day">Mon, 31 Aug 2026</td><td>12:00 – 20:00</td></tr>
-            <tr><td class="day">Tue, 1 Sep 2026</td><td>9:00 – 18:00</td></tr>
-            <tr><td class="day">Wed, 2 Sep 2026</td><td>9:00 – 18:00</td></tr>
-            <tr><td class="day">Thu, 3 Sep 2026</td><td>9:00 – 18:00</td></tr>
-          </tbody>
-        </table></div>
-        <div class="notice"><b>⚠️ Important notice</b>
-          <ul>
-            <li>For security, all visitors, exhibitors and contractors must register. <b>Badges must be worn at all times</b> on the exhibition floor.</li>
-            <li>Online pre-registration is available on the <b>Customer Center</b>. Onsite registration is at the <b>Hall 4 Lobby</b> during registration hours.</li>
-            <li>On arrival at the EIEC, present a <b>valid ID</b> when needed (driving licence, CPR or passport).</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="searchable">
-        <h3 style="margin:0 0 10px">🚪 Show Opening Timings</h3>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Show Open Day</th><th>Show Hours</th><th>Exhibitor Access</th><th>Support Desk</th></tr></thead>
-          <tbody>
-            <tr><td class="day">Tue, 1 Sep 2026</td><td>10:00 – 18:00</td><td>9:00 – 18:30</td><td>9:00 – 18:30</td></tr>
-            <tr><td class="day">Wed, 2 Sep 2026</td><td>10:00 – 18:00</td><td>9:00 – 18:30</td><td>9:00 – 18:30</td></tr>
-            <tr><td class="day">Thu, 3 Sep 2026</td><td>10:00 – 18:00</td><td>9:00 – 18:30</td><td>9:00 – 18:30</td></tr>
-          </tbody>
-        </table></div>
-        <div class="notice"><b>⚠️ Important notice</b>
-          <ul>
-            <li>Power to <b>all stands must be switched ON 30 min before</b> the show opens and <b>switched OFF 30 min after</b> it closes, every day.</li>
-            <li>If power is required beyond this, <b>24-hour power must be ordered from the official contractor</b>.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="searchable">
-        <h3 style="margin:0 0 10px">📦 Dismantling Timings</h3>
-        <div class="table-wrap"><table>
-          <thead><tr><th>Dismantle Day</th><th>Timings</th><th>Access</th></tr></thead>
-          <tbody>
-            <tr><td class="day">Thu, 3 Sep 2026</td><td>20:00 – 23:59</td><td>All Exhibitors &amp; All Contractors</td></tr>
-            <tr><td class="day">Fri, 4 Sep 2026</td><td>00:00 – 08:00 AM</td><td>All Contractors</td></tr>
-          </tbody>
-        </table></div>
-        <div class="notice"><b>⚠️ Important notice</b>
-          <ul>
-            <li>No exhibits or stand material may be removed <b>before</b> the organiser publicly announces the start of dismantle.</li>
-            <li>Exhibits cannot be removed or dismantled before the close of show, or until the halls are clear of <b>all visitors</b>.</li>
-            <li>Space Only contractor access is approximate — held at the marshalling gate until venue rigging, aisle carpet removal and empty crates are delivered to stands.</li>
-            <li>Do not leave your stand unattended at any time during dismantle.</li>
-            <li>Exhibitors must remove all stand materials, carpet tape, packaging and waste — <b>charges apply</b> for removal of discarded items.</li>
-            <li>Organisers/venue are not responsible for items left in halls or loading bays beyond <span class="hot">23:59 on Thu, 3 Sep 2026</span>.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============ ONSITE & STAND RULES ============ -->
-  <section class="kb-section" id="onsite">
-    <div class="sec-head"><span class="emoji">🛠️</span><h2>Onsite &amp; Stand Rules</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Official contractors, flooring rules and on-stand activities.</p>
-
-    <h3 style="margin:0 0 10px">Space Only — Official Contractors</h3>
-    <div class="grid cols-3" style="margin-bottom:22px">
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🟥</span><b>Cubes Advertising</b></div>
-        <div class="contact"><span class="who">Contact</span><span class="chip">Ahmed Hashim</span></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+201050057535">+20 10 500 575 35</a></span>
-          <button class="copy" data-copy="+201050057535">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:a.hashim@cubes-eg.net">a.hashim@cubes-eg.net</a></span>
-          <button class="copy" data-copy="a.hashim@cubes-eg.net">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🔵</span><b>Beyond</b></div>
-        <div class="contact"><span class="who">Contact</span><span class="chip">Ahmed Aref</span></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+201028076666">+20 102 807 6666</a></span>
-          <button class="copy" data-copy="+201028076666">⧉</button></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+201004040208">+20 100 404 0208</a></span>
-          <button class="copy" data-copy="+201004040208">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:ahmed@beyond-adv.com">ahmed@beyond-adv.com</a></span>
-          <button class="copy" data-copy="ahmed@beyond-adv.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🟢</span><b>Events Encore</b></div>
-        <div class="contact"><span class="who">Contact</span><span class="chip">Omar Helal</span></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+201002020720">+20 100 202 0720</a></span>
-          <button class="copy" data-copy="+201002020720">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Omar.Helal@Events-encore.com">Omar.Helal@Events-encore.com</a></span>
-          <button class="copy" data-copy="Omar.Helal@Events-encore.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🟨</span><b>The Bold</b></div>
-        <div class="contact"><span class="who">Contact</span><span class="chip">Sarah Elhommosy</span></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+201116810888">+20 111 681 0888</a></span>
-          <button class="copy" data-copy="+201116810888">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Sarah.Elhommosy@thebold-Agency.com">Sarah.Elhommosy@thebold-Agency.com</a></span>
-          <button class="copy" data-copy="Sarah.Elhommosy@thebold-Agency.com">⧉</button></div>
-      </div>
-
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">🔴</span><b>United Group Egypt</b></div>
-        <div class="contact"><span class="who">Contact</span><span class="chip">Toqa Waleed</span></div>
-        <div class="contact"><span class="who">Phone</span><span class="chip"><a href="tel:+201555555095">+20 155 555 5095</a></span>
-          <button class="copy" data-copy="+201555555095">⧉</button></div>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:twaleed@ug-expo.com">twaleed@ug-expo.com</a></span>
-          <button class="copy" data-copy="twaleed@ug-expo.com">⧉</button></div>
-      </div>
-
-    </div>
-
-    <div class="grid cols-2">
-      <div class="card searchable">
-        <span class="lead">🧵</span><h3>Carpeting / Floor Coverings</h3>
-        <p><b>Shell Scheme:</b> exhibitors are <b>not allowed to change the colour of the carpet</b>.</p>
-        <div class="note-inline"><b>Space Only:</b> all Space Only stands must install a raised platform for cable management to avoid cable ramps. General height must not exceed <b>100 mm</b> and must include a <b>ramp for disabled access</b>.</div>
-      </div>
-
-      <div class="card searchable">
-        <span class="lead">🎉</span><h3>Entertaining on Your Stand</h3>
-        <p>If hosting a party, <b>contact the CS team first</b> — we confirm with the Operation Team before advising the exhibitor to fill in the <b>On Stand Activity Form</b>.</p>
-        <div class="note-inline">🫖 <b>Kettle</b> and 🍽️ <b>Food</b> on the stand also require the <b>On Stand Activity Form</b>.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ INVOICING ============ -->
-  <section class="kb-section" id="invoicing">
-    <div class="sec-head"><span class="emoji">🧾</span><h2>Invoicing</h2><span class="cnt"></span></div>
-    <div class="grid cols-2">
-      <div class="card searchable">
-        <span class="lead">💳</span><h3>When is an invoice issued?</h3>
-        <p>Once the customer <b>signs their contract and makes the payment</b>, they receive their invoice.</p>
-      </div>
-      <div class="card routecard searchable">
-        <div class="top"><span class="emoji">📇</span><b>Invoice Enquiries</b><span class="badge">Finance</span></div>
-        <p style="font-size:12.5px;color:var(--muted);margin:0 0 8px">Refer all invoice questions to the invoice contact person.</p>
-        <div class="contact"><span class="who">Email</span><span class="chip"><a href="mailto:Mahmoud.Sayed@informa.com">Mahmoud.Sayed@informa.com</a></span>
-          <button class="copy" data-copy="Mahmoud.Sayed@informa.com">⧉</button></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TRAVEL ============ -->
-  <section class="kb-section" id="travel">
-    <div class="sec-head"><span class="emoji">✈️</span><h2>Travel &amp; Stay</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Accommodation, travel and the event app.</p>
-    <div class="grid cols-3">
-      <a class="card linkcard searchable" href="https://hotelmap.com/MW5KW" target="_blank" rel="noopener">
-        <span class="lead">🏨</span><h3>Hotels near Pharmaconex</h3><p>HotelMap — book accommodation near the venue.</p><span class="go">Open ↗</span></a>
-
-      <a class="card linkcard searchable" href="https://www.pharmaconex-exhibition.com/travel-to-pharmaconex/" target="_blank" rel="noopener">
-        <span class="lead">🚗</span><h3>Travel to Pharmaconex</h3><p>How to get to the EIEC.</p><span class="go">Open ↗</span></a>
-
-      <div class="card searchable">
-        <span class="lead">📱</span><h3>Event App — Pharmaconex Expo</h3>
-        <p>Agenda, networking, floorplan &amp; digital badge:</p>
-        <div class="applinks">
-          <a class="minibtn" href="https://apps.apple.com/us/app/pharmaconex-expo/id6566175025" target="_blank" rel="noopener">🍏 App Store</a>
-          <a class="minibtn" href="https://play.google.com/store/apps/details?id=com.swapcard.apps.android.pharmaconex" target="_blank" rel="noopener">🤖 Google Play</a>
-          <a class="minibtn" href="https://visitor.pharmaconex-exhibition.com/c/pharmaconex" target="_blank" rel="noopener">🌐 Web App</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CS CASE HANDLING ============ -->
-    <!-- ============ CS CASE HANDLING ============ -->
-  <section class="kb-section" id="cases">
-    <div class="sec-head"><span class="emoji">🗂️</span><h2>CS Case Handling</h2><span class="cnt"></span></div>
-    <p class="sec-desc">Agenda of cases — click a case to see how to handle it, its Salesforce categories, and the email template. Search from the top bar, or filter by audience.</p>
-    <div class="case-tabs" id="caseTabs">
-      <button class="case-tab active" data-g="all">All <b>43</b></button>
-      <button class="case-tab" data-g="visitors">👤 Visitors <b>19</b></button>
-      <button class="case-tab" data-g="exhibitors">🏢 Exhibitors <b>24</b></button>
-    </div>
-    <div class="cases-wrap" id="casesWrap" data-cg="all">
-      <div class="case-group" data-group="visitors">
-        <div class="case-group-h">👤 Visitors</div>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎟️</span><span class="case-ttl">Visitor Participation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the visitor gets their tickets from:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/0rkfnv627tvpd" target="_blank" rel="noopener">Visitor Registration Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/registration.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/registration.png" alt="registration categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visitor Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that you can register as a visitor through our official website using the registration form below:
-https://register.visitcloud.com/survey/0rkfnv627tvpd
-
-Once you have successfully completed your registration, you will receive a confirmation email containing your visitor badge.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Exhibiting — Stand Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Here is the link the exhibitor submits their details on:</p><a class="cs-linkbtn" href="https://www.pharmaconex-exhibition.com/exhibit/stand-enquiry/" target="_blank" rel="noopener">Book a Stand ↗</a><p class="cs-lead-txt" style="margin-top:14px">Then forward the enquiry to the sales team: <b>Ahmed.ElShazly@informa.com</b> · <b>samar.awad@ind-group.com</b></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-booking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-booking.png" alt="stand-booking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Stand booking enquiry (to customer)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Thank you for your enquiry and for your interest in participating in Pharmaconex 2026.
-
-Kindly note that your request has been forwarded to the relevant team. They will get back to you at the earliest opportunity with further details regarding available stand spaces, pricing, and participation options.</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Forward to the sales team (internal)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Hi Team,
-
-Appreciate your assistance with the customer enquiry below. The customer is interested in participating as an exhibitor and would like to receive more information regarding the available stand options, pricing, and participation details.
-
-Please find the customer&#x27;s contact details below:
-Name: [Customer Name]
-Company: [Company Name]
-Email Address: [Email Address]
-Phone Number: [Phone Number]
-
-Thank you in advance for your support.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa Invitation (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The visitor issues their visa invitation letter through the automated link:</p><a class="cs-linkbtn" href="https://register.visitcloud.com/survey/1u7c2kqwyvr5z/start?visitor-contact=#contact_code#" target="_blank" rel="noopener">Visitor Visa Invitation Link ↗</a><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/visa-request.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/visa-request.png" alt="visa-request categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa Invitation Letter for Visitors</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that you can issue your visa invitation letter as a visitor using the automated link below:
-https://register.visitcloud.com/survey/1u7c2kqwyvr5z/start?visitor-contact=#contact_code#
-
-The form will require your registration key, provided in your registration confirmation email. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
-
-For your convenience, your registration key is:
-[Insert Registration Key]</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✅</span><span class="case-ttl">Visitor Registration Confirmation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Confirm the visitor is registered and resend the confirmation email with the badge.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/confirmation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/confirmation.png" alt="confirmation categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Attendee / Visitor Registration Confirmation</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that, after checking our records, we can confirm that you have been successfully registered as a visitor for Pharmaconex 2026.
-
-We have resent your registration confirmation email, which contains your visitor badge. Please check your inbox, as well as your Junk or Spam folder if you cannot locate the email.
-
-For your convenience, we have also attached your visitor badge to this email.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🔁</span><span class="case-ttl">Change of Operations Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Requires confirmation from the current Operations Contact, then the new contact details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/update-main.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/update-main.png" alt="update-main categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Change of Operations Contact</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that, in order to change the Operations Contact in our system, we first require confirmation from the current Operations Contact.
-
-Once we receive this confirmation, we will forward your request to the relevant team for processing.
-
-Could you please provide the details of the new Operations Contact (Full Name, Email Address, Job Title, Phone Number) so that we can proceed?</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📋</span><span class="case-ttl">Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Share this link: <a href="https://www.pharmaconex-exhibition.com/visit/exhibitor-list1/" target="_blank" rel="noopener">Exhibitor List ↗</a> — also available in the app.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-list.png" alt="exhibitor-list categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">📰</span><span class="case-ttl">Press &amp;amp; Media</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">1) Media partnership → marketing team: <b>christina.raafat@ind-group.com</b> · <b>christina.raafat@ind-group.com</b>.<br>2) Full-event media badge → treat as registration / registration help.<br>3) Booth-only coverage → register as exhibitor + submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/media-partner.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/media-partner.png" alt="media-partner categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎤</span><span class="case-ttl">Speaker</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Speaking requests → conference team: <b>yasmine.dawood@ind-group.com</b> · <b>yasmine.dawood@ind-group.com</b>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/speaking.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/speaking.png" alt="speaking categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Speaking request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in speaking at Pharmaconex 2026. Please review the link below to access the Speaker Form. Kindly complete the form to connect with our content team and be considered for a speaking opportunity at Pharmaconex 2026.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🎓</span><span class="case-ttl">CME Hours / Competition</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">No CME hours or startup competition confirmed for Pharmaconex in the brief. <span class="tbd">⟪TBD⟫</span> confirm any Pharmaconex feature.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/cme.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/cme.png" alt="cme categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">✏️</span><span class="case-ttl">Correcting Exhibitor List</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor amends their profile from the app (instant). If the app is not live, put the case on hold and forward to the request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/updating-list.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/updating-list.png" alt="updating-list categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">⭐</span><span class="case-ttl">Sponsorship</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Form: <a href="https://www.pharmaconex-exhibition.com/exhibit/sponsorship-brochure/" target="_blank" rel="noopener">Sponsorship Opportunities ↗</a>. Sponsor team: <b>Ahmed.ElShazly@informa.com</b> · <b>samar.awad@ind-group.com</b>. Brochure: <a href="https://www.pharmaconex-exhibition.com/salesbrochure/" target="_blank" rel="noopener">Download ↗</a>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sponsorship.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sponsorship.png" alt="sponsorship categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Sponsorship request</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>I hope this email finds you well. Thank you for your interest in sponsoring Pharmaconex 2026. Please find the link below to access our Sponsorship Form. Kindly complete the form, and a member of our relevant team will be in touch with you. I have attached the sponsorship brochure for your review. We look forward to your participation in the event!</pre></div></details></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🗓️</span><span class="case-ttl">Agenda Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The agenda is published on the official website closer to the event date; keep an eye on the site.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/agenda.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/agenda.png" alt="agenda categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🧾</span><span class="case-ttl">Invoice Request (Visitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Put the case on hold and raise a ticket / forward the invoice request internally. <span class="tbd">⟪TBD⟫</span> invoice contact.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/invoice.png" alt="invoice categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Meeting / Agreement Room Booking</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Refer them to the sales team (sales contacts / brochure above).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/meeting-room.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/meeting-room.png" alt="meeting-room categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">👥</span><span class="case-ttl">Additional Contact</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">One operation contact by default. To add one: collect (email, name, phone), put the case on hold, then forward internally to the sales-ops team / request group.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/additional-contact.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/additional-contact.png" alt="additional-contact categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💬</span><span class="case-ttl">Conference Content</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">If the enquiry is about conference content / sessions, check the info and inform the customer.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/conference-content.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/conference-content.png" alt="conference-content categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🛠️</span><span class="case-ttl">Registration Tech Issue</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Forward badge/registration technical issues to the Reg team (<span class="tbd">⟪TBD⟫</span>) with the registered email + registration key; put on hold until resolved.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/reg-tech-issue.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/reg-tech-issue.png" alt="reg-tech-issue categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">💼</span><span class="case-ttl">Job Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Direct them to the Informa careers site and recommend the recruiting platform. <span class="tbd">⟪TBD⟫</span> careers link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="visitors"><summary class="case-sum"><span class="case-ic">🤝</span><span class="case-ttl">Partnership</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Request: nature of service, official documents (CR, VAT, National Address), contact info, online presence. Then forward internally to the sales email (<span class="tbd">⟪TBD⟫</span>).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-2.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-2.png" alt="general-2 categories" loading="lazy"></a></div></details>
-      </div>
-      <div class="case-group" data-group="exhibitors">
-        <div class="case-group-h">🏢 Exhibitors</div>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🪪</span><span class="case-ttl">Exhibitor Badge Registration</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Done through the Customer Centre Portal by the Operations Contact:</p><div class="cs-steps">Home → Exhibitor Badge Registration → Register Single / Multiple Members</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-badge.png" alt="exhibitor-badge categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Exhibitor Badge Registration</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that exhibitor badge registration can be completed through the Customer Centre Portal. As the Operations Contact has access to the Customer Centre, we kindly ask you to contact him/her so they can register you.
-
-The Operations Contact can register exhibitors by following the steps below:
-Home → Exhibitor Badge Registration → Register Single Member / Multiple Members
-
-Once your registration has been completed, each registered exhibitor will receive a Pending Email, then a Confirmation Email containing the exhibitor badge.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🛂</span><span class="case-ttl">Visa for Exhibitor</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The exhibitor issues their visa invitation letter via an automated link using their registration key. Exhibitor visa link: <span class="tbd">⟪TBD⟫</span></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/general-1.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/general-1.png" alt="general-1 categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Visa invitation letter for exhibitor (automated link)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that you can issue your visa invitation letter as an exhibitor through the link below:
-[Insert Visa Invitation Letter Link]
-
-The link will ask you to enter your registration key, which is provided in your registration confirmation email, along with the automated visa email you received after successfully completing your registration.
-
-For your convenience, your registration key is:
-[Insert Registration Key]</pre></div></details><details class="cs-tmpl"><summary>📧 Email template — Visa invitation letter + supporting documents</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that you can issue your visa invitation letter as an exhibitor through the link below:
-[Insert Visa Invitation Letter Link]
-
-The link will ask you to enter your registration key (in your registration confirmation email and the automated visa email). Please check your inbox, including Junk/Spam.
-
-For your convenience, your registration key is:
-[Insert Registration Key]
-
-Additionally, we have attached the supporting documents that can assist you with your visa application. These should be submitted together with your visa invitation letter as part of your visa application process.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📱</span><span class="case-ttl">Event App</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">When the app is live, exhibitors log in with their registered email to update their company profile. App link: <span class="tbd">⟪TBD⟫</span></p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Event App</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-We are delighted to inform you that the Pharmaconex 2026 event application is now live.
-
-You can log in using your registered exhibitor email address and update your company profile. Completing your profile increases your visibility with exhibitors, buyers, and visitors.
-
-For your convenience, please find the access link below:
-[Insert Event App Link]</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Nomination</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact submits contractor details through the Customer Centre Portal:</p><div class="cs-steps">Home → Stand Contractor Details → Add Contractor</div><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-nomination.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-nomination.png" alt="contractor-nomination categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Contractor Details Submission</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that you can submit your contractor details through the Customer Centre Portal.
-
-As you are the Operations Contact, a welcome email has been sent to you containing your login credentials and access to the Customer Centre Portal.
-
-Once you have logged in, please follow the steps below:
-Home → Stand Contractor Details → Add Contractor
-
-After you submit the contractor details, they will be forwarded to the Technical Team for review. Once approved, the contractor will receive access to the Contractor Portal.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖥️</span><span class="case-ttl">Exhibitor Portal (Customer Centre)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The Operations Contact receives a welcome email with login credentials and access to the Customer Centre Portal (manuals, forms, deadlines).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/un-pw.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/un-pw.png" alt="un-pw categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Welcome email</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Dear [Name],
-
-Kindly note that a welcome email has been sent to you, as you are the Operations Contact. The email contains a link to access the Customer Centre Portal, along with your login credentials.
-
-Please check your inbox for this email. If you cannot locate it, we kindly recommend checking your Junk or Spam folder as well.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍽️</span><span class="case-ttl">Catering Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official catering supplier from the event Customer Centre manuals. <span class="tbd">⟪TBD⟫</span> supplier details.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/catering-order.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/catering-order.png" alt="catering-order categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🍴</span><span class="case-ttl">External Catering</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the supplier to coordinate with, mention the tech team (<span class="tbd">⟪TBD⟫</span>), and submit the on-stand activity form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/external-catering.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/external-catering.png" alt="external-catering categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏷️</span><span class="case-ttl">Display / Company Name</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor amends their profile from the app; if not live, put on hold and forward to the relevant team (senior approval for any sales-ops email).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/display-name.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/display-name.png" alt="display-name categories" loading="lazy"></a><details class="cs-tmpl"><summary>📧 Email template — Update request (forwarded)</summary><div class="cs-tmpl-wrap"><button class="copy-tmpl" type="button">Copy</button><pre>Kindly note that I have forwarded your request to the relevant team to update (------). Upon receiving any updates, I will promptly share them with you.</pre></div></details></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏗️</span><span class="case-ttl">Rigging Query</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Rigging = hanging a banner/board above the stand. Regulations are in the manuals (send the PDF). Tech team for technical questions: <span class="tbd">⟪TBD⟫</span>.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/rigging.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/rigging.png" alt="rigging categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📐</span><span class="case-ttl">Stand-Design (Space-Only)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Submit the design to the tech team (<span class="tbd">⟪TBD⟫</span>) or via the contractor portal for approval.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/stand-design.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/stand-design.png" alt="stand-design categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📺</span><span class="case-ttl">Audio-Visual Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Give the official AV supplier contact from the A-Z Manual.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/audio-visual.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/audio-visual.png" alt="audio-visual categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔌</span><span class="case-ttl">Electricity Request</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Space-only exhibitors order electricity from the official supplier in the manual. Shell scheme / start-up include electricity but can order more.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/electricity.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/electricity.png" alt="electricity categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🖼️</span><span class="case-ttl">Graphic Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Locate the graphics supplier in the Contact / A-Z Manual (space-only) or Shell Scheme Manual (shell scheme).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/graphics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/graphics.png" alt="graphics categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🕒</span><span class="case-ttl">Timetable (Contractor-Exhibitor)</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor show times differ from visitors. Build-up / break-down timings are in the manuals. Set the first category by who asks.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/timetable.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/timetable.png" alt="timetable categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">➕</span><span class="case-ttl">Extra / Additional Badges</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Extend badge allotments after approval from the account manager, then add them from the Customer Centre.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/extra-badges.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/extra-badges.png" alt="extra-badges categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">👷</span><span class="case-ttl">Contractor Badge</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Once the contractor is assigned (official way or via the tech team <span class="tbd">⟪TBD⟫</span>), they receive a wrist band on the first build-up day.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/contractor-badge.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/contractor-badge.png" alt="contractor-badge categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">❌</span><span class="case-ttl">Exhibitor Cancellation</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Instruct the exhibitor to contact their account manager (found via the Salesforce customer centre by account name); provide the AM email.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-cancellation.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-cancellation.png" alt="exhibitor-cancellation categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">💳</span><span class="case-ttl">Exhibitor Invoice</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Redirect the exhibitor to their account manager for booth invoices.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/exhibitor-invoice.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/exhibitor-invoice.png" alt="exhibitor-invoice categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🎪</span><span class="case-ttl">On-Stand Activity</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors hosting an activity / bringing non-exhibit items submit the on-stand activity form. <span class="tbd">⟪TBD⟫</span> form link.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📦</span><span class="case-ttl">Onsite Order</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitor onsite orders (e.g. forklift) — find the info in the A-Z manual.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/onsite-logistics.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/onsite-logistics.png" alt="onsite-logistics categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📷</span><span class="case-ttl">Photographer</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">General photographers → media section. Exhibitor photographer → manual / on-stand activity form, or an exhibitor badge related to the company.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/on-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/on-stand.png" alt="on-stand categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🏢</span><span class="case-ttl">Company Profile / Logo</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Exhibitors update profile, logo and products through the event app (Help Desk PDFs).</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">📇</span><span class="case-ttl">Lead Capture / Retrieval</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">The app captures leads by scanning the badge QR, rates 1–5, and qualifies by custom questions.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/app.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/app.png" alt="app categories" loading="lazy"></a></div></details>
-        <details class="case searchable" data-group="exhibitors"><summary class="case-sum"><span class="case-ic">🔗</span><span class="case-ttl">Stand Sharing</span><span class="case-chev">⌄</span></summary><div class="case-body"><p class="cs-lead-txt">Guide the exhibitor to their account manager, who provides the stand-sharing form.</p><p class="cs-catlabel">Case categories (Salesforce):</p><a class="catimg-link" href="assets/cat/sharing-stand.png" target="_blank" rel="noopener"><img class="catimg" src="assets/cat/sharing-stand.png" alt="sharing-stand categories" loading="lazy"></a></div></details>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  Pharmaconex 2026 · Customer Service Knowledge Base · Informa Markets &nbsp;·&nbsp; <span style="opacity:.7">Information Classification: General</span>
-</footer>
+<div class="foot">
+  <h1>Everything the CS team needs — in one place.</h1>
+  <p>Pick an event to open its knowledge base · Search it, copy it, done.</p>
+</div>
+
+<div class="warp"></div>
 
 <script>
 (function(){
-  var q = document.getElementById('q');
-  var clr = document.getElementById('clr');
-  var noresults = document.getElementById('noresults');
-  var qecho = document.getElementById('qecho');
-  var sections = Array.prototype.slice.call(document.querySelectorAll('.kb-section'));
+  var EVENTS = [
+    {name:'Pharmaconex',   href:'pharmaconex.html'},
+    {name:'Sahara Expo',   href:'sahara.html'},
+    {name:'Autotech',      href:'autotech.html'},
+    {name:'Cityscape',     href:'cityscape.html'},
+    {name:'Egypt Energy',  href:'egyptenergy.html'},
+    {name:'WHX Joburg',    href:'whx.html'},
+    {name:'WHX Nairobi',   href:'nairobi.html'},
+    {name:'Nigeria Energy',href:'nigeria.html'}
+  ];
 
-  // ---- per-section count badges ----
-  function totalCounts(){
-    sections.forEach(function(sec){
-      var badge = sec.querySelector('.cnt');
-      if(!badge) return;
-      var items = sec.querySelectorAll('.searchable').length;
-      badge.dataset.total = items;
+  var stage = document.getElementById('stage'),
+      web   = document.getElementById('web'),
+      wrap  = document.getElementById('nodes'),
+      core  = document.getElementById('core'),
+      rings = [document.getElementById('r1'),document.getElementById('r2'),document.getElementById('r3')];
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = [], lines = [], poly;
+
+  // build chips + connecting web
+  var ns = 'http://www.w3.org/2000/svg';
+  poly = document.createElementNS(ns,'polygon');
+  web.appendChild(poly);
+  EVENTS.forEach(function(ev,i){
+    var a = document.createElement('a');
+    a.className = 'node';
+    a.href = ev.href;
+    a.innerHTML = '<span class="dot"></span>' + ev.name;
+    a.style.animation = 'chipIn .7s ' + (0.45 + i*0.07) + 's both';
+    a.addEventListener('mouseenter', function(){ hovered = i; });
+    a.addEventListener('mouseleave', function(){ hovered = -1; });
+    a.addEventListener('click', function(e){ leave(e, ev.href); });
+    wrap.appendChild(a); els.push(a);
+
+    var ln = document.createElementNS(ns,'line');
+    web.appendChild(ln); lines.push(ln);
+  });
+
+  var size = 0, R = 0, spin = 0, boost = 0, boostFrom = 0, boostT = 0, hovered = -1;
+  var px = 0, py = 0, mx = 0, my = 0;
+
+  function measure(){
+    size = stage.clientWidth;
+    R = size * (size < 560 ? 0.345 : 0.425);   // keep the chips inside the viewport on phones
+    web.setAttribute('viewBox','0 0 ' + size + ' ' + size);
+    place();                                   // don't wait for a frame (rAF is paused on hidden tabs)
+  }
+
+  // hover on the core kicks a full extra turn (a nod to the original KB spin)
+  core.addEventListener('mouseenter', function(){ kick(360); });
+  core.addEventListener('mouseleave', function(){ kick(-360); });
+  core.addEventListener('click', function(e){ leave(e,'events.html'); });
+
+  function kick(deg){
+    if(reduced) return;
+    boostFrom = boost; boost += deg; boostT = 0;
+  }
+
+  // subtle parallax
+  if(!reduced){
+    window.addEventListener('mousemove', function(e){
+      mx = (e.clientX / window.innerWidth - .5) * 26;
+      my = (e.clientY / window.innerHeight - .5) * 26;
     });
   }
-  totalCounts();
 
-  // ---- search / filter ----
-  function runSearch(){
-    var term = q.value.trim().toLowerCase();
-    clr.classList.toggle('on', term.length>0);
-    var anyGlobal = false;
-    sections.forEach(function(sec){
-      var cards = Array.prototype.slice.call(sec.querySelectorAll('.searchable'));
-      var visible = 0;
-      cards.forEach(function(c){
-        var hit = !term || c.textContent.toLowerCase().indexOf(term) !== -1;
-        c.classList.toggle('hidden', !hit);
-        if(hit) visible++;
-      });
-      sec.classList.toggle('hidden', term && visible===0);
-      if(visible>0) anyGlobal = true;
-      var badge = sec.querySelector('.cnt');
-      if(badge){
-        badge.textContent = term ? (visible + ' / ' + badge.dataset.total) : (badge.dataset.total + ' items');
-      }
-    });
-    noresults.classList.toggle('hidden', anyGlobal);
-    qecho.textContent = term;
-  }
-  q.addEventListener('input', runSearch);
-  clr.addEventListener('click', function(){ q.value=''; runSearch(); q.focus(); });
-  // keyboard: "/" focuses search
-  document.addEventListener('keydown', function(e){
-    if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }
-    if(e.key==='Escape' && document.activeElement===q){ q.value=''; runSearch(); }
-  });
-  runSearch();
+  var eased = 0, last = performance.now();
 
-  // ---- theme toggle ----
-  var themeBtn = document.getElementById('theme');
-  var saved = null;
-  try { saved = localStorage.getItem('phc-theme'); } catch(e){}
-  if(saved){ document.documentElement.setAttribute('data-theme', saved); }
-  function syncIcon(){
-    var dark = document.documentElement.getAttribute('data-theme')==='dark';
-    themeBtn.textContent = dark ? '☀️' : '🌙';
-  }
-  syncIcon();
-  themeBtn.addEventListener('click', function(){
-    var dark = document.documentElement.getAttribute('data-theme')==='dark';
-    var next = dark ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('phc-theme', next); } catch(e){}
-    syncIcon();
-  });
+  function place(){
+    var total = spin + eased, c = size/2, pts = [];
+    for(var i=0;i<els.length;i++){
+      var ang = (total + i * 360/els.length) * Math.PI/180;
+      var r = R * (hovered === i ? 1.06 : 1);
+      var x = Math.cos(ang) * r, y = Math.sin(ang) * r;
+      els[i].style.transform = 'translate(-50%,-50%) translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      lines[i].setAttribute('x1', c); lines[i].setAttribute('y1', c);
+      lines[i].setAttribute('x2', c + x); lines[i].setAttribute('y2', c + y);
+      pts.push((c + x).toFixed(1) + ',' + (c + y).toFixed(1));
+    }
+    poly.setAttribute('points', pts.join(' '));
 
-  // ---- copy buttons ----
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest('.copy');
-    if(!btn) return;
-    var val = btn.getAttribute('data-copy');
-    var done = function(){ var t=btn.textContent; btn.textContent='✓'; btn.classList.add('done');
-      setTimeout(function(){ btn.textContent=t; btn.classList.remove('done'); }, 1200); };
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(val).then(done, function(){ fallback(val); done(); });
-    } else { fallback(val); done(); }
-  });
-  function fallback(text){
-    var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
-    document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta);
+    rings[0].style.transform = 'rotate(' + (total * 0.6)  + 'deg)';
+    rings[1].style.transform = 'rotate(' + (-total * 0.4) + 'deg)';
+    rings[2].style.transform = 'rotate(' + (total * 0.22) + 'deg)';
   }
 
-  // ---- active nav highlight ----
-  var pills = Array.prototype.slice.call(document.querySelectorAll('#navpills a'));
-  var map = {};
-  pills.forEach(function(p){ map[p.getAttribute('href').slice(1)] = p; });
-  if('IntersectionObserver' in window){
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){
-          pills.forEach(function(p){ p.classList.remove('active'); });
-          var a = map[en.target.id]; if(a) a.classList.add('active');
-        }
-      });
-    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
-    sections.forEach(function(s){ obs.observe(s); });
+  function frame(now){
+    var dt = Math.min(64, now - last); last = now;
+
+    if(!reduced){
+      spin += dt * 0.0042;                       // slow constant drift
+      boostT = Math.min(1, boostT + dt/1400);    // ease the hover kick
+      var t = 1 - Math.pow(1 - boostT, 3);
+      eased = boostFrom + (boost - boostFrom) * t;
+      px += (mx - px) * 0.06; py += (my - py) * 0.06;
+      stage.style.marginLeft = px.toFixed(2) + 'px';
+      stage.style.marginTop  = py.toFixed(2) + 'px';
+    }
+    place();
+    requestAnimationFrame(frame);
+  }
+
+  measure();
+  window.addEventListener('resize', measure);
+  requestAnimationFrame(frame);
+
+  function leave(e, href){
+    if(e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;  // let new-tab clicks through
+    e.preventDefault();
+    document.body.classList.add('leaving');
+    setTimeout(function(){ window.location.href = href; }, reduced ? 0 : 430);
   }
 })();
-</script>
-<script>
-document.addEventListener('click',function(e){var b=e.target.closest('.copy-tmpl');if(!b)return;var pre=b.parentNode.querySelector('pre');if(!pre)return;var t=pre.innerText||pre.textContent;function ok(){var o=b.textContent;b.textContent='✓ Copied';setTimeout(function(){b.textContent=o;},1200);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,ok);}else{ok();}});
-(function(){var tabs=document.getElementById('caseTabs'),wrap=document.getElementById('casesWrap');if(tabs&&wrap){tabs.addEventListener('click',function(e){var b=e.target.closest('.case-tab');if(!b)return;tabs.querySelectorAll('.case-tab').forEach(function(t){t.classList.remove('active');});b.classList.add('active');wrap.setAttribute('data-cg',b.getAttribute('data-g'));});}})();
 </script>
 </body>
 </html>
