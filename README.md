@@ -6,11 +6,13 @@ A lightweight, self-contained **Customer Service knowledge base** for Informa Ma
 
 | Page | Event | Theme |
 |------|-------|-------|
+| [`home.html`](home.html) | **Animated landing** — orbiting event constellation, `EVENTS` opens the list | Dark |
+| [`events.html`](events.html) | **All events** — card grid with filters (Egypt / International / Next up) | Shared |
 | [`index.html`](index.html) | **Pharmaconex 2026** — 1–3 Sep 2026, EIEC | Blue |
 | [`sahara.html`](sahara.html) | **Sahara Expo 2026** — 22–24 Sep 2026, EIEC | Green |
 | [`templates.html`](templates.html) | **Response Templates** — 191 EN/AR reply templates | Shared |
 
-An event switcher in each hero cross-links the two events.
+An event switcher in each hero cross-links every event and links back to `home.html`.
 
 ## Features
 
